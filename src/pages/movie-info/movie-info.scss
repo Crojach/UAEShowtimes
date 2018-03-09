@@ -64,13 +64,13 @@ page-movie-info {
 
     .customImg {
         display: block;
-        width: 85px;
+        width: 90px;
         height: 120px;
         position: absolute;
         z-index: 1;
         padding: 0%;
         border-radius: 9%;
-        margin: 5px;
+        margin: 7px;
         top: 23%;
     }
     ion-app.ios [padding] .scroll-content {
@@ -115,10 +115,8 @@ page-movie-info {
         margin: 2px 0 32px;
     }
     .upShadow{
-        -webkit-box-shadow: 0 -36px 88px 31px rgba(255,255,255,0.3) ;
-        box-shadow: 0 -36px 88px 31px rgba(255,255,255,0.3) ;
-        border-radius: 6px;
-        z-index: 1;
+        -webkit-box-shadow: 0 32px 31px -18px rgba(0,0,0,0.2) ;
+        box-shadow: 0 32px 31px -18px rgba(0,0,0,0.2) ;
     }
     h3,h4{
         color: #36454F;
@@ -133,6 +131,11 @@ page-movie-info {
     }
     .note-md {
         color:#536872;
+    }
+    .innerGlow{
+        -webkit-box-shadow: -3px -22px 26px 6px rgba(255,252,252,0.5) inset;
+        box-shadow: -3px -22px 26px 6px rgba(255,252,252,0.5) inset;
+        z-index: 1;
     }
     
 }

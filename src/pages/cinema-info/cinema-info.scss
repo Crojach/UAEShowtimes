@@ -56,5 +56,8 @@ page-cinema-info {
         overflow: auto;
         display: inline;
     }
-
+    .wordBreak{
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 }

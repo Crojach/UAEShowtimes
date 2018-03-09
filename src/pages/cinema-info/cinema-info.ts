@@ -62,7 +62,6 @@ export class CinemaInfoPage {
         <div class="custom-spinner-container"></div>
           <div class="custom-spinner-box">Please Wait...</div>
         `,
-        dismissOnPageChange: true
     });
 
     loading.present();
@@ -93,8 +92,6 @@ export class CinemaInfoPage {
     
     
     ionViewWillEnter() {
-
-      
   }
 
   loadMap() {
