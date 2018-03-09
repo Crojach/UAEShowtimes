@@ -1,0 +1,133 @@
+<!--
+  Generated template for the MovieInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>Movie Info</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+<ion-content>
+    <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
+    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
+    
+  <ion-thumbnail item-start>
+    <img class="customImg" [src]="item.thumbnailImage">
+  </ion-thumbnail>
+    <ion-card class="upShadow" style="padding: 0; width: 100%;margin: 0 0 14px 0;">
+        <ion-item style="padding: 2% 1% 4% 34%;">
+          <ion-row style="justify-content: space-between;">
+            <h2 item-left>{{ item.title }}</h2>
+            <p style="margin:0;" item-end>{{ item.ratings }}</p>
+          </ion-row>
+          <p>{{ item.releaseDate.split('-')[0] }}</p>
+          <ion-row  style="margin-top: 10%;">
+            <p style="margin:0;padding: 1%;" item-left>
+                <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
+                <span style="margin: 0 0 0 14%;">Release Date</span>
+            </p>
+            <p style="margin:0;padding: 1%;" item-end>
+                <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
+                <span style="margin: 0 0 0 14%;">Duration</span>
+            </p>
+          </ion-row>
+        </ion-item>
+      </ion-card>
+
+        <div>
+          <ion-segment [(ngModel)]="selectedSegment">
+              <ion-segment-button value="Info">Info</ion-segment-button>
+            <ion-segment-button value="Cast">Cast</ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="selectedSegment">
+            <ion-list class="iconColor" *ngSwitchCase="'Info'">
+                <ion-item class="iconColor">
+                  <ion-icon name='videocam' item-start></ion-icon>
+                  Synopsis
+                  <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>
+                </ion-item>
+              <ion-item class="iconColor">
+                <ion-icon name='eye' item-start></ion-icon>
+                Language
+                <ion-note item-end>{{ item.language }}</ion-note>
+              </ion-item>
+              <ion-item class="iconColor">
+                <ion-icon name='flag' item-start></ion-icon>
+                Genre
+                <ion-note item-end>{{ item.genre }}</ion-note>
+              </ion-item>
+              <ion-item class="iconColor">
+                <ion-icon name='film' item-start></ion-icon>
+                Director
+                <ion-note item-end>{{ item.director }}</ion-note>
+              </ion-item> 
+
+            <h4>Showtimes</h4>
+              <ion-item style="background-color: transparent;" *ngFor="let item of cinema">
+                <ion-item style="background-color: transparent;">
+                    <!-- {{item.novaArray}} -->
+                    <ion-note item-end>{{ item.multiplexName }}</ion-note>
+                  </ion-item>
+                  <!-- <ion-item style="background-color: transparent;">
+                      Cinema
+                      <ion-note item-end>Al Humra</ion-note>
+                    </ion-item> -->
+              <div *ngFor="let show of item.cinemaArray">
+                <h3> {{ show.cinemaName }} </h3><br>
+                <ion-row>
+                  <div style="width:33.33%" *ngFor="let time of show.sessions">
+                  <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                </div>
+                </ion-row><br>
+              </div> 
+            </ion-item>             
+            </ion-list>
+
+          <ion-list *ngSwitchCase="'Cast'">
+            <ion-item style="background-color: transparent;">
+              <ion-thumbnail item-start>
+                <img [src]="item.thumbnailImage">
+              </ion-thumbnail>
+              <h2>Ruby</h2>
+            </ion-item>
+          </ion-list>
+        </div>
+    </div>
+  <!-- <ion-card>
+    <ion-card-content>
+      <h2 text-center>
+       {{ item.title }}
+      </h2>
+    </ion-card-content>
+    <img [src]=" item.thumbnailImage "/> <br> 
+    <iframe [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe> <br>
+    <h3 class="costumColor">Showtimes</h3>
+    <div class="costumButton">
+    <ion-row no-padding>
+      <ion-col>
+        <h3 class="costumColor">VOX</h3>
+      </ion-col>
+      <ion-col>
+          <h3>Al Humra</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <button class="costumButton">12:30 PM</button>
+            <button class="costumButton">12:30 PM</button>
+            <button class="costumButton">12:30 PM</button>
+        </ion-col>
+    </ion-row>
+  </div><br>
+  </ion-card> -->
+</ion-content>
+
+
+

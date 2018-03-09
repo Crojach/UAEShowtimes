@@ -1,0 +1,33 @@
+<!--
+  Generated template for the MusicsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar>
+    <ion-title style= "color:azure">Cinemas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-list>
+      <ion-item nopadding *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
+      <ion-row>  
+        <img [src]="d.image" alt="Cinemas Image" height="60px" width="60px" nopadding>  
+        <h4 style="margin: auto 0 auto 6px;">{{ d.multiplex }}</h4>
+      </ion-row>
+        <ion-icon color="primary" item-right [name]="d.icon"></ion-icon>
+      <div *ngIf="d.showDetails">
+       <a *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id)'><div>{{col.cinemaName}}</div></a>
+      </div>
+<!-- 
+      <img *ngIf="d.multiplex == 'Novo Cinemas'" src="/assets/imgs/novo.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding>
+      <img *ngIf="d.multiplex == 'Reel Cinemas'" src="/assets/imgs/reel.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding>
+      <img *ngIf="d.multiplex == 'Roxy Cinemas'" src="/assets/imgs/roxy.png" alt="Cinemas Image" height="60px" width="auto" nopadding>
+      <img *ngIf="d.multiplex == 'Vox Cinemas'" src="/assets/imgs/vox.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding> -->
+    </ion-item>
+  </ion-list>
+ 
+</ion-content>

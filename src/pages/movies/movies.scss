@@ -1,0 +1,56 @@
+page-movies {
+    .toolbar-background {
+        background: none;
+    }
+    .toolbar-title {
+        color: #fff;
+    }
+    ion-navbar.toolbar {
+        text-align: center;
+    }
+    .header .toolbar-background, .footer .toolbar-background {
+        border-style: none;
+        border-color: transparent;
+    }
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: unset;
+    }
+    .content {
+        color: #000;
+        // background-color: #f0f1f4;
+        background: linear-gradient(168deg, #f28c5d 24%, #f0f1f4 24.3%);
+    }
+    .item h2 {
+        white-space: pre-wrap;
+    }
+    .item {
+        padding-left: 0px;
+    }
+    .item ion-thumbnail ion-img, .item ion-thumbnail img {
+        width: 90px;
+        height: 126px;
+    }
+    .item h2 {
+        font-size: 14px;
+    }
+    [padding] h1:first-child, [padding] h2:first-child, [padding] h3:first-child, [padding] h4:first-child, [padding] h5:first-child, [padding] h6:first-child {
+         margin-top: 0rem; 
+    }
+    .item p {
+        font-size: 12px;
+    }
+    .label {
+         margin: 0;
+    }
+    .imageCurve{
+        border-radius: 6px;
+    }
+    .cardCurve{
+        padding: 0;
+        border-radius: 6px;
+        width: 100%;
+        margin: 0 0 14px 0;
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+    }
+}

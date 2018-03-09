@@ -1,0 +1,79 @@
+<!--
+  Generated template for the CinemaInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cinema Info</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+      <div *ngFor="let d of cinemaInfo">
+        <div #map id="map">
+          <ion-fab right top>
+            <button ion-fab>
+              <ion-icon name="pin"></ion-icon>
+            </button>
+          </ion-fab>
+        </div>
+        <ion-item>
+            <ion-row>
+              <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
+                <ion-col>
+                  <h3>{{d.cinemaName}}</h3>
+                  <p class="customFont">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+
+        <ion-item>
+          <ion-row>
+            <ion-icon ios="ios-call" md="md-call" ></ion-icon>
+            <p class="text">{{ d.phoneNumber }}</p>
+          </ion-row>
+        </ion-item>
+      
+        <ion-item>
+          <ion-row>
+              <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>
+               <p class="text">{{ d.emailId }} </p>
+              </ion-row>
+        </ion-item>
+      </div>
+        <ion-list *ngFor="let c of movieInfo">
+          <ion-item style="background-color: transparent;">
+              <ion-item style="background-color: transparent;">
+                  {{ c.movieTitle }}
+              </ion-item>
+            <ion-row >
+              <div *ngFor="let time of c.sessions">
+              <button [disabled]="currentTime > time.showTime * 1000" class="costumButton1" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+            </div>
+            </ion-row>
+          </ion-item>
+      </ion-list>
+      
+        <!-- <h3 class="costumColor">Viewing Times</h3>
+        <div class="costumButton">
+        <ion-row no-padding>
+          <ion-col>
+            <h3>Black Panter</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button class="costumButton">12:30 PM</button>
+                <button class="costumButton">12:30 PM</button>
+                <button class="costumButton">12:30 PM</button>
+            </ion-col>
+        </ion-row>
+      </div><br> -->
+      
+      </ion-card>
+</ion-content>

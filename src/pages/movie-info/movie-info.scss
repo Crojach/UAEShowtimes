@@ -1,0 +1,138 @@
+page-movie-info {
+
+
+    .costumColor{
+        color:#488AFF
+    }
+    .costumButton{
+        border: 1px solid #f28c5d;
+        border-radius: 4px;
+        background-color: white;
+        padding: 5px;
+        margin: 4px;
+        font-size: 0.6em;
+        width: 80px;
+    }
+    .customCinema{
+        font-size: 1em;
+    }
+
+
+    .toolbar-background {
+        background: none;
+    }
+    .toolbar-title {
+        color: #fff;
+    }
+    .header .toolbar-background, .footer .toolbar-background {
+        border-style: none;
+        border-color: transparent;
+    }
+    .content {
+        color: #000;
+        // background: #f0f1f4;
+        background: linear-gradient(180deg, #f28c5d 24%, #f0f1f4 44%);
+    }
+
+    .item h2 {
+        white-space: pre-wrap;
+    }
+    .item {
+        padding-left: 0px;
+    }
+    .item ion-avatar[item-left], .item ion-thumbnail[item-left], .item ion-avatar[item-start], .item ion-thumbnail[item-start] {
+        margin: 3%; 
+    }
+    .item h2 {
+        font-size: 14px;
+    }
+    [padding] h1:first-child, [padding] h2:first-child, [padding] h3:first-child, [padding] h4:first-child, [padding] h5:first-child, [padding] h6:first-child {
+         margin-top: 0rem; 
+    }
+    .item p {
+        font-size: 12px;
+    }
+    .label {
+         margin: 0;
+    }
+    page-movie-info .item p {
+        font-size: 12px;
+    }
+    ion-icon {
+        font-size: 13px;
+    }
+
+    .customImg {
+        display: block;
+        width: 85px;
+        height: 120px;
+        position: absolute;
+        z-index: 1;
+        padding: 0%;
+        border-radius: 9%;
+        margin: 5px;
+        top: 23%;
+    }
+    ion-app.ios [padding] .scroll-content {
+        padding: 0;
+    }
+    .path.ytp-large-play-button-bg {
+        -moz-transition: fill .1s cubic-bezier(0.4,0.0,1,1),fill-opacity .1s cubic-bezier(0.4,0.0,1,1);
+        -webkit-transition: fill .1s cubic-bezier(0.4,0.0,1,1),fill-opacity .1s cubic-bezier(0.4,0.0,1,1);
+        transition: fill .1s cubic-bezier(0.4,0.0,1,1),fill-opacity .1s cubic-bezier(0.4,0.0,1,1);
+        fill: #f28c5d !important;
+        fill-opacity: .8;
+    }
+    .customCSS{
+        background: #67cc6c;
+        padding: 5%;
+        margin: 0;
+        color: #fff;
+        letter-spacing: 2px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+    }
+    .segment .segment-button {
+        border: none;
+        color: #aeacb4;
+        border-bottom: 1px solid #aeacb4;
+        border-radius: 0 
+    }
+    .segment .segment-button.segment-activated{
+        color: #000;
+        background-color: transparent;
+        border-bottom: 2px solid #f28c5d;
+    }
+    .segment .segment-button:first-of-type{
+        border-radius: 0px;
+    }
+    .segment .segment-button:last-of-type{
+        border-radius: 0px;
+        
+    }
+    .list {
+        margin: 2px 0 32px;
+    }
+    .upShadow{
+        -webkit-box-shadow: 0 -36px 88px 31px rgba(255,255,255,0.3) ;
+        box-shadow: 0 -36px 88px 31px rgba(255,255,255,0.3) ;
+        border-radius: 6px;
+        z-index: 1;
+    }
+    h3,h4{
+        color: #36454F;
+    }
+    .iconColor{
+        background-color: transparent;
+        color: #36454F;
+        font-size: 1em;
+    }
+    .item-inner{
+        margin-left: 12px
+    }
+    .note-md {
+        color:#536872;
+    }
+    
+}
