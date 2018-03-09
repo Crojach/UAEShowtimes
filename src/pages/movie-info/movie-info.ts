@@ -50,6 +50,15 @@ export class MovieInfoPage {
   }
   
   postItems() {
+    loading = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: `
+        <div class="custom-spinner-container"></div>
+          <div class="custom-spinner-box">Please Wait...</div>
+        `,
+    });
+    loading.present();
+    
   // console.log(">>>>>>",this.movieId);
     const httpOptions = new RequestOptions({
       headers: new Headers({
@@ -111,20 +120,13 @@ export class MovieInfoPage {
         //     // }
         //     return acc;
         // },{NovoCinemas:{ multiplexName: 'Novo Cinemas', cinemaArray: [] },RoxyCinemas:{ multiplexName: 'Roxy Cinemas', cinemaArray: [] },VoxCinemas:{ multiplexName: 'Vox Cinemas', cinemaArray: [] },ReelCinemas:{ multiplexName: 'Reel Cinemas', cinemaArray: [] }})
-        loading.dismiss()
+        // if(!results){
+          loading.dismiss()
+        // }
       });
     }
 
   ionViewWillEnter(){
-    loading = this.loadingCtrl.create({
-      spinner: 'ios',
-      content: `
-        <div class="custom-spinner-container"></div>
-          <div class="custom-spinner-box">Please Wait...</div>
-        `,
-    });
-
-    loading.present();
     
   }
   

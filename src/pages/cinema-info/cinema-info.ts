@@ -56,6 +56,17 @@ export class CinemaInfoPage {
   }
 
   postItems() {
+    loading = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: `
+        <div class="custom-spinner-container"></div>
+          <div class="custom-spinner-box">Please Wait...</div>
+        `,
+        dismissOnPageChange: true
+    });
+
+    loading.present();
+
     console.log(this.cinemaId);
     const httpOptions = new RequestOptions({
       headers: new Headers({
@@ -75,23 +86,14 @@ export class CinemaInfoPage {
         this.cinemaInfo = results.cinema;
         this.movieInfo = results.finalMovies;
         console.log(this.cinemaInfo);
-        loading.dismiss()
+        loading.dismiss();
       this.loadMap();
       });
     }
     
     
     ionViewWillEnter() {
-      console.log("ionViewDidLoad CinemaInfoPage");
-      loading = this.loadingCtrl.create({
-        spinner: 'ios',
-        content: `
-          <div class="custom-spinner-container"></div>
-            <div class="custom-spinner-box">Please Wait...</div>
-          `,
-      });
 
-      loading.present();
       
   }
 
