@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CinemaInfoPage } from '../cinema-info/cinema-info';
 import { Http } from '@angular/http';
+import { LoadingController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 // import { Title } from '@angular/platform-browser';
 
@@ -13,6 +14,7 @@ import 'rxjs/add/operator/map';
  */
 
 // @IonicPage()
+let loading
 @Component({
   selector: 'page-musics',
   templateUrl: 'cinemas.html',
@@ -22,10 +24,12 @@ export class CinemasPage {
   configUrl = 'http://uaeshowtimes.com:3006';
   // configUrl = 'http://192.168.1.167';
   cinemas:any;
+  loadingCtrl:any;
   icon:any ='ios-arrow-down';
   cinemasTitles = ["/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
   
-  constructor(public http : Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public http : Http, public navCtrl: NavController,loadingCtrl: LoadingController, public navParams: NavParams) {
+    this.loadingCtrl = loadingCtrl;
     this.getItems()
   }
   
@@ -60,6 +64,15 @@ export class CinemasPage {
   }
 
   getItems(){
+    loading = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: `
+        <div class="custom-spinner-container"></div>
+          <div class="custom-spinner-box">Please Wait...</div>
+        `,
+    });
+
+    loading.present();
     this.http.get(`${this.configUrl}/app/showAllCinemas`).map(res => res.json()).subscribe(
       results => {
         if(results.status){
@@ -75,7 +88,8 @@ export class CinemasPage {
               showDetails: false
             })
           })
-          console.log("result>>",this.data)
+        loading.dismiss();
+        console.log("result>>",this.data)
       }
       else{
         console.log("Sorry Try Again")

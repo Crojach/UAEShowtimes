@@ -24,25 +24,27 @@
         </div>
         <ion-item>
             <ion-row>
-              <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
-                <ion-col>
-                  <h3>{{d.cinemaName}}</h3>
+              <ion-icon ios="ios-navigate" md="md-navigate">
+                <h3>{{d.cinemaName}}</h3>
                   <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
-                </ion-col>
+              </ion-icon>
             </ion-row>
         </ion-item>
 
         <ion-item>
           <ion-row>
-            <ion-icon ios="ios-call" md="md-call" ></ion-icon>
-            <p class="text">{{ d.phoneNumber }}</p>
+            <ion-icon ios="ios-call" md="md-call" >
+              <p class="text">{{ d.phoneNumber }}</p>
+            </ion-icon>
           </ion-row>
         </ion-item>
       
         <ion-item>
           <ion-row>
-              <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>
-               <p class="text wordBreak">{{ d.emailId }} </p>
+              <ion-icon ios="ios-mail" md="md-mail" nopadding>
+                <p class="text wordBreak">{{ d.emailId }} </p>
+              </ion-icon>
+               
               </ion-row>
         </ion-item>
       </div>
