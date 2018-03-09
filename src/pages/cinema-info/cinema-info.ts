@@ -25,8 +25,8 @@ let loading
   templateUrl: "cinema-info.html"
 })
 export class CinemaInfoPage {
-  // configUrl = 'http://192.168.1.161/app/cinema';
-  configUrl = "http://uaeshowtimes.com/app/cinema";
+  // configUrl = 'http://192.168.1.167';
+  configUrl = "http://uaeshowtimes.com:3006";
   cinemaId: any;
   http: any;
   cinemaInfo: any;
@@ -68,7 +68,7 @@ export class CinemaInfoPage {
       cinemaId: this.cinemaId
     };
     this.http
-      .post(this.configUrl, body, httpOptions)
+      .post(`${this.configUrl}/app/cinema`, body, httpOptions)
       .map(res => res.json())
       .subscribe(results => {
         console.log("POWER",results)

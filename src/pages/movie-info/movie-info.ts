@@ -13,8 +13,8 @@ let loading
   templateUrl: 'movie-info.html',
 })
 export class MovieInfoPage {
-  configUrl = "http://uaeshowtimes.com";
-  // configUrl = "http://192.168.1.167/app/movie";
+  configUrl = "http://uaeshowtimes.com:3006";
+  // configUrl = "http://192.168.1.167";
   item:any;
   trustedVideoUrl: SafeResourceUrl;
   http: any;
@@ -111,11 +111,21 @@ export class MovieInfoPage {
         //     // }
         //     return acc;
         // },{NovoCinemas:{ multiplexName: 'Novo Cinemas', cinemaArray: [] },RoxyCinemas:{ multiplexName: 'Roxy Cinemas', cinemaArray: [] },VoxCinemas:{ multiplexName: 'Vox Cinemas', cinemaArray: [] },ReelCinemas:{ multiplexName: 'Reel Cinemas', cinemaArray: [] }})
-        
+        loading.dismiss()
       });
     }
 
   ionViewWillEnter(){
+    loading = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: `
+        <div class="custom-spinner-container"></div>
+          <div class="custom-spinner-box">Please Wait...</div>
+        `,
+    });
+
+    loading.present();
+    
   }
   
   ionViewDidLoad() {

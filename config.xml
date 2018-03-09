@@ -84,5 +84,6 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.5">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
     </plugin>
 </widget>

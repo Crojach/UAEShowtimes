@@ -18,8 +18,8 @@ import { MovieInfoPage } from '../movie-info/movie-info';
   templateUrl: 'movies.html',
 })
 export class MoviesPage {
-  configUrl = 'http://uaeshowtimes.com/app/show-all-movies';
-  // configUrl = 'http://192.168.1.167/app/show-all-movies';
+  configUrl = 'http://uaeshowtimes.com:3006';
+  // configUrl = 'http://192.168.1.167';
   items:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http) {
@@ -33,7 +33,7 @@ export class MoviesPage {
    })
   }
   getItems(){
-    this.http.get(this.configUrl).map(res => res.json()).subscribe(
+    this.http.get(`${this.configUrl}/app/show-all-movies`).map(res => res.json()).subscribe(
       results => {
       if(results.status){
         this.items = results.movies;

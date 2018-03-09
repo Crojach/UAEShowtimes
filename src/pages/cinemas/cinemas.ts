@@ -19,7 +19,8 @@ import 'rxjs/add/operator/map';
 })
 export class CinemasPage {
   data: Array<{ image: string, multiplex: string, cinema: any, icon: string, showDetails: boolean}> = [];
-  configUrl = 'http://uaeshowtimes.com/app/showAllCinemas';
+  configUrl = 'http://uaeshowtimes.com:3006';
+  // configUrl = 'http://192.168.1.167';
   cinemas:any;
   icon:any ='ios-arrow-down';
   cinemasTitles = ["/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
@@ -59,7 +60,7 @@ export class CinemasPage {
   }
 
   getItems(){
-    this.http.get(this.configUrl).map(res => res.json()).subscribe(
+    this.http.get(`${this.configUrl}/app/showAllCinemas`).map(res => res.json()).subscribe(
       results => {
         if(results.status){
           console.log("result>>",results.cinemas)
