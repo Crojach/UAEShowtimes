@@ -23,9 +23,11 @@ export class MovieInfoPage {
   loadingCtrl:any;
   iab: any;
   currentTime: any;
+  icon:any ='ios-arrow-down';
   cinema:any;
+  showDetails: boolean;
   cinemaList:Array<{multiplexName: '', cinamaArray:any }> =[]
-  data: Array<{ image: string, multiplex: string, cinema: any, icon: string, showDetails: boolean}> = [];
+  // data: Array<{ image: string, multiplex: string, cinema: any, icon: string, showDetails: boolean}> = [];
  
   constructor(
     public navCtrl: NavController,
@@ -48,6 +50,28 @@ export class MovieInfoPage {
   openBookingUrl(url) {
     const browser = this.iab.create(url);
   }
+
+  //Code for Accordin
+  toggleDetails(cinema,index) {
+   
+    if(this.cinema[index].showDetails){
+      this.cinema[index].showDetails = false;
+      this.cinema[index].icon = 'ios-arrow-down';
+    }
+    else{
+      this.cinema.map((x, _index) =>{
+        if(_index == index){
+          x.showDetails = true;
+          x.icon = 'ios-arrow-up';
+        }
+        else{
+          x.showDetails = false;
+          x.icon = 'ios-arrow-down';
+        }
+      })
+    }
+  }
+
   
   postItems() {
     loading = this.loadingCtrl.create({

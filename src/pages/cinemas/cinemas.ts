@@ -28,15 +28,16 @@ export class CinemasPage {
   icon:any ='ios-arrow-down';
   cinemasTitles = ["/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
   
-  constructor(public http : Http, public navCtrl: NavController,loadingCtrl: LoadingController, public navParams: NavParams) {
+  constructor(public http : Http, 
+              public navCtrl: NavController,
+              loadingCtrl: LoadingController, 
+              public navParams: NavParams) {
     this.loadingCtrl = loadingCtrl;
     this.getItems()
   }
-  
-  
 
   cinemaPage(id){
-    console.log("!!!!!!!!!", id)
+    // console.log("!!!!!!!!!", id)
     this.navCtrl.push(CinemaInfoPage,{
       cinemaId : id
    })
@@ -76,10 +77,10 @@ export class CinemasPage {
     this.http.get(`${this.configUrl}/app/showAllCinemas`).map(res => res.json()).subscribe(
       results => {
         if(results.status){
-          console.log("result>>",results.cinemas)
+          // console.log("result>>",results.cinemas)
           this.cinemas = results.cinemas;
           results.cinemas.map((x, index) => {
-            console.log(this.cinemasTitles)
+            // console.log(this.cinemasTitles)
             this.data.push({              
               image: this.cinemasTitles[index],
               multiplex: x.multiplex,
