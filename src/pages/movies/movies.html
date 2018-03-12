@@ -8,6 +8,10 @@
 
   <ion-navbar>
     <ion-title>Movies</ion-title>
+    <div>
+      <h3> </h3><br>
+      <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Movies">
+    </div>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +19,7 @@
 
 <ion-content>
   <div style="padding:2%">
-  <ion-card class="cardCurve" *ngFor="let item of items">
+  <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString">
     <ion-item style="padding:2%" (click)='bookNow(item)'>
       <ion-thumbnail style="margin: 5px;" item-start>
         <img class="imageCurve" [src]="item.thumbnailImage">

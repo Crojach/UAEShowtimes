@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleMaps,GoogleMap } from '@ionic-native/google-maps';
 import { LoadingController } from 'ionic-angular';
+import { FormsModule } from '@angular/forms';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +16,8 @@ import { MoviesPage } from '../pages/movies/movies';
 import { CinemasPage } from '../pages/cinemas/cinemas';
 import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
+import { FilterPipe } from './pipes'
+
 
 
 @NgModule({
@@ -25,14 +28,16 @@ import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
     MoviesPage,
     CinemasPage,
     MovieInfoPage,
-    CinemaInfoPage
+    CinemaInfoPage,
+    FilterPipe
   ],
   imports: [
     HttpModule,
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [IonicApp, MyApp],
   entryComponents: [
     MyApp,
     HomePage,
@@ -40,7 +45,7 @@ import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
     MoviesPage,
     CinemasPage,
     MovieInfoPage,
-    CinemaInfoPage
+    CinemaInfoPage,
   ],
   providers: [
     StatusBar,

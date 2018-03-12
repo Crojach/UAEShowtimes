@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { MovieInfoPage } from '../movie-info/movie-info';
+
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,11 +15,16 @@ import { MovieInfoPage } from '../movie-info/movie-info';
  */
 
 // @IonicPage()
+
+
 let loading
 @Component({
   selector: 'page-movies',
   templateUrl: 'movies.html',
 })
+
+
+
 export class MoviesPage {
   configUrl = 'http://uaeshowtimes.com:3006';
   // configUrl = 'http://192.168.1.167';
@@ -37,15 +43,15 @@ export class MoviesPage {
    })
   }
   getItems(){
-    loading = this.loadingCtrl.create({
-      spinner: 'ios',
-      content: `
-        <div class="custom-spinner-container"></div>
-          <div class="custom-spinner-box">Please Wait...</div>
-        `,
-    });
+    // loading = this.loadingCtrl.create({
+    //   spinner: 'ios',
+    //   content: `
+    //     <div class="custom-spinner-container"></div>
+    //       <div class="custom-spinner-box">Please Wait...</div>
+    //     `,
+    // });
 
-    loading.present();
+    // loading.present();
 
     this.http.get(`${this.configUrl}/app/show-all-movies`).map(res => res.json()).subscribe(
       results => {
@@ -61,7 +67,8 @@ export class MoviesPage {
           }
           return x
         })
-        loading.dismiss();
+
+        // loading.dismiss();
         console.log(">>>", this.items)
       }
       else{

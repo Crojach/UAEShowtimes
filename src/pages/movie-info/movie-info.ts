@@ -23,7 +23,7 @@ export class MovieInfoPage {
   loadingCtrl:any;
   iab: any;
   currentTime: any;
-  icon:any ='ios-arrow-down';
+  icon: any = 'ios-arrow-down';
   cinema:any;
   showDetails: boolean;
   cinemaList:Array<{multiplexName: '', cinamaArray:any }> =[]
@@ -97,56 +97,38 @@ export class MovieInfoPage {
       .post(`${this.configUrl}/app/movie`, body, httpOptions)
       .map(res => res.json())
       .subscribe(results => {
+        let Obj = {
+          novaArray:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/novo.jpg', showDetails: false, icon: "ios-arrow-down" },
+          roxyCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/roxy.png', showDetails: false, icon: "ios-arrow-down" },
+          voxCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/vox.jpg', showDetails: false, icon: "ios-arrow-down" },
+          reelCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/reel.jpg', showDetails: false, icon: "ios-arrow-down" }
+        }
         // console.log("result",results.shows)
          let final = results.shows.reduce((acc,cv,ci,arr)=>{
           if(cv.multiplexName == 'Novo Cinemas'){
               acc.novaArray['multiplexName'] = 'Novo Cinemas';
-              acc.novaArray['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
+              acc.novaArray['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
             }
             if(cv.multiplexName == 'Roxy Cinemas'){
               acc.roxyCinemas['multiplexName'] = 'Roxy Cinemas';
-              acc.roxyCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
+              acc.roxyCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
             }
             if(cv.multiplexName == 'Vox Cinemas'){
               acc.voxCinemas['multiplexName'] = 'Vox Cinemas';
-              acc.voxCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
+              acc.voxCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
             }
             if(cv.multiplexName == 'Reel Cinemas'){
               acc.reelCinemas['multiplexName'] = 'Reel Cinemas';
-              acc.reelCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
+              acc.reelCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
             }
             return acc;
-          },{novaArray:{ multiplexName: '', cinemaArray: [] },roxyCinemas:{ multiplexName: '', cinemaArray: [] },voxCinemas:{ multiplexName: '', cinemaArray: [] },reelCinemas:{ multiplexName: '', cinemaArray: [] }})
+          },Obj)
           this.cinema  = Object.keys(final).map((x)=>{
             let p = final[x]
             return p;
           })
           console.log(final,'>>>>>>>>', this.cinema)
-
-        // let final2 = results.shows.reduce((acc,cv,ci,arr)=>{
-        //   console.log((cv.multiplexName),">>>",typeof cv.multiplexName);console.log(acc[(cv.multiplexName).trim()].multiplexName);
-        //   if(cv.multiplexName == acc[cv.multiplexName.trim()].multiplexName){
-        //     acc[cv.multiplexName.trim()].multiplexName = cv.multiplexName;
-        //     acc[cv.multiplexName.trim()].cinemaArray.push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
-        //     }
-
-        //     // if(cv.multiplexName == 'Roxy Cinemas'){
-        //     //   acc.roxyCinemas['multiplexName'] = 'Roxy Cinemas';
-        //     //   acc.roxyCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
-        //     // }
-        //     // if(cv.multiplexName == 'Vox Cinemas'){
-        //     //   acc.voxCinemas['multiplexName'] = 'Vox Cinemas';
-        //     //   acc.voxCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
-        //     // }
-        //     // if(cv.multiplexName == 'Reel Cinemas'){
-        //     //   acc.reelCinemas['multiplexName'] = 'Reel Cinemas';
-        //     //   acc.reelCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions })
-        //     // }
-        //     return acc;
-        // },{NovoCinemas:{ multiplexName: 'Novo Cinemas', cinemaArray: [] },RoxyCinemas:{ multiplexName: 'Roxy Cinemas', cinemaArray: [] },VoxCinemas:{ multiplexName: 'Vox Cinemas', cinemaArray: [] },ReelCinemas:{ multiplexName: 'Reel Cinemas', cinemaArray: [] }})
-        // if(!results){
           loading.dismiss()
-        // }
       });
     }
 
