@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { MovieInfoPage } from '../movie-info/movie-info';
+import { OrderPipe } from 'ngx-order-pipe';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -30,8 +31,13 @@ export class MoviesPage {
   // configUrl = 'http://192.168.1.167';
   items:any;
   loadingCtrl:any;
+  order: any = 'releaseDate';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http, loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public http: Http,
+              loadingCtrl: LoadingController,
+              ) {
     this.loadingCtrl = loadingCtrl;
     this.getItems();
     console.log("items>>",this.items)
@@ -42,6 +48,31 @@ export class MoviesPage {
       movieInfo: item
    })
   }
+
+  // onSort(sort){
+  //   console.log("?????????",typeof sort)
+  //    //Fucntion for sorting
+
+  //    let sortColumn = "name";
+  //     let reverseSort = false;
+ 
+  //     let sortData = function (column) {
+  //        this.reverseSort = (this.sortColumn == column) ? !this.reverseSort : false;
+  //        this.sortColumn = column;
+  //    }
+ 
+  //    let getSortClass = function (column) {
+ 
+  //        if (this.sortColumn == column) {
+  //            return this.reverseSort ?
+  //                'arrow-down' :
+  //                'arrow-up';
+  //        }
+ 
+  //        return '';
+  //    } //end of sorting
+  // }
+
   getItems(){
     // loading = this.loadingCtrl.create({
     //   spinner: 'ios',

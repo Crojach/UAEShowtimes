@@ -8,6 +8,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleMaps,GoogleMap } from '@ionic-native/google-maps';
 import { LoadingController } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -35,6 +36,7 @@ import { FilterPipe } from './pipes'
     HttpModule,
     BrowserModule,
     HttpModule,
+    OrderModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp, MyApp],
