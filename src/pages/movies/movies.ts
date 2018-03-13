@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { MovieInfoPage } from '../movie-info/movie-info';
 import { OrderPipe } from 'ngx-order-pipe';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -37,6 +38,7 @@ export class MoviesPage {
               public navParams: NavParams,
               public http: Http,
               loadingCtrl: LoadingController,
+              private splashScreen: SplashScreen
               ) {
     this.loadingCtrl = loadingCtrl;
     this.getItems();
@@ -49,30 +51,6 @@ export class MoviesPage {
    })
   }
 
-  // onSort(sort){
-  //   console.log("?????????",typeof sort)
-  //    //Fucntion for sorting
-
-  //    let sortColumn = "name";
-  //     let reverseSort = false;
- 
-  //     let sortData = function (column) {
-  //        this.reverseSort = (this.sortColumn == column) ? !this.reverseSort : false;
-  //        this.sortColumn = column;
-  //    }
- 
-  //    let getSortClass = function (column) {
- 
-  //        if (this.sortColumn == column) {
-  //            return this.reverseSort ?
-  //                'arrow-down' :
-  //                'arrow-up';
-  //        }
- 
-  //        return '';
-  //    } //end of sorting
-  // }
-
   getItems(){
     // loading = this.loadingCtrl.create({
     //   spinner: 'ios',
@@ -83,6 +61,7 @@ export class MoviesPage {
     // });
 
     // loading.present();
+    this.splashScreen.show();
 
     this.http.get(`${this.configUrl}/app/show-all-movies`).map(res => res.json()).subscribe(
       results => {
@@ -99,7 +78,7 @@ export class MoviesPage {
           return x
         })
 
-        // loading.dismiss();
+        this.splashScreen.hide();
         console.log(">>>", this.items)
       }
       else{

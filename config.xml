@@ -78,7 +78,6 @@
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
@@ -86,4 +85,5 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
     </plugin>
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
 </widget>

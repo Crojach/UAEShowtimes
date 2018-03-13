@@ -18,7 +18,7 @@
         <img [src]="d.image" alt="Cinemas Image" height="60px" width="60px" nopadding>  
         <h4 style="margin: auto 0 auto 6px;">{{ d.multiplex }}</h4>
       </ion-row>
-        <ion-icon color="primary" item-right [name]="d.icon"></ion-icon>
+        <ion-icon color="danger" item-right [name]="d.icon"></ion-icon>
       <div *ngIf="d.showDetails">
        <a *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id)'><div>{{col.cinemaName}}</div></a>
       </div>

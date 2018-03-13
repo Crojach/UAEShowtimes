@@ -70,30 +70,28 @@
 
             <h4>Showtimes</h4>
 
-              <ion-item  style="background-color: transparent;" *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
-                <ion-item style="background-color: transparent;">
+            <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
+              <ion-item *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
+                <ion-item style="background-color: transparent">
                     <ion-row style="margin-top: 10px;"> 
                       <img [src]="d.image" alt="Cinemas Image" height="50px" width="50px">
                        <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>
-                      <ion-icon color="primary" item-right [name]="d.icon"></ion-icon> 
-                    </ion-row> 
-                    
+                      <ion-icon color="danger" item-right [name]="d.icon"></ion-icon> 
+                    </ion-row>
                   </ion-item> 
-                  <!-- <ion-item style="background-color: transparent;">
-                      Cinema
-                      <ion-note item-end>Al Humra</ion-note>
-                    </ion-item> -->
-                    <div *ngIf="d.showDetails">      
-              <div *ngFor="let show of d.cinemaArray">
-                <h3> {{ show.cinemaName }} </h3><br>
-                <ion-row>
-                  <div style="width:33.33%" *ngFor="let time of show.sessions">
-                  <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
-                </div>
-                </ion-row><br>
-              </div> 
-             </div> 
-            </ion-item>             
+                 
+                <div *ngIf="d.showDetails">
+                  <div *ngFor="let show of d.cinemaArray">
+                    <h3> {{ show.cinemaName }} </h3><br>
+                    <ion-row>
+                      <div style="width:33.33%" *ngFor="let time of show.sessions">
+                      <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                    </div>
+                    </ion-row><br>
+                  </div> 
+                </div> 
+              </ion-item>             
+            </div>
             </ion-list>
 
           <ion-list *ngSwitchCase="'Cast'">
@@ -106,33 +104,6 @@
           </ion-list>
         </div>
     </div>
-  <!-- <ion-card>
-    <ion-card-content>
-      <h2 text-center>
-       {{ item.title }}
-      </h2>
-    </ion-card-content>
-    <img [src]=" item.thumbnailImage "/> <br> 
-    <iframe [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe> <br>
-    <h3 class="costumColor">Showtimes</h3>
-    <div class="costumButton">
-    <ion-row no-padding>
-      <ion-col>
-        <h3 class="costumColor">VOX</h3>
-      </ion-col>
-      <ion-col>
-          <h3>Al Humra</h3>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col>
-            <button class="costumButton">12:30 PM</button>
-            <button class="costumButton">12:30 PM</button>
-            <button class="costumButton">12:30 PM</button>
-        </ion-col>
-    </ion-row>
-  </div><br>
-  </ion-card> -->
 </ion-content>
 
 
