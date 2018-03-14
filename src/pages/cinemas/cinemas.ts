@@ -66,10 +66,9 @@ export class CinemasPage {
 
   getItems(){
     loading = this.loadingCtrl.create({
-      spinner: 'ios',
+      spinner: 'hide',
       content: `
-        <div class="custom-spinner-container"></div>
-          <div class="custom-spinner-box">Please Wait...</div>
+        <div class="loader"></div>
         `,
     });
 

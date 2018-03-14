@@ -85,7 +85,6 @@ export class MoviesPage {
         console.log("Sorry Try Again")
       }
     })
-    // http://uaeshowtimes.com/app/show-all-movies
   }
 
   ionViewDidLoad() {
