@@ -69,7 +69,14 @@
               </ion-item> 
 
             <h4>Showtimes</h4>
-
+            <div>
+              <ion-row>
+                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
+                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
+                </ion-segment>
+              </ion-row>  
+              </div>
+          <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>
             <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
               <ion-item *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
                 <ion-item style="background-color: transparent">

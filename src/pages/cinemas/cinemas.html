@@ -22,11 +22,6 @@
       <div *ngIf="d.showDetails">
        <a *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id)'><div>{{col.cinemaName}}</div></a>
       </div>
-<!-- 
-      <img *ngIf="d.multiplex == 'Novo Cinemas'" src="/assets/imgs/novo.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding>
-      <img *ngIf="d.multiplex == 'Reel Cinemas'" src="/assets/imgs/reel.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding>
-      <img *ngIf="d.multiplex == 'Roxy Cinemas'" src="/assets/imgs/roxy.png" alt="Cinemas Image" height="60px" width="auto" nopadding>
-      <img *ngIf="d.multiplex == 'Vox Cinemas'" src="/assets/imgs/vox.jpg" alt="Cinemas Image" height="60px" width="auto" nopadding> -->
     </ion-item>
   </ion-list>
  
