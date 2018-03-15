@@ -7,26 +7,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Movies</ion-title> <br><br>
-    <div>
-      
-        <ion-searchbar style="width:65%" type="text" [(ngModel)]="queryString"  placeholder="Search Movies"></ion-searchbar>        
-            <ion-select [(ngModel)]="order">
-              <ion-option value="releaseDate">Release Date</ion-option>
-              <ion-option value="title">Title</ion-option>
-            </ion-select>
-         
-   </div>
-          <!-- <ion-select style="width:25%;" [(ngModel)]="order">
-            <ion-option value="releaseDate" > Released Date </ion-option>
-            <ion-option value="title"> Title </ion-option>
-          </ion-select> -->
+    <ion-title>Movies</ion-title> <br>
+      <ion-row class="searchSort">
+        <ion-searchbar class="search" type="text" [(ngModel)]="queryString"  placeholder="Search Movies"></ion-searchbar>        
+        <ion-select class="sort" [(ngModel)]="order">
+          <ion-option value="releaseDate">Date</ion-option>
+          <ion-option value="title">Title</ion-option>
+        </ion-select>
+      </ion-row>  
+   
+          
 </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+  
   <div style="padding:2%">
   <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
     <ion-item style="padding:2%" (click)='bookNow(item)'>
