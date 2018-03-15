@@ -61,7 +61,6 @@ export class MoviesPage {
     // });
 
     // loading.present();
-    this.splashScreen.show();
 
     this.http.get(`${this.configUrl}/app/show-all-movies`).map(res => res.json()).subscribe(
       results => {
@@ -78,7 +77,6 @@ export class MoviesPage {
           return x
         })
 
-        this.splashScreen.hide();
         console.log(">>>", this.items)
       }
       else{
