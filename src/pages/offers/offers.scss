@@ -1,0 +1,70 @@
+page-offers {
+    
+    .item {
+        padding-left: 0px;
+    }
+    .item-inner {
+        min-height: 89px
+    }
+    .item.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .label {
+        margin: 11px 0px 11px 0;
+    }
+
+    .subTitle {
+            margin: 4%;
+            white-space: normal;
+            font-size: 0.6em;
+        }
+    
+
+    .toolbar-background {
+        border-color: #f28c5d;
+        background: #f28c5d;
+    }  
+    .toolbar-title {
+    padding: 0 12px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white;
+    overflow: inherit;
+}
+.cardCurve{
+    padding: 0;
+    border-radius: 6px;
+    width: 100%;
+    margin: 0 0 14px 0;
+    -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+    border-top-style: solid;
+    border-top-color: coral;
+}
+.htmlContent {
+    margin: 4%;
+    white-space: normal;
+}
+.htmlContent h1 {
+    font-size: 0.8em;
+}
+.htmlContent h2 {
+    font-size: 0.7em;
+}
+.htmlContent h3 {
+    font-size: 0.6em;
+}
+.htmlContent p {
+    font-size: 0.6em;
+}
+.htmlContent ul  {
+    font-size: 0.6em;
+}
+.htmlContent ol {
+    font-size: 0.6em;
+}
+.headerShadow{
+    -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+  }
+}
