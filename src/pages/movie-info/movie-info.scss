@@ -129,13 +129,27 @@ page-movie-info {
     .item-inner{
         margin-left: 12px
     }
-    .note-md {
+    .note {
         color:#536872;
     }
     .innerGlow{
         -webkit-box-shadow: -3px -22px 26px 6px rgba(255,252,252,0.5) inset;
         box-shadow: -3px -22px 26px 6px rgba(255,252,252,0.5) inset;
         z-index: 1;
+    }
+    .cardCurve{
+        padding: 0;
+        border-radius: 6px;
+        width: 100%;
+        margin: 0 0 14px 0;
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        border-top-style: solid;
+        border-top-color: coral;
+    }
+    .cinemaImage{
+        height: 60px;
+        width: 60px;
     }
     
 }

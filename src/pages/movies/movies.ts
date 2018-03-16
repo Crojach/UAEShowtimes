@@ -53,10 +53,12 @@ export class MoviesPage {
 
   getItems(){
     // loading = this.loadingCtrl.create({
-    //   spinner: 'ios',
+    //   spinner: "hide",
     //   content: `
-    //     <div class="custom-spinner-container"></div>
-    //       <div class="custom-spinner-box">Please Wait...</div>
+    //   <div class="spinner" >
+    //     <div class="dot1"></div>
+    //     <div class="dot2"></div>
+    //   </div>
     //     `,
     // });
 
@@ -76,7 +78,6 @@ export class MoviesPage {
           }
           return x
         })
-
         console.log(">>>", this.items)
       }
       else{

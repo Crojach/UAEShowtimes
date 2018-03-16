@@ -74,31 +74,33 @@
                 <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
                     <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
                 </ion-segment>
-              </ion-row>  
+              </ion-row>  <br>
               </div>
-          <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>
-            <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
-              <ion-item *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
-                <ion-item style="background-color: transparent">
-                    <ion-row style="margin-top: 10px;"> 
-                      <img [src]="d.image" alt="Cinemas Image" height="50px" width="50px">
-                       <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>
-                      <ion-icon color="danger" item-right [name]="d.icon"></ion-icon> 
-                    </ion-row>
-                  </ion-item> 
-                 
-                <div *ngIf="d.showDetails">
-                  <div *ngFor="let show of d.cinemaArray">
-                    <h3> {{ show.cinemaName }} </h3><br>
-                    <ion-row>
-                      <div style="width:33.33%" *ngFor="let time of show.sessions">
-                      <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
-                    </div>
-                    </ion-row><br>
-                  </div> 
-                </div> 
-              </ion-item>             
-            </div>
+              <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>
+              <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
+                  <ion-card class="cardCurve">
+                    <ion-item *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
+                      <ion-item style="background-color: transparent">
+                          <ion-row style="margin-top: 10px;"> 
+                            <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
+                            <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>
+                            <ion-icon color="danger" item-right [name]="d.icon"></ion-icon> 
+                          </ion-row>
+                        </ion-item> 
+                      
+                      <div *ngIf="d.showDetails">
+                        <div *ngFor="let show of d.cinemaArray">
+                          <h3> {{ show.cinemaName }} </h3><br>
+                          <ion-row>
+                            <div style="width:33.33%" *ngFor="let time of show.sessions">
+                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                          </div>
+                          </ion-row><br>
+                        </div> 
+                      </div> 
+                    </ion-item>             
+                  </ion-card>  
+                </div>
             </ion-list>
 
           <ion-list *ngSwitchCase="'Cast'">

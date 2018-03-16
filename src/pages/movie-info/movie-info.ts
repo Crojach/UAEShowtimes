@@ -78,8 +78,11 @@ export class MovieInfoPage {
       loading = this.loadingCtrl.create({
         spinner: 'hide',
         content: `
-          <div class="loader"></div>
-          `,
+          <div class="spinner" >
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+          </div>
+        `,
       });
       loading.present();
       //Getting offers data from API
@@ -167,7 +170,10 @@ export class MovieInfoPage {
     loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
-        <div class="loader"></div>
+          <div class="spinner" >
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+          </div>
         `,
     });
     loading.present();
