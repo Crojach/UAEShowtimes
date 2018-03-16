@@ -9,6 +9,8 @@ import { GoogleMaps,GoogleMap } from '@ionic-native/google-maps';
 import { LoadingController } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
+import { OneSignal } from "@ionic-native/onesignal";
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -58,6 +60,7 @@ import { FilterPipe } from './pipes'
     InAppBrowser,
     GoogleMaps,
     LoadingController,
+    OneSignal,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

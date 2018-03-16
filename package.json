@@ -23,6 +23,7 @@
     "@ionic-native/core": "4.4.0",
     "@ionic-native/google-maps": "^4.5.3",
     "@ionic-native/in-app-browser": "^4.5.3",
+    "@ionic-native/onesignal": "^4.5.3",
     "@ionic-native/splash-screen": "^4.4.0",
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/storage": "2.1.3",
@@ -34,6 +35,7 @@
     "ionicons": "3.0.0",
     "moment": "^2.21.0",
     "ngx-order-pipe": "^2.0.1",
+    "onesignal-cordova-plugin": "^2.3.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.18"
@@ -50,7 +52,8 @@
         "API_KEY_FOR_ANDROID": "AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ",
         "API_KEY_FOR_IOS": "AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ"
       },
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "onesignal-cordova-plugin": {}
     }
   }
 }

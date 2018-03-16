@@ -86,4 +86,5 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.3.2" />
 </widget>

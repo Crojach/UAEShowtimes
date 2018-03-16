@@ -60,8 +60,13 @@
                 <div *ngFor="let session of selectedDay">
                   <ion-card class="cardCurve">
                     <h4>{{ session.movieTitle }}</h4>
-                  </ion-card>  
+                     <ion-row>
+                      <div *ngFor="let time of session.sessions">
+                        <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                      </div>
+                     </ion-row>  
+                    </ion-card>  
+                  </div>
                 </div>
-            </div>
 
        

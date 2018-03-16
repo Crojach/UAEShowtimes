@@ -72,7 +72,7 @@ page-cinema-info {
         transition: background-color 200ms linear;
     }
     .cardCurve{
-        padding: 0;
+        padding: 11px;
         border-radius: 6px;
         width: 100%;
         margin: 0 0 14px 0;
@@ -82,4 +82,31 @@ page-cinema-info {
         border-top-color: #488AFF;
         min-height: 70px
     }
+    .costumButton{
+        border: 1px solid #488AFF;
+        border-radius: 4px;
+        background-color: white;
+        padding: 5px;
+        margin: 4px;
+        font-size: 0.6em;
+        width: 70px;
+    }
+    .segment .segment-button {
+        border: none;
+        color: #aeacb4;
+        border-bottom: 1px solid #aeacb4;
+        border-radius: 0 
+    }
+    .segment .segment-button.segment-activated{
+        color: #000;
+        background-color: transparent;
+        border-bottom: 2px solid #488AFF;
+    }
+    .segment .segment-button:first-of-type{
+        border-radius: 0px;
+    }
+    .segment .segment-button:last-of-type{
+        border-radius: 0px;
+    }
+    
 }
