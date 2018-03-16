@@ -48,34 +48,20 @@
               </ion-row>
         </ion-item>
       </div>
-        <ion-list *ngFor="let c of movieInfo">
-          <ion-item style="background-color: transparent;">
-              <ion-item style="background-color: transparent;">
-                  {{ c.movieTitle }}
-              </ion-item>
-            <ion-row >
-              <div *ngFor="let time of c.sessions">
-              <button [disabled]="currentTime > time.showTime * 1000" class="costumButton1" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+    </ion-card>  
+          <!-- -------------------ShowTime------------------------------------------ -->
+      <h4>Showtimes</h4>
+            <div>
+              <ion-row>
+                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
+                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
+                </ion-segment>
+              </ion-row>  <br>
+                <div *ngFor="let session of selectedDay">
+                  <ion-card class="cardCurve">
+                    <h4>{{ session.movieTitle }}</h4>
+                  </ion-card>  
+                </div>
             </div>
-            </ion-row>
-          </ion-item>
-      </ion-list>
-      
-        <!-- <h3 class="costumColor">Viewing Times</h3>
-        <div class="costumButton">
-        <ion-row no-padding>
-          <ion-col>
-            <h3>Black Panter</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <button class="costumButton">12:30 PM</button>
-                <button class="costumButton">12:30 PM</button>
-                <button class="costumButton">12:30 PM</button>
-            </ion-col>
-        </ion-row>
-      </div><br> -->
-      
-      </ion-card>
-</ion-content>
+
+       

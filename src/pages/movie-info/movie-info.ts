@@ -56,11 +56,10 @@ export class MovieInfoPage {
         value:moment().add(i, `days`).format(`YYYYMMDD`),
       })
     }
-    console.log("thidssss",this.days)
+    // console.log("thidssss",this.days)
     this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+this.item.trailer);
     this.postItems()
   }
-
 
   openBookingUrl(url) {
     const browser = this.iab.create(url);
@@ -193,9 +192,6 @@ export class MovieInfoPage {
       .map(res => res.json())
       .subscribe(results => {
         this.dayValue(moment().add(0, `days`).format(`YYYYMMDD`),results)
-        
-      
-
       });
     }
 

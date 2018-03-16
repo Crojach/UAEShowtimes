@@ -26,12 +26,14 @@ export class CinemasPage {
   cinemas:any;
   loadingCtrl:any;
   icon:any ='ios-arrow-down';
-  cinemasTitles = ["/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
+  cinemasTitles = ["/assets/imgs/cinescape.png", "/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
   
-  constructor(public http : Http, 
+  constructor(
+              public http : Http, 
               public navCtrl: NavController,
               loadingCtrl: LoadingController, 
-              public navParams: NavParams) {
+              public navParams: NavParams
+            ) {
     this.loadingCtrl = loadingCtrl;
     this.getItems()
   }

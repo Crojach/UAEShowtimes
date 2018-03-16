@@ -13,6 +13,9 @@ import {
   MarkerOptions,
   Marker
 } from "@ionic-native/google-maps";
+
+import moment from 'moment';
+// import * as moment from 'moment';
 /**
  * Generated class for the CinemaInfoPage page.
  *
@@ -35,6 +38,10 @@ export class CinemaInfoPage {
   currentTime: any;
   map: GoogleMap;
   loadingCtrl:any;
+  showsLength:any;
+  selectedDay:Array<{  }>;
+  days:Array<{day: string, value:string }> =[];
+  daySegment: String = moment().add(0, `days`).format(`YYYYMMDD`);
 
   constructor(
     http: Http,
@@ -48,21 +55,62 @@ export class CinemaInfoPage {
     this.loadingCtrl = loadingCtrl;
     this.currentTime = Date.now();
     this.cinemaId = this.navParams.get("cinemaId");
-    this.postItems();
+    //For getting next 3 day
+    for(var i=0; i<4; i++){
+      this.days.push({
+        day:moment().add(i,'days').format('dddd').substring(0,3),
+        value:moment().add(i, `days`).format(`YYYYMMDD`),
+      })
+    }
+    this.postItems(i);
   }
 
   openBookingUrl(url) {
     const browser = this.iab.create(url);
   }
 
-  postItems() {
+  //Getting cinema sessions of day selected
+  dayValue(value,todaysData){
+    if(value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null){
+      console.log("!!!!!!!!!!!!!!!!!!", todaysData)
+      this.showsLength = todaysData.shows.length;
+      this.postItems(todaysData)
+    }
+    else{
+      loading = this.loadingCtrl.create({
+        spinner: 'hide',
+        content: `
+          <div class="spinner" >
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+          </div>
+        `,
+      });
+      loading.present();
+
+      //Getting offers data from API
+      let url = `${this.configUrl}/app/cinemaInfoForDate/`+this.cinemaId+`?search=`+parseInt(value)
+      console.log(url)
+      this.http.get(url).map(res => res.json()).subscribe(
+        results => {
+          console.log(">>Check",value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null)
+          // this.postItems(results)
+          loading.dismiss();
+          console.log("**********", results)
+          this.selectedDay = results.finalMovies; 
+          // this.showsLength = results.shows.length;
+        })
+        }
+  }
+
+  postItems(results) {
     loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
-      <div class="spinner" >
-        <div class="dot1"></div>
-        <div class="dot2"></div>
-      </div>
+          <div class="spinner" >
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+          </div>
         `,
     });
 
@@ -85,13 +133,12 @@ export class CinemaInfoPage {
       .subscribe(results => {
         console.log("POWER",results)
         this.cinemaInfo = results.cinema;
-        this.movieInfo = results.finalMovies;
+        this.selectedDay = results.finalMovies;
         console.log(this.cinemaInfo);
         loading.dismiss();
       this.loadMap();
       });
     }
-    
     
     ionViewWillEnter() {
   }

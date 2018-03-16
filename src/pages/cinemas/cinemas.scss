@@ -37,5 +37,27 @@ page-musics {
           }
         }
       }
-
+      .cardCurve{
+        padding: 0;
+        border-radius: 6px;
+        width: 100%;
+        margin: 0 0 14px 0;
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        border-top-style: solid;
+        border-top-color: coral;
+        min-height: 70px
+    }
+    .cinemaImage{
+        height: 80px;
+        width: 80px;
+        margin-left: 4%;
+    }
+    .coralColor{
+      color: coral;
+  }
+  .headerShadow{
+    -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+  }
 }
