@@ -10,6 +10,12 @@ page-musics {
   font-weight: 500;
   color: white;
 }
+// button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md{
+//   display: block
+// }
+// button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios{
+//   display: block;
+// }
     ion-list {
         ion-item {
           background-color: transparent;
@@ -61,10 +67,10 @@ page-musics {
     -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
   }
-  .toolbar-title-md {
-    padding: 0 34%;
-    font-size: 2rem;
-    font-weight: 500;
-    color: white;
-}
+  //   .toolbar-title-md {
+  //     padding: 0 34%;
+  //     font-size: 2rem;
+  //     font-weight: 500;
+  //     color: white;
+  // }
 }

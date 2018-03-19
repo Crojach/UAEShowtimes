@@ -71,7 +71,7 @@ page-movie-info {
         padding: 0%;
         border-radius: 9%;
         margin: 7px;
-        top: 23%;
+        top: 6.3em;
     }
     ion-app.ios [padding] .scroll-content {
         padding: 0;
@@ -164,5 +164,8 @@ page-movie-info {
     }
     .showtimesPadding{
         padding: 10px
+    }
+    .curve{
+        border-radius: 6px;
     }
 }

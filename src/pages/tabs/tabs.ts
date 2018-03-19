@@ -19,11 +19,11 @@ import { OffersPage } from '../offers/offers';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
+  
   moviesRoot = MoviesPage
   musicsRoot = CinemasPage
   offersRoot = OffersPage 
-
+  
   constructor(public navCtrl: NavController) {}
 
 }
