@@ -22,22 +22,22 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.oneSignal.startInit(
+        "d840b75f-705d-4dcd-bb76-dc46fa6fc1f7",
+        "269153372159"
+      );
+      this.oneSignal.inFocusDisplaying(
+        this.oneSignal.OSInFocusDisplayOption.InAppAlert
+      );
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+        // do something when notification is received
+      });
+  
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
+  
+      this.oneSignal.endInit();
     });
-    // this.oneSignal.startInit(
-    //   "d840b75f-705d-4dcd-bb76-dc46fa6fc1f7",
-    //   "269153372159"
-    // );
-    // this.oneSignal.inFocusDisplaying(
-    //   this.oneSignal.OSInFocusDisplayOption.InAppAlert
-    // );
-    // this.oneSignal.handleNotificationReceived().subscribe(() => {
-    //   // do something when notification is received
-    // });
-
-    // this.oneSignal.handleNotificationOpened().subscribe(() => {
-    //   // do something when a notification is opened
-    // });
-
-    // this.oneSignal.endInit();
   }
 }

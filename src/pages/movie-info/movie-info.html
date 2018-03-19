@@ -46,27 +46,29 @@
         </div>
         
         <div [ngSwitch]="selectedSegment">
-            <ion-list class="iconColor" *ngSwitchCase="'Info'">
+          <ion-list class="iconColor" *ngSwitchCase="'Info'">
+            <ion-card class="infoCard">
+                  <ion-item class="iconColor">
+                    <ion-icon name='videocam' item-start></ion-icon>
+                    Synopsis
+                    <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>
+                  </ion-item>
                 <ion-item class="iconColor">
-                  <ion-icon name='videocam' item-start></ion-icon>
-                  Synopsis
-                  <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>
+                  <ion-icon name='eye' item-start></ion-icon>
+                  Language
+                  <ion-note item-end>{{ item.language }}</ion-note>
                 </ion-item>
-              <ion-item class="iconColor">
-                <ion-icon name='eye' item-start></ion-icon>
-                Language
-                <ion-note item-end>{{ item.language }}</ion-note>
-              </ion-item>
-              <ion-item class="iconColor">
-                <ion-icon name='flag' item-start></ion-icon>
-                Genre
-                <ion-note item-end>{{ item.genre }}</ion-note>
-              </ion-item>
-              <ion-item class="iconColor">
-                <ion-icon name='film' item-start></ion-icon>
-                Director
-                <ion-note item-end>{{ item.director }}</ion-note>
-              </ion-item> 
+                <ion-item class="iconColor">
+                  <ion-icon name='flag' item-start></ion-icon>
+                  Genre
+                  <ion-note item-end>{{ item.genre }}</ion-note>
+                </ion-item>
+                <ion-item class="iconColor">
+                  <ion-icon name='film' item-start></ion-icon>
+                  Director
+                  <ion-note item-end>{{ item.director }}</ion-note>
+                </ion-item> 
+              </ion-card>  
 
             <h4>Showtimes</h4>
             <div>
@@ -78,8 +80,8 @@
               </div>
               <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>
               <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
-                  <ion-card class="cardCurve">
-                    <ion-item *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
+                <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
+                    <ion-card class="cardCurve">
                       <ion-item style="background-color: transparent">
                           <ion-row style="margin-top: 10px;"> 
                             <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
@@ -88,7 +90,7 @@
                           </ion-row>
                         </ion-item> 
                       
-                      <div *ngIf="d.showDetails">
+                      <div class="showtimesPadding" *ngIf="d.showDetails">
                         <div *ngFor="let show of d.cinemaArray">
                           <h3> {{ show.cinemaName }} </h3><br>
                           <ion-row>
@@ -98,8 +100,8 @@
                           </ion-row><br>
                         </div> 
                       </div> 
-                    </ion-item>             
-                  </ion-card>  
+                    </ion-card>  
+                  </div>             
                 </div>
             </ion-list>
 

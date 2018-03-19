@@ -152,5 +152,17 @@ page-movie-info {
         height: 60px;
         width: 60px;
     }
-    
+    .infoCard{
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1.4rem;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+            box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+    }
+    .showtimesPadding{
+        padding: 10px
+    }
 }

@@ -5,8 +5,8 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { LoadingController } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-import moment from 'moment';
-// import * as moment from 'moment';
+// import moment from 'moment';
+import * as moment from 'moment';
 
 let loading
 
