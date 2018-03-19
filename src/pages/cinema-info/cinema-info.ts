@@ -14,8 +14,8 @@ import {
   Marker
 } from "@ionic-native/google-maps";
 
-import moment from 'moment';
-// import * as moment from 'moment';
+// import moment from 'moment';
+import * as moment from 'moment';
 /**
  * Generated class for the CinemaInfoPage page.
  *
@@ -41,7 +41,7 @@ export class CinemaInfoPage {
   showsLength:any;
   selectedDay:Array<{  }>;
   days:Array<{day: string, value:string }> =[];
-  daySegment: String = moment().add(0, `days`).format(`YYYYMMDD`);
+  daySegment: String = moment().add(0, 'days').format(`YYYYMMDD`);
 
   constructor(
     http: Http,
@@ -59,7 +59,7 @@ export class CinemaInfoPage {
     for(var i=0; i<4; i++){
       this.days.push({
         day:moment().add(i,'days').format('dddd').substring(0,3),
-        value:moment().add(i, `days`).format(`YYYYMMDD`),
+        value:moment().add(i, 'days').format(`YYYYMMDD`),
       })
     }
     this.postItems(i);
@@ -71,7 +71,7 @@ export class CinemaInfoPage {
 
   //Getting cinema sessions of day selected
   dayValue(value,todaysData){
-    if(value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null){
+    if(value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null){
       console.log("!!!!!!!!!!!!!!!!!!", todaysData)
       this.showsLength = todaysData.shows.length;
       this.postItems(todaysData)
@@ -93,7 +93,7 @@ export class CinemaInfoPage {
       console.log(url)
       this.http.get(url).map(res => res.json()).subscribe(
         results => {
-          console.log(">>Check",value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null)
+          console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
           // this.postItems(results)
           loading.dismiss();
           console.log("**********", results)

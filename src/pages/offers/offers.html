@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar class="headerShadow">
-    <ion-title>Ticket-Offers</ion-title> <br>
+    <ion-title  style="color: white;">Ticket Offers</ion-title> <br>
     <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Offers"> -->
   </ion-navbar>
 
@@ -18,14 +18,14 @@
   <ion-list>
     <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>
       <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
-       <ion-item nopadding>
-            <ion-row> 
+       <div nopadding>
+            <ion-row padding> 
               <ion-col>
-                <h6 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h6>
-                <h6 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h6>
-                <h6 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h6>
-                <h6 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h6>
-                <h6 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h6>
+                <h5 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h5>
+                <h5 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h5>
+                <h5 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h5>
+                <h5 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h5>
+                <h5 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h5>
                 <p class="subTitle">{{ item.offer.title }}</p>
               </ion-col> 
                 <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon> 
@@ -36,7 +36,7 @@
                 </object>
              <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>
            </div>
-         </ion-item>
+          </div>
         </ion-card>
       </div>
     </ion-list>

@@ -26,7 +26,7 @@ export class CinemasPage {
   cinemas:any;
   loadingCtrl:any;
   icon:any ='ios-arrow-down';
-  cinemasTitles = ["/assets/imgs/cinescape.png", "/assets/imgs/novo.jpg", "/assets/imgs/reel.jpg", "/assets/imgs/roxy.png", "/assets/imgs/vox.jpg"];
+  cinemasTitles = ["assets/img/cinescape.png", "assets/img/novo.jpg", "assets/img/reel.jpg", "assets/img/roxy.png", "assets/img/vox.jpg"];
   
   constructor(
               public http : Http, 

@@ -8,6 +8,14 @@ page-movies {
     .toolbar-title {
         color: #fff;
     }
+    .toolbar-title-ios {
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: white;
+        pointer-events: auto;
+        margin-bottom: 16%;
+    }
     ion-navbar.toolbar {
         text-align: center;
     }

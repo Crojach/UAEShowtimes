@@ -22,7 +22,7 @@ export class MovieInfoPage {
   trustedVideoUrl: SafeResourceUrl;
   http: any;
   selectedSegment: String ='Info'
-  daySegment: String = moment().add(0, `days`).format(`YYYYMMDD`);
+  daySegment: String = moment().add(0,'days').format(`YYYYMMDD`);
   movieId:any;
   loadingCtrl:any;
   iab: any;
@@ -53,7 +53,7 @@ export class MovieInfoPage {
     for(var i=0; i<4; i++){
       this.days.push({
         day:moment().add(i,'days').format('dddd').substring(0,3),
-        value:moment().add(i, `days`).format(`YYYYMMDD`),
+        value:moment().add(i, 'days').format(`YYYYMMDD`),
       })
     }
     // console.log("thidssss",this.days)
@@ -68,7 +68,7 @@ export class MovieInfoPage {
   //Passing day value from on click
   dayValue(value,todaysData){
     
-    if(value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null){
+    if(value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null){
       console.log("!!!!!!!!!!!!!!!!!!", todaysData)
       this.showsLength = todaysData.shows.length;
       this.setValues(todaysData)
@@ -89,7 +89,7 @@ export class MovieInfoPage {
       console.log(url)
       this.http.get(url).map(res => res.json()).subscribe(
         results => {
-          console.log(">>Check",value == moment().add(0, `days`).format(`YYYYMMDD`) && todaysData != null)
+          console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
           this.setValues(results)
           this.showsLength = results.shows.length;
         })
@@ -107,10 +107,10 @@ export class MovieInfoPage {
   }
   setValues(results){
     let Obj = {
-      novaArray:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/novo.jpg', showDetails: false, icon: "ios-arrow-down" },
-      roxyCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/roxy.png', showDetails: false, icon: "ios-arrow-down" },
-      voxCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/vox.jpg', showDetails: false, icon: "ios-arrow-down" },
-      reelCinemas:{ multiplexName: '', cinemaArray: [], image:'/assets/imgs/reel.jpg', showDetails: false, icon: "ios-arrow-down" }
+      novaArray:{ multiplexName: '', cinemaArray: [], image:'assets/img/novo.jpg', showDetails: false, icon: "ios-arrow-down" },
+      roxyCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/roxy.png', showDetails: false, icon: "ios-arrow-down" },
+      voxCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/vox.jpg', showDetails: false, icon: "ios-arrow-down" },
+      reelCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/reel.jpg', showDetails: false, icon: "ios-arrow-down" }
     }
     // console.log("result",results.shows)
      let final = results.shows.reduce((acc,cv,ci,arr)=>{
@@ -191,7 +191,7 @@ export class MovieInfoPage {
       .post(`${this.configUrl}/app/movie`, body, httpOptions)
       .map(res => res.json())
       .subscribe(results => {
-        this.dayValue(moment().add(0, `days`).format(`YYYYMMDD`),results)
+        this.dayValue(moment().add(0, 'days').format(`YYYYMMDD`),results)
       });
     }
 

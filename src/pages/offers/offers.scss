@@ -16,7 +16,7 @@ page-offers {
     .subTitle {
             margin: 4%;
             white-space: normal;
-            font-size: 0.6em;
+            font-size: 0.8em;
         }
     
 
@@ -30,6 +30,13 @@ page-offers {
     font-weight: 500;
     color: white;
     overflow: inherit;
+    
+}
+.toolbar-title-md {
+    padding: 0 30%;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
 }
 .cardCurve{
     padding: 0;
@@ -46,25 +53,26 @@ page-offers {
     white-space: normal;
 }
 .htmlContent h1 {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .htmlContent h2 {
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 .htmlContent h3 {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 .htmlContent p {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 .htmlContent ul  {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 .htmlContent ol {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 .headerShadow{
-    -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
+        
   }
 }
