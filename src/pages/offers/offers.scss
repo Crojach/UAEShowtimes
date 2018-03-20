@@ -16,7 +16,7 @@ page-offers {
     .subTitle {
             margin: 4%;
             white-space: normal;
-            font-size: 0.8em;
+            font-size: 0.9em;
         }
     
 
@@ -53,26 +53,32 @@ page-offers {
     white-space: normal;
 }
 .htmlContent h1 {
-    font-size: 0.9em;
+    font-size: 1em;
 }
 .htmlContent h2 {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .htmlContent h3 {
-    font-size: 0.7em;
+    font-size: 0.8em;
+}
+.htmlContent h5 {
+    font-size: 1.4em;
 }
 .htmlContent p {
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 .htmlContent ul  {
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 .htmlContent ol {
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 .headerShadow{
         -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         
+  }
+  .lineHeight{
+    line-height: 1.5em;
   }
 }

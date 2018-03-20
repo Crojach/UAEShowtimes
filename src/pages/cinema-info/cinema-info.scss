@@ -14,16 +14,16 @@ page-cinema-info {
         height: 20%;
       }
     .costumColor{
-        color:#488AFF
+        color:#f28c5d
     }
-    .costumButton{
-        border: 1px solid #488AFF;
-        border-radius: 4px;
-        background-color: white;
-        padding: 6px;
-        margin: 2px;
-        font-size: 0.8em;
-    }
+    // .costumButton{
+    //     border: 1px solid #f28c5d;
+    //     border-radius: 4px;
+    //     background-color: white;
+    //     padding: 6px;
+    //     margin: 2px;
+    //     font-size: 0.8em;
+    // }
     .customFont{
         font-size: 0.6em;
     }
@@ -34,16 +34,16 @@ page-cinema-info {
     }
 
     .costumColor1{
-        color:#488AFF
+        color:#f28c5d
     }
-    .costumButton1{
+    .costumButton{
         border: 1px solid #f28c5d;
         border-radius: 4px;
         background-color: white;
-        padding: 5px;
-        margin: 2px;
-        font-size: 0.6em;
-        width: 70px;
+        padding: 9%;
+        margin: 4px;
+        font-size: 0.8em;
+        width: 6em;
     }
     .customCinema1{
         font-size: 1em;
@@ -79,18 +79,10 @@ page-cinema-info {
         -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
         border-top-style: solid;
-        border-top-color: #488AFF;
+        border-top-color: #f28c5d;
         min-height: 70px
     }
-    .costumButton{
-        border: 1px solid #488AFF;
-        border-radius: 4px;
-        background-color: white;
-        padding: 5px;
-        margin: 4px;
-        font-size: 0.6em;
-        width: 70px;
-    }
+    
     .segment .segment-button {
         border: none;
         color: #aeacb4;
@@ -100,7 +92,7 @@ page-cinema-info {
     .segment .segment-button.segment-activated{
         color: #000;
         background-color: transparent;
-        border-bottom: 2px solid #488AFF;
+        border-bottom: 2px solid #f28c5d;
     }
     .segment .segment-button:first-of-type{
         border-radius: 0px;
@@ -108,5 +100,11 @@ page-cinema-info {
     .segment .segment-button:last-of-type{
         border-radius: 0px;
     }
-    
+    .card h4 {
+        margin: auto;
+        font-size: 1.2em;
+        font-weight: normal;
+        padding: 3%;
+        color: #959799;
+    }
 }
