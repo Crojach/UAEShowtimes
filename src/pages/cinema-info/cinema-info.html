@@ -13,15 +13,14 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
+  <div id="map_canvas"></div>
+  <ion-card>
       <div *ngFor="let d of cinemaInfo">
-        <div #map id="map">
           <ion-fab right top>
             <button ion-fab>
-              <ion-icon name="pin"></ion-icon>
+              <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>
             </button>
           </ion-fab>
-        </div>
         <ion-item>
             <ion-row>
               <ion-icon ios="ios-navigate" md="md-navigate">
@@ -61,7 +60,7 @@
                   <ion-card class="cardCurve">
                     <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>
                      <ion-row>
-                      <div *ngFor="let time of session.sessions">
+                      <div style="width:33.33%" *ngFor="let time of session.sessions">
                         <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
                       </div>
                      </ion-row>  

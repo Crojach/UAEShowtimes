@@ -25741,6 +25741,11 @@ ion-navbar.toolbar {
   }
 }
 
+page-cinema-info #map_canvas {
+  width: 100%;
+  height: 50%;
+}
+
 page-cinema-info .toolbar-background-md {
   border-color: #f28c5d;
   background: #f28c5d;
@@ -25923,6 +25928,11 @@ page-musics .headerShadow {
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
 }
 
+page-google-map #map_canvas {
+  width: 100%;
+  height: 100%;
+}
+
 page-movie-info .costumColor {
   color: #488AFF;
 }
@@ -25931,10 +25941,10 @@ page-movie-info .costumButton {
   border: 1px solid #f28c5d;
   border-radius: 4px;
   background-color: white;
-  padding: 5px;
+  padding: 9%;
   margin: 4px;
-  font-size: 0.6em;
-  width: 80px;
+  font-size: 0.8em;
+  width: 6em;
 }
 
 page-movie-info .customCinema {

@@ -20,6 +20,7 @@ import { CinemasPage } from '../pages/cinemas/cinemas';
 import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
 import { OffersPage } from '../pages/offers/offers';
+import { GoogleMapPage } from '../pages/google-map/google-map';
 import { FilterPipe } from './pipes'
 
 
@@ -35,6 +36,7 @@ import { FilterPipe } from './pipes'
     CinemaInfoPage,
     OffersPage,
     FilterPipe,
+    GoogleMapPage
   ],
   imports: [
     HttpModule,
@@ -53,6 +55,7 @@ import { FilterPipe } from './pipes'
     MovieInfoPage,
     CinemaInfoPage,
     OffersPage,
+    GoogleMapPage
   ],
   providers: [
     StatusBar,

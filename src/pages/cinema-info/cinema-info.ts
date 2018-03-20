@@ -4,18 +4,11 @@ import { Http, RequestOptions, Headers } from "@angular/http";
 import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
-} from "@ionic-native/google-maps";
-
+import { GoogleMapPage } from '../google-map/google-map'
 // import moment from 'moment';
 import * as moment from 'moment';
+declare var google;
+
 /**
  * Generated class for the CinemaInfoPage page.
  *
@@ -36,7 +29,7 @@ export class CinemaInfoPage {
   movieInfo: any;
   iab: any;
   currentTime: any;
-  map: GoogleMap;
+  map: any;
   loadingCtrl:any;
   showsLength:any;
   selectedDay:Array<{  }>;
@@ -45,7 +38,7 @@ export class CinemaInfoPage {
 
   constructor(
     http: Http,
-    navCtrl: NavController,
+    public navCtrl: NavController,
     public navParams: NavParams,
     iab: InAppBrowser,
     loadingCtrl: LoadingController
@@ -64,9 +57,17 @@ export class CinemaInfoPage {
     }
     this.postItems(i);
   }
+    
+  ionViewDidLoad() {
+    this.initializeMap();
+  }
 
   openBookingUrl(url) {
     const browser = this.iab.create(url);
+  }
+
+  goToGoogleMap(){
+    this.navCtrl.push(GoogleMapPage)
   }
 
   //Getting cinema sessions of day selected
@@ -93,10 +94,10 @@ export class CinemaInfoPage {
       console.log(url)
       this.http.get(url).map(res => res.json()).subscribe(
         results => {
-          console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
+          // console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
           // this.postItems(results)
           loading.dismiss();
-          console.log("**********", results)
+          // console.log("**********", results)
           this.selectedDay = results.finalMovies; 
           // this.showsLength = results.shows.length;
         })
@@ -134,53 +135,36 @@ export class CinemaInfoPage {
         console.log("POWER",results)
         this.cinemaInfo = results.cinema;
         this.selectedDay = results.finalMovies;
-        console.log(this.cinemaInfo);
+        console.log("######",this.cinemaInfo);
         loading.dismiss();
-      this.loadMap();
+      // this.loadMap();
       });
     }
-    
-    ionViewWillEnter() {
-  }
-
-  loadMap() {
-    console.log("loadmpa");
-    let mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: this.cinemaInfo["0"].latitude,
-          lng: this.cinemaInfo["0"].longitude
+  
+    initializeMap() {
+      let locationOptions = { timeout: 20000, enableHighAccuracy: true };
+  
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          let options = {
+            center: new google.maps.LatLng(
+              position.coords.latitude,
+              position.coords.longitude
+            ),
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+  
+          this.map = new google.maps.Map(
+            document.getElementById("map_canvas"),
+            options
+          );
         },
-        zoom: 18,
-        tilt: 30
-      }
-    };
-
-    this.map = GoogleMaps.create("map", mapOptions);
-
-    // Wait the MAP_READY before using any methods.
-    // this.map.one(GoogleMapsEvent.MAP_READY)
-    //   .then(() => {
-    //     console.log('Map is ready!');
-
-    //     // Now you can use all methods safely.
-    //     this.map.addMarker({
-    //         title: 'Ionic',
-    //         icon: 'blue',
-    //         animation: 'DROP',
-    //         position: {
-    //           lat: 43.0741904,
-    //           lng: -89.3809802
-    //         }
-    //       })
-    //       .then(marker => {
-    //         marker.on(GoogleMapsEvent.MARKER_CLICK)
-    //           .subscribe(() => {
-    //             alert('clicked');
-    //           });
-    //       });
-
-    //   });
-    //   this.map.setDiv('map')
-  }
+  
+        error => {
+          console.log(error);
+        },
+        locationOptions
+      );
+    }
 }
