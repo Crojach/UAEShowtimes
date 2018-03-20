@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import { NavController } from 'ionic-angular';
 import { MoviesPage } from '../movies/movies';
 import { CinemasPage } from '../cinemas/cinemas';
 import { OffersPage } from '../offers/offers';
+import { SuperTabsModule, SuperTabs, SuperTabsController } from 'ionic2-super-tabs';
 
 
 /**
@@ -18,12 +19,22 @@ import { OffersPage } from '../offers/offers';
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
+
 export class TabsPage {
+  @ViewChild(SuperTabs) superTabs: SuperTabs;
   
-  moviesRoot = MoviesPage
-  musicsRoot = CinemasPage
-  offersRoot = OffersPage 
+  slideToIndex(index: number) {
+    this.superTabs.slideTo(index);
+  }
   
-  constructor(public navCtrl: NavController) {}
+  hideToolbar() {
+    this.superTabs.showToolbar(false);
+  }
+  moviesRoot: any = MoviesPage;
+  musicsRoot: any = CinemasPage;
+  offersRoot: any = OffersPage;
+  
+  constructor(public navCtrl: NavController, private superTabsCtrl: SuperTabsController) {}
+
 
 }

@@ -65,6 +65,11 @@ export class MovieInfoPage {
     const browser = this.iab.create(url);
   }
 
+  //onClick for back button
+  goBack(){
+    this.navCtrl.pop();
+  }
+
   //Passing day value from on click
   dayValue(value,todaysData){
     

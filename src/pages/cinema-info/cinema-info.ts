@@ -150,12 +150,9 @@ export class CinemaInfoPage {
       navigator.geolocation.getCurrentPosition(
         position => {
           let options = {
-            center: new google.maps.LatLng(
-              lat,long
-              // position.coords.latitude,
-              // position.coords.longitude
-            ),
+            center: new google.maps.LatLng(lat, long),
             zoom: 16,
+            tilt:10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
   

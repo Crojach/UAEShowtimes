@@ -22,6 +22,8 @@ import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
 import { OffersPage } from '../pages/offers/offers';
 import { GoogleMapPage } from '../pages/google-map/google-map';
 import { FilterPipe } from './pipes'
+import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
+
 
 
 
@@ -43,7 +45,8 @@ import { FilterPipe } from './pipes'
     BrowserModule,
     HttpModule,
     OrderModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp, MyApp],
   entryComponents: [
@@ -64,6 +67,7 @@ import { FilterPipe } from './pipes'
     GoogleMaps,
     LoadingController,
     OneSignal,
+    SuperTabsController,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
