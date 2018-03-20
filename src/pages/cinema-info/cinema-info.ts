@@ -58,9 +58,9 @@ export class CinemaInfoPage {
     this.postItems(i);
   }
     
-  ionViewDidLoad() {
-    this.initializeMap();
-  }
+  // ionViewDidLoad() {
+  //   this.initializeMap();
+  // }
 
   openBookingUrl(url) {
     const browser = this.iab.create(url);
@@ -135,21 +135,25 @@ export class CinemaInfoPage {
         console.log("POWER",results)
         this.cinemaInfo = results.cinema;
         this.selectedDay = results.finalMovies;
-        console.log("######",this.cinemaInfo);
+        console.log("######ÆôÄzäs",this.cinemaInfo);
+        console.log("######",this.cinemaInfo[0].latitude, this.cinemaInfo[0].longitude);
+        this.initializeMap(this.cinemaInfo[0].latitude,this.cinemaInfo[0].longitude);
+        
         loading.dismiss();
       // this.loadMap();
       });
     }
   
-    initializeMap() {
+    initializeMap(lat, long) {
       let locationOptions = { timeout: 20000, enableHighAccuracy: true };
   
       navigator.geolocation.getCurrentPosition(
         position => {
           let options = {
             center: new google.maps.LatLng(
-              position.coords.latitude,
-              position.coords.longitude
+              lat,long
+              // position.coords.latitude,
+              // position.coords.longitude
             ),
             zoom: 16,
             mapTypeId: google.maps.MapTypeId.ROADMAP

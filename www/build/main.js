@@ -567,9 +567,9 @@ var CinemaInfoPage = (function () {
         }
         this.postItems(i);
     }
-    CinemaInfoPage.prototype.ionViewDidLoad = function () {
-        this.initializeMap();
-    };
+    // ionViewDidLoad() {
+    //   this.initializeMap();
+    // }
     CinemaInfoPage.prototype.openBookingUrl = function (url) {
         var browser = this.iab.create(url);
     };
@@ -628,17 +628,22 @@ var CinemaInfoPage = (function () {
             console.log("POWER", results);
             _this.cinemaInfo = results.cinema;
             _this.selectedDay = results.finalMovies;
-            console.log("######", _this.cinemaInfo);
+            console.log("######ÆôÄzäs", _this.cinemaInfo);
+            console.log("######", _this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
+            _this.initializeMap(_this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
             loading.dismiss();
             // this.loadMap();
         });
     };
-    CinemaInfoPage.prototype.initializeMap = function () {
+    CinemaInfoPage.prototype.initializeMap = function (lat, long) {
         var _this = this;
         var locationOptions = { timeout: 20000, enableHighAccuracy: true };
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
-                center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                center: new google.maps.LatLng(lat, long
+                // position.coords.latitude,
+                // position.coords.longitude
+                ),
                 zoom: 16,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
