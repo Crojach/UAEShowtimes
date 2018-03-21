@@ -28517,8 +28517,8 @@ page-musics .cinemaName {
   font-size: 1.4em;
 }
 
-page-google-map #map {
-  height: 100%;
+agm-map {
+  height: 300px;
 }
 
 page-movie-info .costumColor {
