@@ -175,7 +175,7 @@ export class CinemaInfoPage {
     navigator.geolocation.getCurrentPosition(
       position => {
         let options = {
-          center: myLatLng,
+          center: new google.maps.LatLng(lat, long),
           zoom: 20,
           tilt: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP

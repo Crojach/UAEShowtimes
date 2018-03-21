@@ -669,7 +669,7 @@ var CinemaInfoPage = (function () {
         var locationOptions = { timeout: 20000, enableHighAccuracy: true };
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
-                center: myLatLng,
+                center: new google.maps.LatLng(lat, long),
                 zoom: 20,
                 tilt: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
