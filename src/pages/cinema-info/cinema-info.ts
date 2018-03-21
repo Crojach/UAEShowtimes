@@ -5,6 +5,7 @@ import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
 import { GoogleMapPage } from "../google-map/google-map";
+
 // import moment from 'moment';
 import * as moment from "moment";
 declare var google;
@@ -45,7 +46,7 @@ export class CinemaInfoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     iab: InAppBrowser,
-    loadingCtrl: LoadingController
+    loadingCtrl: LoadingController,
   ) {
     this.http = http;
     this.iab = iab;

@@ -1,13 +1,10 @@
-import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Component } from '@angular/core';
+
+import { AgmCoreModule } from '@agm/core';
 
 declare var google;
-/**
- * Generated class for the GoogleMapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: "page-google-map",

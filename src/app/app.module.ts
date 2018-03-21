@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, ApplicationRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -10,7 +10,8 @@ import { LoadingController } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { OneSignal } from "@ionic-native/onesignal";
-
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,8 +26,6 @@ import { FilterPipe } from './pipes'
 import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
 
 
-
-
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +37,8 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     CinemaInfoPage,
     OffersPage,
     FilterPipe,
-    GoogleMapPage
+    GoogleMapPage,
+    
   ],
   imports: [
     HttpModule,
@@ -46,7 +46,10 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     HttpModule,
     OrderModule,
     IonicModule.forRoot(MyApp),
-    SuperTabsModule.forRoot()
+    SuperTabsModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8'
+    })
   ],
   bootstrap: [IonicApp, MyApp],
   entryComponents: [
@@ -68,6 +71,7 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     LoadingController,
     OneSignal,
     SuperTabsController,
+    
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
