@@ -177,8 +177,8 @@ export class CinemaInfoPage {
       position => {
         let options = {
           center: new google.maps.LatLng(lat, long),
-          zoom: 20,
-          tilt: 10,
+          zoom: 16,
+          tilt: 20,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -191,8 +191,9 @@ export class CinemaInfoPage {
           draggable: true,
           animation: google.maps.Animation.DROP, 
           position: options.center,
+          title:"Hello World!"
          });
-         marker.addListener('click', this.toggleBounce);
+        //  marker.addListener('click', this.toggleBounce);
         marker.setMap(this.map);
       },
 
@@ -203,11 +204,11 @@ export class CinemaInfoPage {
       locationOptions
     );
   }
-  toggleBounce() {
-    if (marker.getAnimation() !== null) {
-      marker.setAnimation(null);
-    } else {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-  }
+  // toggleBounce() {
+  //   if (marker.getAnimation() !== null) {
+  //     marker.setAnimation(null);
+  //   } else {
+  //     marker.setAnimation(google.maps.Animation.BOUNCE);
+  //   }
+  // }
 }

@@ -13,13 +13,13 @@
 </ion-header>
 
 <ion-content padding>
-    <div id="map_canvas"></div>
+    <div text-center id="map_canvas"></div>
     <ion-card>
         <div *ngFor="let d of cinemaInfo">
             <ion-fab right top>
                 <button ion-fab>
-              <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>
-            </button>
+                    <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>
+                </button>
             </ion-fab>
             <ion-item>
                 <ion-row>
