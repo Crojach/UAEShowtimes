@@ -548,6 +548,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 // import moment from 'moment';
 
+var marker;
 /**
  * Generated class for the CinemaInfoPage page.
  *
@@ -664,19 +665,35 @@ var CinemaInfoPage = (function () {
     };
     CinemaInfoPage.prototype.initializeMap = function (lat, long) {
         var _this = this;
+        var myLatLng = { lat: lat, lng: long };
         var locationOptions = { timeout: 20000, enableHighAccuracy: true };
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
                 center: new google.maps.LatLng(lat, long),
-                marker: new google.maps.LatLng(lat, long),
-                zoom: 16,
+                zoom: 20,
                 tilt: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             _this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+            var marker = new google.maps.Marker({
+                map: _this.map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: options.center,
+            });
+            marker.addListener('click', _this.toggleBounce);
+            marker.setMap(_this.map);
         }, function (error) {
             console.log(error);
         }, locationOptions);
+    };
+    CinemaInfoPage.prototype.toggleBounce = function () {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        }
+        else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
     };
     CinemaInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -737,7 +754,7 @@ var GoogleMapPage = (function () {
                 zoom: 16,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            _this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+            _this.map = new google.maps.Map(document.getElementById("map"), options);
         }, function (error) {
             console.log(error);
         }, locationOptions);
