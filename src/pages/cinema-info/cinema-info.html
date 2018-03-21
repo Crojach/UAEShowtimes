@@ -6,66 +6,64 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Cinema Info</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Cinema Info</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <div id="map_canvas"></div>
-  <ion-card>
-      <div *ngFor="let d of cinemaInfo">
-          <ion-fab right top>
-            <button ion-fab>
+    <div id="map_canvas"></div>
+    <ion-card>
+        <div *ngFor="let d of cinemaInfo">
+            <ion-fab right top>
+                <button ion-fab>
               <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>
             </button>
-          </ion-fab>
-        <ion-item>
-            <ion-row>
-              <ion-icon ios="ios-navigate" md="md-navigate">
-                <h3>{{d.cinemaName}}</h3>
-                  <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
-              </ion-icon>
-            </ion-row>
-        </ion-item>
+            </ion-fab>
+            <ion-item>
+                <ion-row>
+                    <ion-icon ios="ios-navigate" md="md-navigate">
+                        <h3>{{d.cinemaName}}</h3>
+                        <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
+                    </ion-icon>
+                </ion-row>
+            </ion-item>
 
-        <ion-item>
-          <ion-row>
-            <ion-icon ios="ios-call" md="md-call" >
-              <p class="text">{{ d.phoneNumber }}</p>
-            </ion-icon>
-          </ion-row>
-        </ion-item>
-      
-        <ion-item>
-          <ion-row>
-              <ion-icon ios="ios-mail" md="md-mail" nopadding>
-                <p class="text wordBreak">{{ d.emailId }} </p>
-              </ion-icon>
-               
-              </ion-row>
-        </ion-item>
-      </div>
-    </ion-card>  
-          <!-- -------------------ShowTime------------------------------------------ -->
-      <h4>Showtimes</h4>
-            <div>
-              <ion-row>
-                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
-                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
-                </ion-segment>
-              </ion-row>  <br>
-                <div *ngFor="let session of selectedDay">
-                  <ion-card class="cardCurve">
-                    <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>
-                     <ion-row>
-                      <div style="width:33.33%" *ngFor="let time of session.sessions">
+            <ion-item>
+                <ion-row>
+                    <ion-icon ios="ios-call" md="md-call">
+                        <p class="text">{{ d.phoneNumber }}</p>
+                    </ion-icon>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-icon ios="ios-mail" md="md-mail" nopadding>
+                        <p class="text wordBreak">{{ d.emailId }} </p>
+                    </ion-icon>
+
+                </ion-row>
+            </ion-item>
+        </div>
+    </ion-card>
+    <!-- -------------------ShowTime------------------------------------------ -->
+    <h4>Showtimes</h4>
+    <div>
+        <ion-row>
+            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
+                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
+            </ion-segment>
+        </ion-row> <br>
+        <div *ngFor="let session of selectedDay">
+            <ion-card class="cardCurve">
+                <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>
+                <ion-row>
+                    <div style="width:33.33%" *ngFor="let time of session.sessions">
                         <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
-                      </div>
-                     </ion-row>  
-                    </ion-card>  
-                  </div>
-                </div>
-
-       
+                    </div>
+                </ion-row>
+            </ion-card>
+        </div>
+    </div>

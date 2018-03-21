@@ -6,27 +6,27 @@
 -->
 <ion-header>
 
-  <ion-navbar class="headerShadow">
-    <ion-title style= "color:azure">Cinemas</ion-title>
-  </ion-navbar>
+    <ion-navbar class="headerShadow">
+        <ion-title style="color:azure">Cinemas</ion-title>
+    </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-  <ion-list>
-      <div *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
-        <ion-card class="cardCurve">
-          <ion-row>  
-            <img class="cinemaImage"  [src]="d.image" alt="Cinemas Image" nopadding>  
-            <h4 style="margin: auto; color:#928C89">{{ d.multiplex }}</h4>
-          </ion-row>
-          <div *ngIf="d.showDetails">
-            <a class="coralColor" *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id)'>
-              <ul>
-                <li>{{col.cinemaName}}</li>
-              </ul>
-            </a>
-          </div>
-        </ion-card>
-      </div>
+    <ion-list>
+        <div *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
+            <ion-card class="cardCurve">
+                <ion-row>
+                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>
+                    <h4 class="cinemaName">{{ d.multiplex }}</h4>
+                </ion-row>
+                <div *ngIf="d.showDetails">
+                    <a class="coralColor" *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id)'>
+                        <ul>
+                            <li>{{col.cinemaName}}</li>
+                        </ul>
+                    </a>
+                </div>
+            </ion-card>
+        </div>
     </ion-list>
-  </ion-content>
+</ion-content>

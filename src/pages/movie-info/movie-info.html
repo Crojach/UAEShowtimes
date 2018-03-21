@@ -10,107 +10,106 @@
     <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>
     <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
-  <ion-thumbnail item-start >
-    <img class="customImg upShadow" [src]="item.thumbnailImage">
-  </ion-thumbnail>
-    <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">
-        <ion-item style="padding: 2% 1% 4% 34%;">
-          <ion-row style="justify-content: space-between;">
-            <h2 item-left>{{ item.title }}</h2>
-            <p style="margin:0;" item-end>{{ item.ratings }}</p>
-          </ion-row>
-          <p>{{ item.releaseDate.split('-')[0] }}</p>
-          <ion-row  style="margin-top: 10%;">
-            <p style="margin:0;padding: 1%;" item-left>
-                <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
-                <span style="margin: 0 0 0 14%;">Release Date</span>
-            </p>
-            <p style="margin:0;padding: 1%;" item-end>
-                <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
-                <span style="margin: 0 0 0 14%;">Duration</span>
-            </p>
-          </ion-row>
-        </ion-item>
-      </ion-card>
+        <ion-thumbnail item-start>
+            <img class="customImg upShadow" [src]="item.thumbnailImage">
+        </ion-thumbnail>
+        <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">
+            <ion-item style="padding: 2% 1% 4% 34%;">
+                <ion-row style="justify-content: space-between;">
+                    <h2 item-left>{{ item.title }}</h2>
+                    <p style="margin:0;" item-end>{{ item.ratings }}</p>
+                </ion-row>
+                <p>{{ item.releaseDate.split('-')[0] }}</p>
+                <ion-row style="margin-top: 10%;">
+                    <p style="margin:0;padding: 1%;" item-left>
+                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
+                        <span style="margin: 0 0 0 14%;">Release Date</span>
+                    </p>
+                    <p style="margin:0;padding: 1%;" item-end>
+                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
+                        <span style="margin: 0 0 0 14%;">Duration</span>
+                    </p>
+                </ion-row>
+            </ion-item>
+        </ion-card>
 
         <div>
-          <ion-segment [(ngModel)]="selectedSegment">
-              <ion-segment-button value="Info">Info</ion-segment-button>
-            <ion-segment-button value="Cast">Cast</ion-segment-button>
-          </ion-segment>
+            <ion-segment [(ngModel)]="selectedSegment">
+                <ion-segment-button value="Info">Info</ion-segment-button>
+                <ion-segment-button value="Cast">Cast</ion-segment-button>
+            </ion-segment>
         </div>
-        
-        <div [ngSwitch]="selectedSegment">
-          <ion-list class="iconColor" *ngSwitchCase="'Info'">
-            <ion-card class="infoCard">
-                  <ion-item class="iconColor">
-                    <ion-icon name='videocam' item-start></ion-icon>
-                    Synopsis
-                    <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>
-                  </ion-item>
-                <ion-item class="iconColor">
-                  <ion-icon name='eye' item-start></ion-icon>
-                  Language
-                  <ion-note item-end>{{ item.language }}</ion-note>
-                </ion-item>
-                <ion-item class="iconColor">
-                  <ion-icon name='flag' item-start></ion-icon>
-                  Genre
-                  <ion-note item-end>{{ item.genre }}</ion-note>
-                </ion-item>
-                <ion-item class="iconColor">
-                  <ion-icon name='film' item-start></ion-icon>
-                  Director
-                  <ion-note item-end>{{ item.director }}</ion-note>
-                </ion-item> 
-              </ion-card>  
 
-            <h4>Showtimes</h4>
-            <div>
-              <ion-row>
-                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
-                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
-                </ion-segment>
-              </ion-row>  <br>
-              </div>
-              <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>
-              <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
-                <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;" >
-                    <ion-card class="cardCurve">
-                      <ion-item style="background-color: transparent">
-                          <ion-row style="margin-top: 10px;"> 
-                            <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
-                            <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>
-                            <ion-icon style="margin:auto" color="danger" item-right [name]="d.icon"></ion-icon> 
-                          </ion-row>
-                        </ion-item> 
-                      
-                      <div class="showtimesPadding" *ngIf="d.showDetails">
-                        <div *ngFor="let show of d.cinemaArray">
-                          <h3> {{ show.cinemaName }} </h3><br>
-                          <ion-row>
-                            <div style="width:33.33%" *ngFor="let time of show.sessions">
-                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
-                          </div>
-                          </ion-row><br>
-                        </div> 
-                      </div> 
-                    </ion-card>  
-                  </div>             
+        <div [ngSwitch]="selectedSegment">
+            <ion-list class="iconColor" *ngSwitchCase="'Info'">
+                <ion-card class="infoCard">
+                    <ion-item class="iconColor">
+                        <ion-icon name='videocam' item-start></ion-icon>
+                        Synopsis
+                        <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>
+                    </ion-item>
+                    <ion-item class="iconColor">
+                        <ion-icon name='eye' item-start></ion-icon>
+                        Language
+                        <ion-note item-end>{{ item.language }}</ion-note>
+                    </ion-item>
+                    <ion-item class="iconColor">
+                        <ion-icon name='flag' item-start></ion-icon>
+                        Genre
+                        <ion-note item-end>{{ item.genre }}</ion-note>
+                    </ion-item>
+                    <ion-item class="iconColor">
+                        <ion-icon name='film' item-start></ion-icon>
+                        Director
+                        <ion-note item-end>{{ item.director }}</ion-note>
+                    </ion-item>
+                </ion-card>
+
+                <h4>Showtimes</h4>
+                <div>
+                    <ion-row>
+                        <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">
+                            <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
+                        </ion-segment>
+                    </ion-row> <br>
+                </div>
+                <div *ngIf="showsLength == 0 ">
+                    <p>No Showtimes</p>
+                </div>
+                <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
+                    <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;">
+                        <ion-card class="cardCurve">
+                            <ion-item style="background-color: transparent">
+                                <ion-row style="margin-top: 10px;">
+                                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
+                                    <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>
+                                    <ion-icon style="margin:auto" color="danger" item-right [name]="d.icon"></ion-icon>
+                                </ion-row>
+                            </ion-item>
+
+                            <div class="showtimesPadding" *ngIf="d.showDetails">
+                                <div *ngFor="let show of d.cinemaArray">
+                                    <h3> {{ show.cinemaName }} </h3><br>
+                                    <ion-row>
+                                        <div style="width:33.33%" *ngFor="let time of show.sessions">
+                                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                                        </div>
+                                    </ion-row><br>
+                                </div>
+                            </div>
+                        </ion-card>
+                    </div>
                 </div>
             </ion-list>
 
-          <ion-list *ngSwitchCase="'Cast'">
-            <ion-item style="background-color: transparent;">
-              <ion-thumbnail item-start>
-                <img [src]="item.thumbnailImage">
-              </ion-thumbnail>
-              <h2>Ruby</h2>
-            </ion-item>
-          </ion-list>
+            <ion-list *ngSwitchCase="'Cast'">
+                <ion-item style="background-color: transparent;">
+                    <ion-thumbnail item-start>
+                        <img [src]="item.thumbnailImage">
+                    </ion-thumbnail>
+                    <h2>Ruby</h2>
+                </ion-item>
+            </ion-list>
         </div>
     </div>
 </ion-content>
-
-
-

@@ -6,48 +6,48 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Movies</ion-title> <br>
-      <ion-row class="searchSort">
-        <ion-searchbar class="search" type="text" [(ngModel)]="queryString"  placeholder="Search Movies"></ion-searchbar>        
-        <ion-select class="sort" [(ngModel)]="order">
-          <ion-option value="releaseDate">Date</ion-option>
-          <ion-option value="title">Title</ion-option>
-        </ion-select>
-      </ion-row>  
-</ion-navbar>
+    <ion-navbar>
+        <ion-title>Movies</ion-title> <br>
+        <ion-row class="searchSort">
+            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
+            <ion-select class="sort" [(ngModel)]="order">
+                <ion-option value="releaseDate">Date</ion-option>
+                <ion-option value="title">Title</ion-option>
+            </ion-select>
+        </ion-row>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  
-  <div style="padding:2%">
-  <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
-    <ion-item style="padding:2%" (click)='bookNow(item)'>
-      <ion-thumbnail style="margin: 5px;" item-start>
-        <img class="imageCurve" [src]="item.thumbnailImage">
-      </ion-thumbnail>
-      <!-- <ion-row style="justify-content: space-between;">
+
+    <div style="padding:2%">
+        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
+            <ion-item style="padding:2%" (click)='bookNow(item)'>
+                <ion-thumbnail style="margin: 5px;" item-start>
+                    <img class="imageCurve" [src]="item.thumbnailImage">
+                </ion-thumbnail>
+                <!-- <ion-row style="justify-content: space-between;">
         <h2 item-left></h2>
       </ion-row> -->
-      <h2>{{ item.title }}</h2>
-      <p style="margin:0;" item-end>{{ item.ratings }}</p>
-      <p>{{ item.releaseDate.split('-')[0] }}</p>
-      <ion-row  style="margin-top: 10%;">
-        <p style="margin:0;padding: 1%;" item-left>
-            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
-            <span style="margin: 0 0 0 14%;">Release Date</span>
-        </p>
-        <p style="margin:0;padding: 1%;" item-end>
-            <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
-            <span style="margin: 0 0 0 14%;">Duration</span>
-        </p>
-      </ion-row>
-    </ion-item>
-  </ion-card>
-</div>
-  <!-- 
+                <h2>{{ item.title }}</h2>
+                <p style="margin:0;" item-end>{{ item.ratings }}</p>
+                <p>{{ item.releaseDate.split('-')[0] }}</p>
+                <ion-row style="margin-top: 10%;">
+                    <p style="margin:0;padding: 1%;" item-left>
+                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
+                        <span style="margin: 0 0 0 14%;">Release Date</span>
+                    </p>
+                    <p style="margin:0;padding: 1%;" item-end>
+                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
+                        <span style="margin: 0 0 0 14%;">Duration</span>
+                    </p>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+    </div>
+    <!-- 
     <ion-card *ngFor="let item of items">
         
             <ion-item>

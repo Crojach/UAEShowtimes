@@ -1,3 +1,6 @@
+ion-app._gmaps_cdv_ .nav-decor{
+    background-color: transparent !important;
+  }
 page-cinema-info {
 
     #map_canvas {
@@ -48,7 +51,7 @@ page-cinema-info {
         padding: 9%;
         margin: 4px;
         font-size: 0.8em;
-        width: 6em;
+        width: 7em;
     }
     .customCinema1{
         font-size: 1em;
@@ -112,4 +115,5 @@ page-cinema-info {
         padding: 3%;
         color: #959799;
     }
+    
 }

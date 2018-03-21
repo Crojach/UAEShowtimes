@@ -20,6 +20,7 @@ export class GoogleMapPage {
     this.initializeMap();
   }
   initializeMap() {
+    console.log(">♀♫►♫☼♀♪◄↕", )
     let locationOptions = { timeout: 20000, enableHighAccuracy: true };
 
     navigator.geolocation.getCurrentPosition(
@@ -34,7 +35,7 @@ export class GoogleMapPage {
         };
 
         this.map = new google.maps.Map(
-          document.getElementById("map_canvas"),
+          document.getElementById("map"),
           options
         );
       },

@@ -61,7 +61,7 @@ page-musics {
     }
     .coralColor{
       color: coral;
-      font-size: 0.9em;
+      font-size: 1.3em;
   }
   .headerShadow{
     -webkit-box-shadow: 0 3px 25px 0 rgba(0,0,0,0.3) ;
@@ -73,4 +73,9 @@ page-musics {
   //     font-weight: 500;
   //     color: white;
   // }
+  .cinemaName{
+      margin: auto; 
+      color:#928C89; 
+      font-size: 1.4em;
+  }
 }

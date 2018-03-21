@@ -88,7 +88,7 @@ var TabsPage = (function () {
     ], TabsPage.prototype, "superTabs", void 0);
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\tabs\tabs.html"*/'<super-tabs  selectedTabIndex="0" tabsPlacement="bottom" toolbarBackground="theme" toolbarColor="light">\n    <super-tab [root]="moviesRoot" title="Movies" icon="videocam"></super-tab>\n    <super-tab [root]="musicsRoot" title="Cinemas" icon="ios-film"></super-tab>\n    <super-tab [root]="offersRoot" title="Ticket Offers" icon="ios-card"></super-tab>\n</super-tabs>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\tabs\tabs.html"*/
+            selector: 'page-tabs',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\tabs\tabs.html"*/'<super-tabs selectedTabIndex="0" tabsPlacement="bottom" toolbarBackground="theme" toolbarColor="light">\n    <super-tab [root]="moviesRoot" title="Movies" icon="videocam"></super-tab>\n    <super-tab [root]="musicsRoot" title="Cinemas" icon="ios-film"></super-tab>\n    <super-tab [root]="offersRoot" title="Ticket Offers" icon="ios-card"></super-tab>\n</super-tabs>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_5_ionic2_super_tabs__["b" /* SuperTabsController */]])
     ], TabsPage);
@@ -142,40 +142,33 @@ var MoviesPage = (function () {
         this.navParams = navParams;
         this.http = http;
         this.splashScreen = splashScreen;
-        this.configUrl = 'http://uaeshowtimes.com:3006';
-        this.order = 'releaseDate';
+        this.configUrl = "http://uaeshowtimes.com:3006";
+        this.order = "releaseDate";
         this.loadingCtrl = loadingCtrl;
         this.getItems();
         console.log("items>>", this.items);
     }
     MoviesPage.prototype.bookNow = function (item) {
-        console.log("movie page", item);
+        // console.log("movie page", item);
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__movie_info_movie_info__["a" /* MovieInfoPage */], {
             movieInfo: item
         });
     };
     MoviesPage.prototype.getItems = function () {
-        // loading = this.loadingCtrl.create({
-        //   spinner: "hide",
-        //   content: `
-        //   <div class="spinner" >
-        //     <div class="dot1"></div>
-        //     <div class="dot2"></div>
-        //   </div>
-        //     `,
-        // });
         var _this = this;
-        // loading.present();
-        this.http.get(this.configUrl + "/app/show-all-movies").map(function (res) { return res.json(); }).subscribe(function (results) {
+        this.http
+            .get(this.configUrl + "/app/show-all-movies")
+            .map(function (res) { return res.json(); })
+            .subscribe(function (results) {
             if (results.status) {
                 _this.items = results.movies;
                 _this.items = _this.items.map(function (x) {
-                    var date = x.releaseDate.split('(')[1].split('+')[0];
+                    var date = x.releaseDate.split("(")[1].split("+")[0];
                     var newDate = new Date(parseInt(date)).toISOString();
-                    x.releaseDate = newDate.split('T')[0];
-                    var image = x.thumbnailImage.split('/');
-                    if (image[0] != 'http:') {
-                        x.thumbnailImage = 'http://uaeshowtimes.com' + x.thumbnailImage;
+                    x.releaseDate = newDate.split("T")[0];
+                    var image = x.thumbnailImage.split("/");
+                    if (image[0] != "http:") {
+                        x.thumbnailImage = "http://uaeshowtimes.com" + x.thumbnailImage;
                     }
                     return x;
                 });
@@ -187,11 +180,11 @@ var MoviesPage = (function () {
         });
     };
     MoviesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad MoviesPage');
+        console.log("ionViewDidLoad MoviesPage");
     };
     MoviesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-movies',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/'<!--\n  Generated template for the MoviesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Movies</ion-title> <br>\n      <ion-row class="searchSort">\n        <ion-searchbar class="search" type="text" [(ngModel)]="queryString"  placeholder="Search Movies"></ion-searchbar>        \n        <ion-select class="sort" [(ngModel)]="order">\n          <ion-option value="releaseDate">Date</ion-option>\n          <ion-option value="title">Title</ion-option>\n        </ion-select>\n      </ion-row>  \n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  \n  <div style="padding:2%">\n  <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == \'title\' ? false : true ">\n    <ion-item style="padding:2%" (click)=\'bookNow(item)\'>\n      <ion-thumbnail style="margin: 5px;" item-start>\n        <img class="imageCurve" [src]="item.thumbnailImage">\n      </ion-thumbnail>\n      <!-- <ion-row style="justify-content: space-between;">\n        <h2 item-left></h2>\n      </ion-row> -->\n      <h2>{{ item.title }}</h2>\n      <p style="margin:0;" item-end>{{ item.ratings }}</p>\n      <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n      <ion-row  style="margin-top: 10%;">\n        <p style="margin:0;padding: 1%;" item-left>\n            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>\n            <span style="margin: 0 0 0 14%;">Release Date</span>\n        </p>\n        <p style="margin:0;padding: 1%;" item-end>\n            <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>\n            <span style="margin: 0 0 0 14%;">Duration</span>\n        </p>\n      </ion-row>\n    </ion-item>\n  </ion-card>\n</div>\n  <!-- \n    <ion-card *ngFor="let item of items">\n        \n            <ion-item>\n            <ion-thumbnail item-start item-start>\n              <img src="{{ item.thumbnailImage }}">\n            </ion-thumbnail>\n            <h3> {{ item.title }}</h3>\n            <p style="font-size: 0.6em;">{{ item.releaseDate }}</p>\n          </ion-item>\n        \n          <img src="{{item.thumbnailImage}}">        \n        \n          <ion-row>\n            <ion-col>\n              <button ion-button icon-left clear small>\n                <ion-icon name="star-half"></ion-icon>\n                <div>{{ item.ratings }}</div>\n              </button>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <button ion-button icon-left small >\n                <div (click)=\'bookNow(item)\'>Book now</div>\n              </button>\n            </ion-col>\n            <ion-col center text-center style="margin-top: 10px;">\n              <ion-note>\n                {{ item.duration }}\n              </ion-note>\n            </ion-col>\n          </ion-row>\n        \n        </ion-card> -->\n</ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/,
+            selector: "page-movies",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/'<!--\n  Generated template for the MoviesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>Movies</ion-title> <br>\n        <ion-row class="searchSort">\n            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>\n            <ion-select class="sort" [(ngModel)]="order">\n                <ion-option value="releaseDate">Date</ion-option>\n                <ion-option value="title">Title</ion-option>\n            </ion-select>\n        </ion-row>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n    <div style="padding:2%">\n        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == \'title\' ? false : true ">\n            <ion-item style="padding:2%" (click)=\'bookNow(item)\'>\n                <ion-thumbnail style="margin: 5px;" item-start>\n                    <img class="imageCurve" [src]="item.thumbnailImage">\n                </ion-thumbnail>\n                <!-- <ion-row style="justify-content: space-between;">\n        <h2 item-left></h2>\n      </ion-row> -->\n                <h2>{{ item.title }}</h2>\n                <p style="margin:0;" item-end>{{ item.ratings }}</p>\n                <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n                <ion-row style="margin-top: 10%;">\n                    <p style="margin:0;padding: 1%;" item-left>\n                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>\n                        <span style="margin: 0 0 0 14%;">Release Date</span>\n                    </p>\n                    <p style="margin:0;padding: 1%;" item-end>\n                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>\n                        <span style="margin: 0 0 0 14%;">Duration</span>\n                    </p>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </div>\n    <!-- \n    <ion-card *ngFor="let item of items">\n        \n            <ion-item>\n            <ion-thumbnail item-start item-start>\n              <img src="{{ item.thumbnailImage }}">\n            </ion-thumbnail>\n            <h3> {{ item.title }}</h3>\n            <p style="font-size: 0.6em;">{{ item.releaseDate }}</p>\n          </ion-item>\n        \n          <img src="{{item.thumbnailImage}}">        \n        \n          <ion-row>\n            <ion-col>\n              <button ion-button icon-left clear small>\n                <ion-icon name="star-half"></ion-icon>\n                <div>{{ item.ratings }}</div>\n              </button>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <button ion-button icon-left small >\n                <div (click)=\'bookNow(item)\'>Book now</div>\n              </button>\n            </ion-col>\n            <ion-col center text-center style="margin-top: 10px;">\n              <ion-note>\n                {{ item.duration }}\n              </ion-note>\n            </ion-col>\n          </ion-row>\n        \n        </ion-card> -->\n</ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
@@ -390,7 +383,7 @@ var MovieInfoPage = (function () {
     };
     MovieInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-movie-info',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/'<!--\n  Generated template for the MovieInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-content>\n    <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>\n    <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : \'\'" frameborder="0" allowfullscreen></iframe>\n    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">\n  <ion-thumbnail item-start >\n    <img class="customImg upShadow" [src]="item.thumbnailImage">\n  </ion-thumbnail>\n    <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">\n        <ion-item style="padding: 2% 1% 4% 34%;">\n          <ion-row style="justify-content: space-between;">\n            <h2 item-left>{{ item.title }}</h2>\n            <p style="margin:0;" item-end>{{ item.ratings }}</p>\n          </ion-row>\n          <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n          <ion-row  style="margin-top: 10%;">\n            <p style="margin:0;padding: 1%;" item-left>\n                <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>\n                <span style="margin: 0 0 0 14%;">Release Date</span>\n            </p>\n            <p style="margin:0;padding: 1%;" item-end>\n                <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>\n                <span style="margin: 0 0 0 14%;">Duration</span>\n            </p>\n          </ion-row>\n        </ion-item>\n      </ion-card>\n\n        <div>\n          <ion-segment [(ngModel)]="selectedSegment">\n              <ion-segment-button value="Info">Info</ion-segment-button>\n            <ion-segment-button value="Cast">Cast</ion-segment-button>\n          </ion-segment>\n        </div>\n        \n        <div [ngSwitch]="selectedSegment">\n          <ion-list class="iconColor" *ngSwitchCase="\'Info\'">\n            <ion-card class="infoCard">\n                  <ion-item class="iconColor">\n                    <ion-icon name=\'videocam\' item-start></ion-icon>\n                    Synopsis\n                    <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>\n                  </ion-item>\n                <ion-item class="iconColor">\n                  <ion-icon name=\'eye\' item-start></ion-icon>\n                  Language\n                  <ion-note item-end>{{ item.language }}</ion-note>\n                </ion-item>\n                <ion-item class="iconColor">\n                  <ion-icon name=\'flag\' item-start></ion-icon>\n                  Genre\n                  <ion-note item-end>{{ item.genre }}</ion-note>\n                </ion-item>\n                <ion-item class="iconColor">\n                  <ion-icon name=\'film\' item-start></ion-icon>\n                  Director\n                  <ion-note item-end>{{ item.director }}</ion-note>\n                </ion-item> \n              </ion-card>  \n\n            <h4>Showtimes</h4>\n            <div>\n              <ion-row>\n                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n                </ion-segment>\n              </ion-row>  <br>\n              </div>\n              <div *ngIf = "showsLength == 0 "><p>No Showtimes</p></div>\n              <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">\n                <div *ngIf="d.multiplexName !== \'\'" style="background-color: transparent;" >\n                    <ion-card class="cardCurve">\n                      <ion-item style="background-color: transparent">\n                          <ion-row style="margin-top: 10px;"> \n                            <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">\n                            <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>\n                            <ion-icon style="margin:auto" color="danger" item-right [name]="d.icon"></ion-icon> \n                          </ion-row>\n                        </ion-item> \n                      \n                      <div class="showtimesPadding" *ngIf="d.showDetails">\n                        <div *ngFor="let show of d.cinemaArray">\n                          <h3> {{ show.cinemaName }} </h3><br>\n                          <ion-row>\n                            <div style="width:33.33%" *ngFor="let time of show.sessions">\n                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                          </div>\n                          </ion-row><br>\n                        </div> \n                      </div> \n                    </ion-card>  \n                  </div>             \n                </div>\n            </ion-list>\n\n          <ion-list *ngSwitchCase="\'Cast\'">\n            <ion-item style="background-color: transparent;">\n              <ion-thumbnail item-start>\n                <img [src]="item.thumbnailImage">\n              </ion-thumbnail>\n              <h2>Ruby</h2>\n            </ion-item>\n          </ion-list>\n        </div>\n    </div>\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/,
+            selector: 'page-movie-info',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/'<!--\n  Generated template for the MovieInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-content>\n    <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>\n    <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : \'\'" frameborder="0" allowfullscreen></iframe>\n    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">\n        <ion-thumbnail item-start>\n            <img class="customImg upShadow" [src]="item.thumbnailImage">\n        </ion-thumbnail>\n        <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">\n            <ion-item style="padding: 2% 1% 4% 34%;">\n                <ion-row style="justify-content: space-between;">\n                    <h2 item-left>{{ item.title }}</h2>\n                    <p style="margin:0;" item-end>{{ item.ratings }}</p>\n                </ion-row>\n                <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n                <ion-row style="margin-top: 10%;">\n                    <p style="margin:0;padding: 1%;" item-left>\n                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>\n                        <span style="margin: 0 0 0 14%;">Release Date</span>\n                    </p>\n                    <p style="margin:0;padding: 1%;" item-end>\n                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>\n                        <span style="margin: 0 0 0 14%;">Duration</span>\n                    </p>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n\n        <div>\n            <ion-segment [(ngModel)]="selectedSegment">\n                <ion-segment-button value="Info">Info</ion-segment-button>\n                <ion-segment-button value="Cast">Cast</ion-segment-button>\n            </ion-segment>\n        </div>\n\n        <div [ngSwitch]="selectedSegment">\n            <ion-list class="iconColor" *ngSwitchCase="\'Info\'">\n                <ion-card class="infoCard">\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'videocam\' item-start></ion-icon>\n                        Synopsis\n                        <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'eye\' item-start></ion-icon>\n                        Language\n                        <ion-note item-end>{{ item.language }}</ion-note>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'flag\' item-start></ion-icon>\n                        Genre\n                        <ion-note item-end>{{ item.genre }}</ion-note>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'film\' item-start></ion-icon>\n                        Director\n                        <ion-note item-end>{{ item.director }}</ion-note>\n                    </ion-item>\n                </ion-card>\n\n                <h4>Showtimes</h4>\n                <div>\n                    <ion-row>\n                        <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                            <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n                        </ion-segment>\n                    </ion-row> <br>\n                </div>\n                <div *ngIf="showsLength == 0 ">\n                    <p>No Showtimes</p>\n                </div>\n                <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">\n                    <div *ngIf="d.multiplexName !== \'\'" style="background-color: transparent;">\n                        <ion-card class="cardCurve">\n                            <ion-item style="background-color: transparent">\n                                <ion-row style="margin-top: 10px;">\n                                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">\n                                    <ion-note style="margin:auto">{{ d.multiplexName }}</ion-note>\n                                    <ion-icon style="margin:auto" color="danger" item-right [name]="d.icon"></ion-icon>\n                                </ion-row>\n                            </ion-item>\n\n                            <div class="showtimesPadding" *ngIf="d.showDetails">\n                                <div *ngFor="let show of d.cinemaArray">\n                                    <h3> {{ show.cinemaName }} </h3><br>\n                                    <ion-row>\n                                        <div style="width:33.33%" *ngFor="let time of show.sessions">\n                                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                                        </div>\n                                    </ion-row><br>\n                                </div>\n                            </div>\n                        </ion-card>\n                    </div>\n                </div>\n            </ion-list>\n\n            <ion-list *ngSwitchCase="\'Cast\'">\n                <ion-item style="background-color: transparent;">\n                    <ion-thumbnail item-start>\n                        <img [src]="item.thumbnailImage">\n                    </ion-thumbnail>\n                    <h2>Ruby</h2>\n                </ion-item>\n            </ion-list>\n        </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
@@ -512,7 +505,7 @@ var CinemasPage = (function () {
     };
     CinemasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-musics',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/'<!--\n  Generated template for the MusicsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar class="headerShadow">\n    <ion-title style= "color:azure">Cinemas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n  <ion-list>\n      <div *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">\n        <ion-card class="cardCurve">\n          <ion-row>  \n            <img class="cinemaImage"  [src]="d.image" alt="Cinemas Image" nopadding>  \n            <h4 style="margin: auto; color:#928C89">{{ d.multiplex }}</h4>\n          </ion-row>\n          <div *ngIf="d.showDetails">\n            <a class="coralColor" *ngFor="let col of d.cinema;" (click)=\'cinemaPage(col._id)\'>\n              <ul>\n                <li>{{col.cinemaName}}</li>\n              </ul>\n            </a>\n          </div>\n        </ion-card>\n      </div>\n    </ion-list>\n  </ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/,
+            selector: 'page-musics',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/'<!--\n  Generated template for the MusicsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar class="headerShadow">\n        <ion-title style="color:azure">Cinemas</ion-title>\n    </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <div *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">\n            <ion-card class="cardCurve">\n                <ion-row>\n                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>\n                    <h4 class="cinemaName">{{ d.multiplex }}</h4>\n                </ion-row>\n                <div *ngIf="d.showDetails">\n                    <a class="coralColor" *ngFor="let col of d.cinema;" (click)=\'cinemaPage(col._id)\'>\n                        <ul>\n                            <li>{{col.cinemaName}}</li>\n                        </ul>\n                    </a>\n                </div>\n            </ion-card>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
@@ -569,7 +562,9 @@ var CinemaInfoPage = (function () {
         // configUrl = 'http://192.168.1.167';
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.days = [];
-        this.daySegment = __WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD");
+        this.daySegment = __WEBPACK_IMPORTED_MODULE_5_moment__()
+            .add(0, "days")
+            .format("YYYYMMDD");
         this.http = http;
         this.iab = iab;
         this.loadingCtrl = loadingCtrl;
@@ -578,8 +573,13 @@ var CinemaInfoPage = (function () {
         //For getting next 3 day
         for (var i = 0; i < 4; i++) {
             this.days.push({
-                day: __WEBPACK_IMPORTED_MODULE_5_moment__().add(i, 'days').format('dddd').substring(0, 3),
-                value: __WEBPACK_IMPORTED_MODULE_5_moment__().add(i, 'days').format("YYYYMMDD"),
+                day: __WEBPACK_IMPORTED_MODULE_5_moment__()
+                    .add(i, "days")
+                    .format("dddd")
+                    .substring(0, 3),
+                value: __WEBPACK_IMPORTED_MODULE_5_moment__()
+                    .add(i, "days")
+                    .format("YYYYMMDD")
             });
         }
         this.postItems(i);
@@ -587,30 +587,41 @@ var CinemaInfoPage = (function () {
     // ionViewDidLoad() {
     //   this.initializeMap();
     // }
-    CinemaInfoPage.prototype.openBookingUrl = function (url) {
-        var browser = this.iab.create(url);
-    };
+    // Pushing value to generate map
     CinemaInfoPage.prototype.goToGoogleMap = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__google_map_google_map__["a" /* GoogleMapPage */]);
+    };
+    CinemaInfoPage.prototype.openBookingUrl = function (url) {
+        var browser = this.iab.create(url);
     };
     //Getting cinema sessions of day selected
     CinemaInfoPage.prototype.dayValue = function (value, todaysData) {
         var _this = this;
-        if (value == __WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD") && todaysData != null) {
+        if (value ==
+            __WEBPACK_IMPORTED_MODULE_5_moment__()
+                .add(0, "days")
+                .format("YYYYMMDD") &&
+            todaysData != null) {
             console.log("!!!!!!!!!!!!!!!!!!", todaysData);
             this.showsLength = todaysData.shows.length;
             this.postItems(todaysData);
         }
         else {
             loading = this.loadingCtrl.create({
-                spinner: 'hide',
-                content: "\n          <div class=\"spinner\" >\n            <div class=\"dot1\"></div>\n            <div class=\"dot2\"></div>\n          </div>\n        ",
+                spinner: "hide",
+                content: "\n          <div class=\"spinner\" >\n            <div class=\"dot1\"></div>\n            <div class=\"dot2\"></div>\n          </div>\n        "
             });
             loading.present();
             //Getting offers data from API
-            var url = this.configUrl + "/app/cinemaInfoForDate/" + this.cinemaId + "?search=" + parseInt(value);
+            var url = this.configUrl + "/app/cinemaInfoForDate/" +
+                this.cinemaId +
+                "?search=" +
+                parseInt(value);
             console.log(url);
-            this.http.get(url).map(function (res) { return res.json(); }).subscribe(function (results) {
+            this.http
+                .get(url)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (results) {
                 // console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
                 // this.postItems(results)
                 loading.dismiss();
@@ -623,8 +634,8 @@ var CinemaInfoPage = (function () {
     CinemaInfoPage.prototype.postItems = function (results) {
         var _this = this;
         loading = this.loadingCtrl.create({
-            spinner: 'hide',
-            content: "\n          <div class=\"spinner\" >\n            <div class=\"dot1\"></div>\n            <div class=\"dot2\"></div>\n          </div>\n        ",
+            spinner: "hide",
+            content: "\n          <div class=\"spinner\" >\n            <div class=\"dot1\"></div>\n            <div class=\"dot2\"></div>\n          </div>\n        "
         });
         loading.present();
         console.log(this.cinemaId);
@@ -645,11 +656,10 @@ var CinemaInfoPage = (function () {
             console.log("POWER", results);
             _this.cinemaInfo = results.cinema;
             _this.selectedDay = results.finalMovies;
-            console.log("######ÆôÄzäs", _this.cinemaInfo);
-            console.log("######", _this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
             _this.initializeMap(_this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
+            _this.latitude = _this.cinemaInfo[0].latitude;
+            _this.longitude = _this.cinemaInfo[0].longitude;
             loading.dismiss();
-            // this.loadMap();
         });
     };
     CinemaInfoPage.prototype.initializeMap = function (lat, long) {
@@ -658,6 +668,7 @@ var CinemaInfoPage = (function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
                 center: new google.maps.LatLng(lat, long),
+                marker: new google.maps.LatLng(lat, long),
                 zoom: 16,
                 tilt: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -669,7 +680,7 @@ var CinemaInfoPage = (function () {
     };
     CinemaInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Cinema Info</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <div id="map_canvas"></div>\n  <ion-card>\n      <div *ngFor="let d of cinemaInfo">\n          <ion-fab right top>\n            <button ion-fab>\n              <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>\n            </button>\n          </ion-fab>\n        <ion-item>\n            <ion-row>\n              <ion-icon ios="ios-navigate" md="md-navigate">\n                <h3>{{d.cinemaName}}</h3>\n                  <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n              </ion-icon>\n            </ion-row>\n        </ion-item>\n\n        <ion-item>\n          <ion-row>\n            <ion-icon ios="ios-call" md="md-call" >\n              <p class="text">{{ d.phoneNumber }}</p>\n            </ion-icon>\n          </ion-row>\n        </ion-item>\n      \n        <ion-item>\n          <ion-row>\n              <ion-icon ios="ios-mail" md="md-mail" nopadding>\n                <p class="text wordBreak">{{ d.emailId }} </p>\n              </ion-icon>\n               \n              </ion-row>\n        </ion-item>\n      </div>\n    </ion-card>  \n          <!-- -------------------ShowTime------------------------------------------ -->\n      <h4>Showtimes</h4>\n            <div>\n              <ion-row>\n                <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                    <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n                </ion-segment>\n              </ion-row>  <br>\n                <div *ngFor="let session of selectedDay">\n                  <ion-card class="cardCurve">\n                    <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                     <ion-row>\n                      <div style="width:33.33%" *ngFor="let time of session.sessions">\n                        <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                      </div>\n                     </ion-row>  \n                    </ion-card>  \n                  </div>\n                </div>\n\n       \n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
+            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>Cinema Info</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div id="map_canvas"></div>\n    <ion-card>\n        <div *ngFor="let d of cinemaInfo">\n            <ion-fab right top>\n                <button ion-fab>\n              <ion-icon (click)="goToGoogleMap()" name="pin"></ion-icon>\n            </button>\n            </ion-fab>\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-navigate" md="md-navigate">\n                        <h3>{{d.cinemaName}}</h3>\n                        <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-call" md="md-call">\n                        <p class="text">{{ d.phoneNumber }}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-mail" md="md-mail" nopadding>\n                        <p class="text wordBreak">{{ d.emailId }} </p>\n                    </ion-icon>\n\n                </ion-row>\n            </ion-item>\n        </div>\n    </ion-card>\n    <!-- -------------------ShowTime------------------------------------------ -->\n    <h4>Showtimes</h4>\n    <div>\n        <ion-row>\n            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n            </ion-segment>\n        </ion-row> <br>\n        <div *ngFor="let session of selectedDay">\n            <ion-card class="cardCurve">\n                <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                <ion-row>\n                    <div style="width:33.33%" *ngFor="let time of session.sessions">\n                        <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                    </div>\n                </ion-row>\n            </ion-card>\n        </div>\n    </div>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
@@ -718,6 +729,7 @@ var GoogleMapPage = (function () {
     };
     GoogleMapPage.prototype.initializeMap = function () {
         var _this = this;
+        console.log(">♀♫►♫☼♀♪◄↕");
         var locationOptions = { timeout: 20000, enableHighAccuracy: true };
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
@@ -732,7 +744,7 @@ var GoogleMapPage = (function () {
     };
     GoogleMapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-google-map",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\google-map\google-map.html"*/'<!--\n  Generated template for the GoogleMapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n     Cinema Location \n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n    <div id="map_canvas"></div>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\google-map\google-map.html"*/
+            selector: "page-google-map",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\google-map\google-map.html"*/'<!--\n  Generated template for the GoogleMapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n     Cinema Location \n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n    <div id="map"></div>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\google-map\google-map.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], GoogleMapPage);
@@ -847,7 +859,7 @@ var OffersPage = (function () {
     };
     OffersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-offers',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\offers\offers.html"*/'<!--\n  Generated template for the OffersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar class="headerShadow">\n    <ion-title  style="color: white;">Ticket Offers</ion-title> <br>\n    <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Offers"> -->\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>\n      <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>\n       <div nopadding>\n            <ion-row padding> \n              <ion-col>\n                <h5 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h5>\n                <h5 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h5>\n                <h5 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h5>\n                <h5 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h5>\n                <h5 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h5>\n                <p class="subTitle">{{ item.offer.title }}</p>\n              </ion-col> \n                <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon> \n             </ion-row>\n            <div  class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>\n                <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">\n                  <img src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">\n                </object>\n             <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>\n           </div>\n          </div>\n        </ion-card>\n      </div>\n    </ion-list>\n  </ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\offers\offers.html"*/,
+            selector: 'page-offers',template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\offers\offers.html"*/'<!--\n  Generated template for the OffersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar class="headerShadow">\n        <ion-title style="color: white;">Ticket Offers</ion-title> <br>\n        <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Offers"> -->\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>\n            <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>\n                <div nopadding>\n                    <ion-row padding>\n                        <ion-col>\n                            <h5 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h5>\n                            <h5 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h5>\n                            <h5 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h5>\n                            <h5 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h5>\n                            <h5 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h5>\n                            <p class="subTitle">{{ item.offer.title }}</p>\n                        </ion-col>\n                        <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon>\n                    </ion-row>\n                    <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>\n                        <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">\n                  <img src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">\n                </object>\n                        <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>\n                    </div>\n                </div>\n            </ion-card>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\offers\offers.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],

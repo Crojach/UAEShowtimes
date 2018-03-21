@@ -6,38 +6,38 @@
 -->
 <ion-header>
 
-  <ion-navbar class="headerShadow">
-    <ion-title  style="color: white;">Ticket Offers</ion-title> <br>
-    <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Offers"> -->
-  </ion-navbar>
+    <ion-navbar class="headerShadow">
+        <ion-title style="color: white;">Ticket Offers</ion-title> <br>
+        <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search Offers"> -->
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>
-      <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
-       <div nopadding>
-            <ion-row padding> 
-              <ion-col>
-                <h5 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h5>
-                <h5 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h5>
-                <h5 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h5>
-                <h5 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h5>
-                <h5 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h5>
-                <p class="subTitle">{{ item.offer.title }}</p>
-              </ion-col> 
-                <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon> 
-             </ion-row>
-            <div  class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
-                <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
+    <ion-list>
+        <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>
+            <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
+                <div nopadding>
+                    <ion-row padding>
+                        <ion-col>
+                            <h5 *ngIf="item.offer.multiplexId == 6">VOX Cinemas</h5>
+                            <h5 *ngIf="item.offer.multiplexId == 8">NOVO Cinemas</h5>
+                            <h5 *ngIf="item.offer.multiplexId == 7">ROXY Cinemas</h5>
+                            <h5 *ngIf="item.offer.multiplexId == 9">Reel Cinemas</h5>
+                            <h5 *ngIf="item.offer.multiplexId == 10">CINESCAPE Cinemas</h5>
+                            <p class="subTitle">{{ item.offer.title }}</p>
+                        </ion-col>
+                        <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon>
+                    </ion-row>
+                    <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
+                        <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
                   <img src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
                 </object>
-             <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>
-           </div>
-          </div>
-        </ion-card>
-      </div>
+                        <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>
+                    </div>
+                </div>
+            </ion-card>
+        </div>
     </ion-list>
-  </ion-content>
+</ion-content>
