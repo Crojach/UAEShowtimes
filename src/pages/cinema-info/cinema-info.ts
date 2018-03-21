@@ -186,7 +186,10 @@ export class CinemaInfoPage {
           options
         );
         var marker = new google.maps.Marker({
-          map: this.map,
+          map: new google.maps.Map(
+            document.getElementById("map_canvas"),
+            options
+          ),
           draggable: true,
           animation: google.maps.Animation.DROP, 
           position: options.center,
