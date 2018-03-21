@@ -175,7 +175,7 @@ export class CinemaInfoPage {
     navigator.geolocation.getCurrentPosition(
       position => {
         let options = {
-          center: new google.maps.LatLng(lat, long),
+          center: myLatLng,
           zoom: 20,
           tilt: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -186,10 +186,7 @@ export class CinemaInfoPage {
           options
         );
         var marker = new google.maps.Marker({
-          map: new google.maps.Map(
-            document.getElementById("map_canvas"),
-            options
-          ),
+          map: this.map,
           draggable: true,
           animation: google.maps.Animation.DROP, 
           position: options.center,

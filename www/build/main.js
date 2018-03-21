@@ -669,14 +669,14 @@ var CinemaInfoPage = (function () {
         var locationOptions = { timeout: 20000, enableHighAccuracy: true };
         navigator.geolocation.getCurrentPosition(function (position) {
             var options = {
-                center: new google.maps.LatLng(lat, long),
+                center: myLatLng,
                 zoom: 20,
                 tilt: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             _this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
             var marker = new google.maps.Marker({
-                map: new google.maps.Map(document.getElementById("map_canvas"), options),
+                map: _this.map,
                 draggable: true,
                 animation: google.maps.Animation.DROP,
                 position: options.center,
