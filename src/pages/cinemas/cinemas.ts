@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform  } from 'ionic-angular';
 import { CinemaInfoPage } from '../cinema-info/cinema-info';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import 'rxjs/add/operator/map';
 // import { Title } from '@angular/platform-browser';
 
@@ -32,10 +33,18 @@ export class CinemasPage {
               public http : Http, 
               public navCtrl: NavController,
               loadingCtrl: LoadingController, 
-              public navParams: NavParams
+              public navParams: NavParams,
+              private platform: Platform,
+              private ga:GoogleAnalytics,
             ) {
     this.loadingCtrl = loadingCtrl;
     this.getItems()
+
+    this.platform.ready().then(() => {
+      this.ga.trackEvent("Cinema page", "Opened", "New Session Started", 1 , true)
+      this.ga.setAllowIDFACollection(true)
+      this.ga.trackView("Cinema page")
+    })
   }
 
   cinemaPage(id){

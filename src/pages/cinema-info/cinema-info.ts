@@ -1,9 +1,10 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Platform } from "ionic-angular";
 import { Http, RequestOptions, Headers } from "@angular/http";
 import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -43,7 +44,9 @@ export class CinemaInfoPage {
   constructor(
     http: Http,
     public navCtrl: NavController,
-    public navParams: NavParams,
+    public navParams: NavParams,              
+    private platform: Platform,
+    private ga:GoogleAnalytics,
     iab: InAppBrowser,
     loadingCtrl: LoadingController,
   ) {
@@ -65,6 +68,11 @@ export class CinemaInfoPage {
       });
     }
     this.postItems(i);
+    this.platform.ready().then(() => {
+      this.ga.trackEvent("Cinema Info", "Opened", "New Session Started", 1 , true)
+      this.ga.setAllowIDFACollection(true)
+      this.ga.trackView("Cinema Info")
+    })
   }
 
   // ionViewDidLoad() {

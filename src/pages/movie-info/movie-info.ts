@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams, Platform } from 'ionic-angular';
 import {  Http, Headers, RequestOptions } from '@angular/http';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { LoadingController } from 'ionic-angular';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // import moment from 'moment';
@@ -39,6 +40,8 @@ export class MovieInfoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private domSanitizer: DomSanitizer,
+    private platform: Platform,
+    private ga:GoogleAnalytics,
     http: Http,
     iab: InAppBrowser,
     loadingCtrl: LoadingController
@@ -58,7 +61,14 @@ export class MovieInfoPage {
     }
     // console.log("thidssss",this.days)
     this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+this.item.trailer);
+    
+    this.platform.ready().then(() => {
+      this.ga.trackEvent("Movies Info", "Opened", "New Session Started", 1 , true)
+      this.ga.setAllowIDFACollection(true)
+      this.ga.trackView("Movies Info")
+    })
     this.postItems()
+
   }
 
   openBookingUrl(url) {

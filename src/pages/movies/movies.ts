@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Platform } from "ionic-angular";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { LoadingController } from "ionic-angular";
 import { MovieInfoPage } from "../movie-info/movie-info";
 import { OrderPipe } from "ngx-order-pipe";
 import { SplashScreen } from "@ionic-native/splash-screen";
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -34,12 +35,19 @@ export class MoviesPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
+    private platform: Platform,
+    private ga:GoogleAnalytics,
     loadingCtrl: LoadingController,
     private splashScreen: SplashScreen
   ) {
     this.loadingCtrl = loadingCtrl;
     this.getItems();
-    console.log("items>>", this.items);
+    
+    this.platform.ready().then(() => {
+      this.ga.trackEvent("Movies", "Opened", "New Session Started", 1 , true)
+      this.ga.setAllowIDFACollection(true)
+      this.ga.trackView("Movies")
+    })
   }
   bookNow(item) {
     // console.log("movie page", item);

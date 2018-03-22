@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 131:
+/***/ 132:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 131;
+webpackEmptyAsyncContext.id = 132;
 
 /***/ }),
 
-/***/ 173:
+/***/ 174:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,21 +30,21 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 173;
+webpackEmptyAsyncContext.id = 174;
 
 /***/ }),
 
-/***/ 224:
+/***/ 225:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__movies_movies__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cinemas_cinemas__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__offers_offers__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic2_super_tabs__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__movies_movies__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cinemas_cinemas__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__offers_offers__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic2_super_tabs__ = __webpack_require__(353);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99,7 +99,7 @@ var TabsPage = (function () {
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -107,10 +107,11 @@ var TabsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__movie_info_movie_info__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__movie_info_movie_info__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_analytics__ = __webpack_require__(37);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -120,6 +121,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -137,16 +139,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // @IonicPage()
 var loading;
 var MoviesPage = (function () {
-    function MoviesPage(navCtrl, navParams, http, loadingCtrl, splashScreen) {
+    function MoviesPage(navCtrl, navParams, http, platform, ga, loadingCtrl, splashScreen) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.http = http;
+        this.platform = platform;
+        this.ga = ga;
         this.splashScreen = splashScreen;
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.order = "releaseDate";
         this.loadingCtrl = loadingCtrl;
         this.getItems();
-        console.log("items>>", this.items);
+        this.platform.ready().then(function () {
+            _this.ga.trackEvent("Movies", "Opened", "New Session Started", 1, true);
+            _this.ga.setAllowIDFACollection(true);
+            _this.ga.trackView("Movies");
+        });
     }
     MoviesPage.prototype.bookNow = function (item) {
         // console.log("movie page", item);
@@ -189,6 +198,8 @@ var MoviesPage = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MoviesPage);
@@ -199,7 +210,7 @@ var MoviesPage = (function () {
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -208,9 +219,10 @@ var MoviesPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -226,18 +238,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 // import moment from 'moment';
 
 var loading;
 var MovieInfoPage = (function () {
     // data: Array<{ image: string, multiplex: string, cinema: any, icon: string, showDetails: boolean}> = [];
-    function MovieInfoPage(navCtrl, navParams, domSanitizer, http, iab, loadingCtrl) {
+    function MovieInfoPage(navCtrl, navParams, domSanitizer, platform, ga, http, iab, loadingCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.domSanitizer = domSanitizer;
+        this.platform = platform;
+        this.ga = ga;
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.selectedSegment = 'Info';
-        this.daySegment = __WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD");
+        this.daySegment = __WEBPACK_IMPORTED_MODULE_6_moment__().add(0, 'days').format("YYYYMMDD");
         this.days = [];
         this.icon = 'ios-arrow-down';
         this.cinemaList = [];
@@ -249,12 +265,17 @@ var MovieInfoPage = (function () {
         // let Obj = []
         for (var i = 0; i < 4; i++) {
             this.days.push({
-                day: __WEBPACK_IMPORTED_MODULE_5_moment__().add(i, 'days').format('dddd').substring(0, 3),
-                value: __WEBPACK_IMPORTED_MODULE_5_moment__().add(i, 'days').format("YYYYMMDD"),
+                day: __WEBPACK_IMPORTED_MODULE_6_moment__().add(i, 'days').format('dddd').substring(0, 3),
+                value: __WEBPACK_IMPORTED_MODULE_6_moment__().add(i, 'days').format("YYYYMMDD"),
             });
         }
         // console.log("thidssss",this.days)
         this.trustedVideoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.item.trailer);
+        this.platform.ready().then(function () {
+            _this.ga.trackEvent("Movies Info", "Opened", "New Session Started", 1, true);
+            _this.ga.setAllowIDFACollection(true);
+            _this.ga.trackView("Movies Info");
+        });
         this.postItems();
     }
     MovieInfoPage.prototype.openBookingUrl = function (url) {
@@ -267,7 +288,7 @@ var MovieInfoPage = (function () {
     //Passing day value from on click
     MovieInfoPage.prototype.dayValue = function (value, todaysData) {
         var _this = this;
-        if (value == __WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD") && todaysData != null) {
+        if (value == __WEBPACK_IMPORTED_MODULE_6_moment__().add(0, 'days').format("YYYYMMDD") && todaysData != null) {
             console.log("!!!!!!!!!!!!!!!!!!", todaysData);
             this.showsLength = todaysData.shows.length;
             this.setValues(todaysData);
@@ -282,7 +303,7 @@ var MovieInfoPage = (function () {
             var url = this.configUrl + "/app/movieInfoForDate/" + this.item._id + "?search=" + parseInt(value);
             console.log(url);
             this.http.get(url).map(function (res) { return res.json(); }).subscribe(function (results) {
-                console.log(">>Check", value == __WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD") && todaysData != null);
+                console.log(">>Check", value == __WEBPACK_IMPORTED_MODULE_6_moment__().add(0, 'days').format("YYYYMMDD") && todaysData != null);
                 _this.setValues(results);
                 _this.showsLength = results.shows.length;
             });
@@ -373,7 +394,7 @@ var MovieInfoPage = (function () {
             .post(this.configUrl + "/app/movie", body, httpOptions)
             .map(function (res) { return res.json(); })
             .subscribe(function (results) {
-            _this.dayValue(__WEBPACK_IMPORTED_MODULE_5_moment__().add(0, 'days').format("YYYYMMDD"), results);
+            _this.dayValue(__WEBPACK_IMPORTED_MODULE_6_moment__().add(0, 'days').format("YYYYMMDD"), results);
         });
     };
     MovieInfoPage.prototype.ionViewWillEnter = function () {
@@ -388,8 +409,10 @@ var MovieInfoPage = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__["a" /* InAppBrowser */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
     ], MovieInfoPage);
     return MovieInfoPage;
@@ -399,17 +422,18 @@ var MovieInfoPage = (function () {
 
 /***/ }),
 
-/***/ 349:
+/***/ 350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CinemasPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -419,6 +443,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -435,16 +460,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // @IonicPage()
 var loading;
 var CinemasPage = (function () {
-    function CinemasPage(http, navCtrl, loadingCtrl, navParams) {
+    function CinemasPage(http, navCtrl, loadingCtrl, navParams, platform, ga) {
+        var _this = this;
         this.http = http;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.platform = platform;
+        this.ga = ga;
         this.data = [];
         this.configUrl = 'http://uaeshowtimes.com:3006';
         this.icon = 'ios-arrow-down';
-        this.cinemasTitles = ["assets/img/cinescape.png", "assets/img/novo.jpg", "assets/img/reel.jpg", "assets/img/roxy.png", "assets/img/vox.jpg"];
+        this.cinemasTitles = ["assets/img/novo.jpg", "assets/img/reel.jpg", "assets/img/roxy.png", "assets/img/vox.jpg"];
         this.loadingCtrl = loadingCtrl;
         this.getItems();
+        this.platform.ready().then(function () {
+            _this.ga.trackEvent("Cinema page", "Opened", "New Session Started", 1, true);
+            _this.ga.setAllowIDFACollection(true);
+            _this.ga.trackView("Cinema page");
+        });
     }
     CinemasPage.prototype.cinemaPage = function (id) {
         // console.log("!!!!!!!!!", id)
@@ -510,7 +543,9 @@ var CinemasPage = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */]])
     ], CinemasPage);
     return CinemasPage;
 }());
@@ -519,7 +554,7 @@ var CinemasPage = (function () {
 
 /***/ }),
 
-/***/ 350:
+/***/ 351:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -527,9 +562,10 @@ var CinemasPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -539,6 +575,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -555,13 +592,16 @@ var marker;
  */
 var loading;
 var CinemaInfoPage = (function () {
-    function CinemaInfoPage(http, navCtrl, navParams, iab, loadingCtrl) {
+    function CinemaInfoPage(http, navCtrl, navParams, platform, ga, iab, loadingCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.platform = platform;
+        this.ga = ga;
         // configUrl = 'http://192.168.1.167';
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.days = [];
-        this.daySegment = __WEBPACK_IMPORTED_MODULE_4_moment__()
+        this.daySegment = __WEBPACK_IMPORTED_MODULE_5_moment__()
             .add(0, "days")
             .format("YYYYMMDD");
         this.http = http;
@@ -572,16 +612,21 @@ var CinemaInfoPage = (function () {
         //For getting next 3 day
         for (var i = 0; i < 4; i++) {
             this.days.push({
-                day: __WEBPACK_IMPORTED_MODULE_4_moment__()
+                day: __WEBPACK_IMPORTED_MODULE_5_moment__()
                     .add(i, "days")
                     .format("dddd")
                     .substring(0, 3),
-                value: __WEBPACK_IMPORTED_MODULE_4_moment__()
+                value: __WEBPACK_IMPORTED_MODULE_5_moment__()
                     .add(i, "days")
                     .format("YYYYMMDD")
             });
         }
         this.postItems(i);
+        this.platform.ready().then(function () {
+            _this.ga.trackEvent("Cinema Info", "Opened", "New Session Started", 1, true);
+            _this.ga.setAllowIDFACollection(true);
+            _this.ga.trackView("Cinema Info");
+        });
     }
     // ionViewDidLoad() {
     //   this.initializeMap();
@@ -594,7 +639,7 @@ var CinemaInfoPage = (function () {
     CinemaInfoPage.prototype.dayValue = function (value, todaysData) {
         var _this = this;
         if (value ==
-            __WEBPACK_IMPORTED_MODULE_4_moment__()
+            __WEBPACK_IMPORTED_MODULE_5_moment__()
                 .add(0, "days")
                 .format("YYYYMMDD") &&
             todaysData != null) {
@@ -672,7 +717,7 @@ var CinemaInfoPage = (function () {
             _this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
             var marker = new google.maps.Marker({
                 map: _this.map,
-                draggable: true,
+                draggable: false,
                 animation: google.maps.Animation.DROP,
                 position: options.center,
                 title: "Hello World!"
@@ -690,6 +735,8 @@ var CinemaInfoPage = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
     ], CinemaInfoPage);
@@ -700,7 +747,7 @@ var CinemaInfoPage = (function () {
 
 /***/ }),
 
-/***/ 351:
+/***/ 352:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -708,9 +755,10 @@ var CinemaInfoPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__ = __webpack_require__(37);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -726,6 +774,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the OffersPage page.
  *
@@ -734,16 +783,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var loading;
 var OffersPage = (function () {
-    function OffersPage(navCtrl, navParams, http, iab, loadingCtrl) {
+    function OffersPage(navCtrl, navParams, http, platform, ga, iab, loadingCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.http = http;
+        this.platform = platform;
+        this.ga = ga;
         this.configUrl = 'http://uaeshowtimes.com:3006';
         this.icon = 'ios-arrow-down';
         this.data = [];
         this.loadingCtrl = loadingCtrl;
         this.iab = iab;
         this.getOffers();
+        this.platform.ready().then(function () {
+            _this.ga.trackEvent("Offers", "Opened", "New Session Started", 1, true);
+            _this.ga.setAllowIDFACollection(true);
+            _this.ga.trackView("Offers");
+        });
     }
     // Code for Accordin
     OffersPage.prototype.toggleDetails = function (data, index) {
@@ -809,6 +866,8 @@ var OffersPage = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__["a" /* InAppBrowser */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
     ], OffersPage);
@@ -819,13 +878,13 @@ var OffersPage = (function () {
 
 /***/ }),
 
-/***/ 359:
+/***/ 360:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(383);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -833,7 +892,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 382:
+/***/ 383:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -842,29 +901,31 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_in_app_browser__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_maps__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_order_pipe__ = __webpack_require__(432);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_onesignal__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__agm_core__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(438);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_home_home__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_movies_movies__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_cinemas_cinemas__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_movie_info_movie_info__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_cinema_info_cinema_info__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_offers_offers__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pipes__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_ionic2_super_tabs__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_in_app_browser__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_maps__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_order_pipe__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_onesignal__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__agm_core__ = __webpack_require__(434);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_google_analytics__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_component__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_home_home__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_movies_movies__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_cinemas_cinemas__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_movie_info_movie_info__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_cinema_info_cinema_info__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_offers_offers__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes__ = __webpack_require__(452);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -893,39 +954,39 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_offers_offers__["a" /* OffersPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pipes__["a" /* FilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes__["a" /* FilterPipe */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_8_ngx_order_pipe__["a" /* OrderModule */],
-                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
-                __WEBPACK_IMPORTED_MODULE_20_ionic2_super_tabs__["c" /* SuperTabsModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__["c" /* SuperTabsModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_10__agm_core__["a" /* AgmCoreModule */].forRoot({
                     apiKey: 'AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8'
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_offers_offers__["a" /* OffersPage */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
@@ -934,7 +995,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_maps__["a" /* GoogleMaps */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* LoadingController */],
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_onesignal__["a" /* OneSignal */],
-                __WEBPACK_IMPORTED_MODULE_20_ionic2_super_tabs__["b" /* SuperTabsController */],
+                __WEBPACK_IMPORTED_MODULE_12__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
+                __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__["b" /* SuperTabsController */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* IonicErrorHandler */] }
             ]
         })
@@ -946,17 +1008,18 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 438:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_tabs_tabs__ = __webpack_require__(225);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -971,13 +1034,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 // import { HomePage } from '../pages/home/home';
 
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, oneSignal) {
+    function MyApp(platform, statusBar, splashScreen, oneSignal, ga) {
         var _this = this;
         this.oneSignal = oneSignal;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__["a" /* TabsPage */];
+        this.ga = ga;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_6__pages_tabs_tabs__["a" /* TabsPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -992,6 +1057,15 @@ var MyApp = (function () {
                 // do something when a notification is opened
             });
             _this.oneSignal.endInit();
+            //For google analytics
+            _this.ga.startTrackerWithId('UA-116214038-1')
+                .then(function () {
+                console.log('Google analytics is ready now');
+                _this.ga.trackView('test');
+                // Tracker is ready
+                // You can now track pages or set additional information such as AppVersion or UserId
+            })
+                .catch(function (e) { return console.log('Error starting GoogleAnalytics', e); });
         });
     }
     MyApp = __decorate([
@@ -1000,7 +1074,8 @@ var MyApp = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__["a" /* OneSignal */]])
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__["a" /* OneSignal */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1009,254 +1084,254 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 440:
+/***/ 441:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 227,
-	"./af.js": 227,
-	"./ar": 228,
-	"./ar-dz": 229,
-	"./ar-dz.js": 229,
-	"./ar-kw": 230,
-	"./ar-kw.js": 230,
-	"./ar-ly": 231,
-	"./ar-ly.js": 231,
-	"./ar-ma": 232,
-	"./ar-ma.js": 232,
-	"./ar-sa": 233,
-	"./ar-sa.js": 233,
-	"./ar-tn": 234,
-	"./ar-tn.js": 234,
-	"./ar.js": 228,
-	"./az": 235,
-	"./az.js": 235,
-	"./be": 236,
-	"./be.js": 236,
-	"./bg": 237,
-	"./bg.js": 237,
-	"./bm": 238,
-	"./bm.js": 238,
-	"./bn": 239,
-	"./bn.js": 239,
-	"./bo": 240,
-	"./bo.js": 240,
-	"./br": 241,
-	"./br.js": 241,
-	"./bs": 242,
-	"./bs.js": 242,
-	"./ca": 243,
-	"./ca.js": 243,
-	"./cs": 244,
-	"./cs.js": 244,
-	"./cv": 245,
-	"./cv.js": 245,
-	"./cy": 246,
-	"./cy.js": 246,
-	"./da": 247,
-	"./da.js": 247,
-	"./de": 248,
-	"./de-at": 249,
-	"./de-at.js": 249,
-	"./de-ch": 250,
-	"./de-ch.js": 250,
-	"./de.js": 248,
-	"./dv": 251,
-	"./dv.js": 251,
-	"./el": 252,
-	"./el.js": 252,
-	"./en-au": 253,
-	"./en-au.js": 253,
-	"./en-ca": 254,
-	"./en-ca.js": 254,
-	"./en-gb": 255,
-	"./en-gb.js": 255,
-	"./en-ie": 256,
-	"./en-ie.js": 256,
-	"./en-il": 257,
-	"./en-il.js": 257,
-	"./en-nz": 258,
-	"./en-nz.js": 258,
-	"./eo": 259,
-	"./eo.js": 259,
-	"./es": 260,
-	"./es-do": 261,
-	"./es-do.js": 261,
-	"./es-us": 262,
-	"./es-us.js": 262,
-	"./es.js": 260,
-	"./et": 263,
-	"./et.js": 263,
-	"./eu": 264,
-	"./eu.js": 264,
-	"./fa": 265,
-	"./fa.js": 265,
-	"./fi": 266,
-	"./fi.js": 266,
-	"./fo": 267,
-	"./fo.js": 267,
-	"./fr": 268,
-	"./fr-ca": 269,
-	"./fr-ca.js": 269,
-	"./fr-ch": 270,
-	"./fr-ch.js": 270,
-	"./fr.js": 268,
-	"./fy": 271,
-	"./fy.js": 271,
-	"./gd": 272,
-	"./gd.js": 272,
-	"./gl": 273,
-	"./gl.js": 273,
-	"./gom-latn": 274,
-	"./gom-latn.js": 274,
-	"./gu": 275,
-	"./gu.js": 275,
-	"./he": 276,
-	"./he.js": 276,
-	"./hi": 277,
-	"./hi.js": 277,
-	"./hr": 278,
-	"./hr.js": 278,
-	"./hu": 279,
-	"./hu.js": 279,
-	"./hy-am": 280,
-	"./hy-am.js": 280,
-	"./id": 281,
-	"./id.js": 281,
-	"./is": 282,
-	"./is.js": 282,
-	"./it": 283,
-	"./it.js": 283,
-	"./ja": 284,
-	"./ja.js": 284,
-	"./jv": 285,
-	"./jv.js": 285,
-	"./ka": 286,
-	"./ka.js": 286,
-	"./kk": 287,
-	"./kk.js": 287,
-	"./km": 288,
-	"./km.js": 288,
-	"./kn": 289,
-	"./kn.js": 289,
-	"./ko": 290,
-	"./ko.js": 290,
-	"./ky": 291,
-	"./ky.js": 291,
-	"./lb": 292,
-	"./lb.js": 292,
-	"./lo": 293,
-	"./lo.js": 293,
-	"./lt": 294,
-	"./lt.js": 294,
-	"./lv": 295,
-	"./lv.js": 295,
-	"./me": 296,
-	"./me.js": 296,
-	"./mi": 297,
-	"./mi.js": 297,
-	"./mk": 298,
-	"./mk.js": 298,
-	"./ml": 299,
-	"./ml.js": 299,
-	"./mr": 300,
-	"./mr.js": 300,
-	"./ms": 301,
-	"./ms-my": 302,
-	"./ms-my.js": 302,
-	"./ms.js": 301,
-	"./mt": 303,
-	"./mt.js": 303,
-	"./my": 304,
-	"./my.js": 304,
-	"./nb": 305,
-	"./nb.js": 305,
-	"./ne": 306,
-	"./ne.js": 306,
-	"./nl": 307,
-	"./nl-be": 308,
-	"./nl-be.js": 308,
-	"./nl.js": 307,
-	"./nn": 309,
-	"./nn.js": 309,
-	"./pa-in": 310,
-	"./pa-in.js": 310,
-	"./pl": 311,
-	"./pl.js": 311,
-	"./pt": 312,
-	"./pt-br": 313,
-	"./pt-br.js": 313,
-	"./pt.js": 312,
-	"./ro": 314,
-	"./ro.js": 314,
-	"./ru": 315,
-	"./ru.js": 315,
-	"./sd": 316,
-	"./sd.js": 316,
-	"./se": 317,
-	"./se.js": 317,
-	"./si": 318,
-	"./si.js": 318,
-	"./sk": 319,
-	"./sk.js": 319,
-	"./sl": 320,
-	"./sl.js": 320,
-	"./sq": 321,
-	"./sq.js": 321,
-	"./sr": 322,
-	"./sr-cyrl": 323,
-	"./sr-cyrl.js": 323,
-	"./sr.js": 322,
-	"./ss": 324,
-	"./ss.js": 324,
-	"./sv": 325,
-	"./sv.js": 325,
-	"./sw": 326,
-	"./sw.js": 326,
-	"./ta": 327,
-	"./ta.js": 327,
-	"./te": 328,
-	"./te.js": 328,
-	"./tet": 329,
-	"./tet.js": 329,
-	"./tg": 330,
-	"./tg.js": 330,
-	"./th": 331,
-	"./th.js": 331,
-	"./tl-ph": 332,
-	"./tl-ph.js": 332,
-	"./tlh": 333,
-	"./tlh.js": 333,
-	"./tr": 334,
-	"./tr.js": 334,
-	"./tzl": 335,
-	"./tzl.js": 335,
-	"./tzm": 336,
-	"./tzm-latn": 337,
-	"./tzm-latn.js": 337,
-	"./tzm.js": 336,
-	"./ug-cn": 338,
-	"./ug-cn.js": 338,
-	"./uk": 339,
-	"./uk.js": 339,
-	"./ur": 340,
-	"./ur.js": 340,
-	"./uz": 341,
-	"./uz-latn": 342,
-	"./uz-latn.js": 342,
-	"./uz.js": 341,
-	"./vi": 343,
-	"./vi.js": 343,
-	"./x-pseudo": 344,
-	"./x-pseudo.js": 344,
-	"./yo": 345,
-	"./yo.js": 345,
-	"./zh-cn": 346,
-	"./zh-cn.js": 346,
-	"./zh-hk": 347,
-	"./zh-hk.js": 347,
-	"./zh-tw": 348,
-	"./zh-tw.js": 348
+	"./af": 228,
+	"./af.js": 228,
+	"./ar": 229,
+	"./ar-dz": 230,
+	"./ar-dz.js": 230,
+	"./ar-kw": 231,
+	"./ar-kw.js": 231,
+	"./ar-ly": 232,
+	"./ar-ly.js": 232,
+	"./ar-ma": 233,
+	"./ar-ma.js": 233,
+	"./ar-sa": 234,
+	"./ar-sa.js": 234,
+	"./ar-tn": 235,
+	"./ar-tn.js": 235,
+	"./ar.js": 229,
+	"./az": 236,
+	"./az.js": 236,
+	"./be": 237,
+	"./be.js": 237,
+	"./bg": 238,
+	"./bg.js": 238,
+	"./bm": 239,
+	"./bm.js": 239,
+	"./bn": 240,
+	"./bn.js": 240,
+	"./bo": 241,
+	"./bo.js": 241,
+	"./br": 242,
+	"./br.js": 242,
+	"./bs": 243,
+	"./bs.js": 243,
+	"./ca": 244,
+	"./ca.js": 244,
+	"./cs": 245,
+	"./cs.js": 245,
+	"./cv": 246,
+	"./cv.js": 246,
+	"./cy": 247,
+	"./cy.js": 247,
+	"./da": 248,
+	"./da.js": 248,
+	"./de": 249,
+	"./de-at": 250,
+	"./de-at.js": 250,
+	"./de-ch": 251,
+	"./de-ch.js": 251,
+	"./de.js": 249,
+	"./dv": 252,
+	"./dv.js": 252,
+	"./el": 253,
+	"./el.js": 253,
+	"./en-au": 254,
+	"./en-au.js": 254,
+	"./en-ca": 255,
+	"./en-ca.js": 255,
+	"./en-gb": 256,
+	"./en-gb.js": 256,
+	"./en-ie": 257,
+	"./en-ie.js": 257,
+	"./en-il": 258,
+	"./en-il.js": 258,
+	"./en-nz": 259,
+	"./en-nz.js": 259,
+	"./eo": 260,
+	"./eo.js": 260,
+	"./es": 261,
+	"./es-do": 262,
+	"./es-do.js": 262,
+	"./es-us": 263,
+	"./es-us.js": 263,
+	"./es.js": 261,
+	"./et": 264,
+	"./et.js": 264,
+	"./eu": 265,
+	"./eu.js": 265,
+	"./fa": 266,
+	"./fa.js": 266,
+	"./fi": 267,
+	"./fi.js": 267,
+	"./fo": 268,
+	"./fo.js": 268,
+	"./fr": 269,
+	"./fr-ca": 270,
+	"./fr-ca.js": 270,
+	"./fr-ch": 271,
+	"./fr-ch.js": 271,
+	"./fr.js": 269,
+	"./fy": 272,
+	"./fy.js": 272,
+	"./gd": 273,
+	"./gd.js": 273,
+	"./gl": 274,
+	"./gl.js": 274,
+	"./gom-latn": 275,
+	"./gom-latn.js": 275,
+	"./gu": 276,
+	"./gu.js": 276,
+	"./he": 277,
+	"./he.js": 277,
+	"./hi": 278,
+	"./hi.js": 278,
+	"./hr": 279,
+	"./hr.js": 279,
+	"./hu": 280,
+	"./hu.js": 280,
+	"./hy-am": 281,
+	"./hy-am.js": 281,
+	"./id": 282,
+	"./id.js": 282,
+	"./is": 283,
+	"./is.js": 283,
+	"./it": 284,
+	"./it.js": 284,
+	"./ja": 285,
+	"./ja.js": 285,
+	"./jv": 286,
+	"./jv.js": 286,
+	"./ka": 287,
+	"./ka.js": 287,
+	"./kk": 288,
+	"./kk.js": 288,
+	"./km": 289,
+	"./km.js": 289,
+	"./kn": 290,
+	"./kn.js": 290,
+	"./ko": 291,
+	"./ko.js": 291,
+	"./ky": 292,
+	"./ky.js": 292,
+	"./lb": 293,
+	"./lb.js": 293,
+	"./lo": 294,
+	"./lo.js": 294,
+	"./lt": 295,
+	"./lt.js": 295,
+	"./lv": 296,
+	"./lv.js": 296,
+	"./me": 297,
+	"./me.js": 297,
+	"./mi": 298,
+	"./mi.js": 298,
+	"./mk": 299,
+	"./mk.js": 299,
+	"./ml": 300,
+	"./ml.js": 300,
+	"./mr": 301,
+	"./mr.js": 301,
+	"./ms": 302,
+	"./ms-my": 303,
+	"./ms-my.js": 303,
+	"./ms.js": 302,
+	"./mt": 304,
+	"./mt.js": 304,
+	"./my": 305,
+	"./my.js": 305,
+	"./nb": 306,
+	"./nb.js": 306,
+	"./ne": 307,
+	"./ne.js": 307,
+	"./nl": 308,
+	"./nl-be": 309,
+	"./nl-be.js": 309,
+	"./nl.js": 308,
+	"./nn": 310,
+	"./nn.js": 310,
+	"./pa-in": 311,
+	"./pa-in.js": 311,
+	"./pl": 312,
+	"./pl.js": 312,
+	"./pt": 313,
+	"./pt-br": 314,
+	"./pt-br.js": 314,
+	"./pt.js": 313,
+	"./ro": 315,
+	"./ro.js": 315,
+	"./ru": 316,
+	"./ru.js": 316,
+	"./sd": 317,
+	"./sd.js": 317,
+	"./se": 318,
+	"./se.js": 318,
+	"./si": 319,
+	"./si.js": 319,
+	"./sk": 320,
+	"./sk.js": 320,
+	"./sl": 321,
+	"./sl.js": 321,
+	"./sq": 322,
+	"./sq.js": 322,
+	"./sr": 323,
+	"./sr-cyrl": 324,
+	"./sr-cyrl.js": 324,
+	"./sr.js": 323,
+	"./ss": 325,
+	"./ss.js": 325,
+	"./sv": 326,
+	"./sv.js": 326,
+	"./sw": 327,
+	"./sw.js": 327,
+	"./ta": 328,
+	"./ta.js": 328,
+	"./te": 329,
+	"./te.js": 329,
+	"./tet": 330,
+	"./tet.js": 330,
+	"./tg": 331,
+	"./tg.js": 331,
+	"./th": 332,
+	"./th.js": 332,
+	"./tl-ph": 333,
+	"./tl-ph.js": 333,
+	"./tlh": 334,
+	"./tlh.js": 334,
+	"./tr": 335,
+	"./tr.js": 335,
+	"./tzl": 336,
+	"./tzl.js": 336,
+	"./tzm": 337,
+	"./tzm-latn": 338,
+	"./tzm-latn.js": 338,
+	"./tzm.js": 337,
+	"./ug-cn": 339,
+	"./ug-cn.js": 339,
+	"./uk": 340,
+	"./uk.js": 340,
+	"./ur": 341,
+	"./ur.js": 341,
+	"./uz": 342,
+	"./uz-latn": 343,
+	"./uz-latn.js": 343,
+	"./uz.js": 342,
+	"./vi": 344,
+	"./vi.js": 344,
+	"./x-pseudo": 345,
+	"./x-pseudo.js": 345,
+	"./yo": 346,
+	"./yo.js": 346,
+	"./zh-cn": 347,
+	"./zh-cn.js": 347,
+	"./zh-hk": 348,
+	"./zh-hk.js": 348,
+	"./zh-tw": 349,
+	"./zh-tw.js": 349
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -1272,11 +1347,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 440;
+webpackContext.id = 441;
 
 /***/ }),
 
-/***/ 450:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1311,7 +1386,7 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 451:
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1348,5 +1423,5 @@ var FilterPipe = (function () {
 
 /***/ })
 
-},[359]);
+},[360]);
 //# sourceMappingURL=main.js.map

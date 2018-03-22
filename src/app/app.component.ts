@@ -3,6 +3,7 @@ import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
@@ -16,7 +17,8 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    private ga: GoogleAnalytics
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -39,6 +41,16 @@ export class MyApp {
       });
   
       this.oneSignal.endInit();
+
+      //For google analytics
+      this.ga.startTrackerWithId('UA-116214038-1')
+      .then(() => {
+        console.log('Google analytics is ready now');
+            this.ga.trackView('test');
+        // Tracker is ready
+        // You can now track pages or set additional information such as AppVersion or UserId
+      })
+      .catch(e => console.log('Error starting GoogleAnalytics', e));
     });
   }
 }

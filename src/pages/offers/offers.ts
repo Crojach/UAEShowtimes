@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { OrderPipe } from 'ngx-order-pipe';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 /**
  * Generated class for the OffersPage page.
@@ -31,12 +32,19 @@ export class OffersPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
+              private platform: Platform,
+              private ga:GoogleAnalytics,
               iab: InAppBrowser,
               loadingCtrl: LoadingController,
             ) {
     this.loadingCtrl = loadingCtrl;
     this.iab = iab;
     this.getOffers();
+    this.platform.ready().then(() => {
+      this.ga.trackEvent("Offers", "Opened", "New Session Started", 1 , true)
+      this.ga.setAllowIDFACollection(true)
+      this.ga.trackView("Offers")
+    })
   }
 
   // Code for Accordin

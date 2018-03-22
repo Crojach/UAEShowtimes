@@ -12,6 +12,8 @@ import { OrderModule } from 'ngx-order-pipe';
 import { OneSignal } from "@ionic-native/onesignal";
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,7 +24,6 @@ import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
 import { OffersPage } from '../pages/offers/offers';
 import { FilterPipe } from './pipes'
-import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     GoogleMaps,
     LoadingController,
     OneSignal,
+    GoogleAnalytics,
     SuperTabsController,
     
     
