@@ -28350,6 +28350,10 @@ page-cinema-info .costumColor {
   color: #f28c5d;
 }
 
+page-cinema-info .gm-style button {
+  display: none !important;
+}
+
 page-cinema-info .customFont {
   font-size: 0.6em;
 }

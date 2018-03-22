@@ -185,7 +185,7 @@ export class CinemaInfoPage {
         );
         var marker = new google.maps.Marker({
           map: this.map,
-          draggable: true,
+          draggable: false,
           animation: google.maps.Animation.DROP, 
           position: options.center,
           title:"Hello World!"
