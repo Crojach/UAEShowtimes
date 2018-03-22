@@ -4,43 +4,46 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<ion-header>
+    <!-- ---------iframe with thumbnail------------ -->
+    <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>
+    <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
+    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
+    <ion-thumbnail item-start>
+    <img class="customImg upShadow" [src]="item.thumbnailImage">
+    </ion-thumbnail>
+    <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">
+    <ion-item style="padding: 2% 1% 4% 34%;">
+      <ion-row style="justify-content: space-between;">
+          <h2 item-left>{{ item.title }}</h2>
+          <p style="margin:0;" item-end>{{ item.ratings }}</p>
+      </ion-row>
+      <p>{{ item.releaseDate.split('-')[0] }}</p>
+      <ion-row style="margin-top: 10%;">
+          <p style="margin:0;padding: 1%;" item-left>
+              <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
+              <span style="margin: 0 0 0 14%;">Release Date</span>
+          </p>
+          <p style="margin:0;padding: 1%;" item-end>
+              <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
+              <span style="margin: 0 0 0 14%;">Duration</span>
+          </p>
+      </ion-row>
+    </ion-item>
+    </ion-card>
+    </div>
+    
+    <div>
+        <ion-segment [(ngModel)]="selectedSegment">
+            <ion-segment-button value="Info">Info</ion-segment-button>
+            <ion-segment-button value="Cast">Cast</ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
 
 
 <ion-content>
-              <!-- ---------iframe with thumbnail------------ -->
-    <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>
-        <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
-        <ion-thumbnail item-start>
-            <img class="customImg upShadow" [src]="item.thumbnailImage">
-        </ion-thumbnail>
-        <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 14px 0;">
-            <ion-item style="padding: 2% 1% 4% 34%;">
-                <ion-row style="justify-content: space-between;">
-                    <h2 item-left>{{ item.title }}</h2>
-                    <p style="margin:0;" item-end>{{ item.ratings }}</p>
-                </ion-row>
-                <p>{{ item.releaseDate.split('-')[0] }}</p>
-                <ion-row style="margin-top: 10%;">
-                    <p style="margin:0;padding: 1%;" item-left>
-                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
-                        <span style="margin: 0 0 0 14%;">Release Date</span>
-                    </p>
-                    <p style="margin:0;padding: 1%;" item-end>
-                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
-                        <span style="margin: 0 0 0 14%;">Duration</span>
-                    </p>
-                </ion-row>
-            </ion-item>
-        </ion-card>
-
-        <div>
-            <ion-segment [(ngModel)]="selectedSegment">
-                <ion-segment-button value="Info">Info</ion-segment-button>
-                <ion-segment-button value="Cast">Cast</ion-segment-button>
-            </ion-segment>
-        </div>
-
         <div [ngSwitch]="selectedSegment">
             <ion-list class="iconColor" *ngSwitchCase="'Info'">
                 <ion-card class="infoCard">
