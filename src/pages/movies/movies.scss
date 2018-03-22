@@ -1,4 +1,8 @@
 page-movies {
+    .item ion-thumbnail img {
+        width: 105px;
+        height: 137px;
+    }
     .toolbar-content.toolbar-content-ios .searchSort {
         margin-top: 2%;
     }

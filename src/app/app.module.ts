@@ -21,7 +21,6 @@ import { CinemasPage } from '../pages/cinemas/cinemas';
 import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
 import { OffersPage } from '../pages/offers/offers';
-import { GoogleMapPage } from '../pages/google-map/google-map';
 import { FilterPipe } from './pipes'
 import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
 
@@ -37,7 +36,6 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     CinemaInfoPage,
     OffersPage,
     FilterPipe,
-    GoogleMapPage,
     
   ],
   imports: [
@@ -61,7 +59,6 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
     MovieInfoPage,
     CinemaInfoPage,
     OffersPage,
-    GoogleMapPage
   ],
   providers: [
     StatusBar,

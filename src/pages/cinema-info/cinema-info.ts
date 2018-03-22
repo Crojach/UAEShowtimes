@@ -4,7 +4,6 @@ import { Http, RequestOptions, Headers } from "@angular/http";
 import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
-import { GoogleMapPage } from "../google-map/google-map";
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -73,9 +72,7 @@ export class CinemaInfoPage {
   // }
 
   // Pushing value to generate map
-  goToGoogleMap() {
-    this.navCtrl.push(GoogleMapPage);
-  }
+  
 
   openBookingUrl(url) {
     const browser = this.iab.create(url);

@@ -28517,10 +28517,6 @@ page-musics .cinemaName {
   font-size: 1.4em;
 }
 
-agm-map {
-  height: 300px;
-}
-
 page-movie-info .costumColor {
   color: #488AFF;
 }
@@ -28602,7 +28598,7 @@ page-movie-info .customImg {
   z-index: 1;
   padding: 0%;
   border-radius: 9%;
-  margin: 7px;
+  margin: 4%;
   top: 6.3em;
 }
 
@@ -28724,6 +28720,16 @@ page-movie-info .back {
   position: absolute;
   font-size: 2em;
   top: 0.7em;
+}
+
+page-movie-info .dropDown {
+  margin: 12% 1% auto 1%;
+  font-size: 1.3em;
+}
+
+page-movies .item ion-thumbnail img {
+  width: 105px;
+  height: 137px;
 }
 
 page-movies .toolbar-content.toolbar-content-ios .searchSort {
