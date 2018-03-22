@@ -28722,8 +28722,9 @@ page-movie-info .back {
   z-index: 1;
   color: coral;
   position: absolute;
-  font-size: 2em;
-  top: 0.7em;
+  font-size: 2.5em;
+  top: 0.2em;
+  margin: 3%;
 }
 
 page-movie-info .dropDown {

@@ -69,6 +69,7 @@ export class MovieInfoPage {
   goBack(){
     this.navCtrl.pop();
   }
+  
 
   //Passing day value from on click
   dayValue(value,todaysData){

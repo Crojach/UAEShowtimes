@@ -32,7 +32,7 @@
                     </ion-row>
                     <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
                         <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
-                  <img src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
+                  <img *ngIf="item.offer.image" src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
                 </object>
                         <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>
                     </div>
