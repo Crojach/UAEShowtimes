@@ -5,6 +5,7 @@ import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { CallNumber } from '@ionic-native/call-number';
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -49,6 +50,7 @@ export class CinemaInfoPage {
     private ga:GoogleAnalytics,
     iab: InAppBrowser,
     loadingCtrl: LoadingController,
+    private callNumber: CallNumber,
   ) {
     this.http = http;
     this.iab = iab;
@@ -75,13 +77,14 @@ export class CinemaInfoPage {
     })
   }
 
-  // ionViewDidLoad() {
-  //   this.initializeMap();
-  // }
+  // Function to launch Dailer
+  launchDialer(n:string){
+    this.callNumber.callNumber(n, true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
+}
 
-  // Pushing value to generate map
-  
-
+  // Function to open in app browser
   openBookingUrl(url) {
     const browser = this.iab.create(url);
   }
