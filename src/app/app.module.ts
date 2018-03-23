@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -69,6 +70,7 @@ import { FilterPipe } from './pipes'
     LoadingController,
     OneSignal,
     GoogleAnalytics,
+    ScreenOrientation,
     SuperTabsController,
     
     

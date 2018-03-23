@@ -4,6 +4,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
@@ -18,8 +19,21 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private oneSignal: OneSignal,
-    private ga: GoogleAnalytics
+    private ga: GoogleAnalytics,
+    private screenOrientation: ScreenOrientation,
   ) {
+
+      // code for ScreenOrientation
+
+      // get current
+      console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
+
+      // set to landscape
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+
+    // Code for google analytics 
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
