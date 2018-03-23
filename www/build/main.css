@@ -28356,6 +28356,7 @@ page-cinema-info .gm-style button {
 
 page-cinema-info .customFont {
   font-size: 0.6em;
+  color: #8D9BA2;
 }
 
 page-cinema-info ion-icon {
@@ -28375,7 +28376,7 @@ page-cinema-info .costumButton {
   padding: 9%;
   margin: 4px;
   font-size: 0.8em;
-  width: 95%;
+  width: 90%;
 }
 
 page-cinema-info .customCinema1 {
@@ -28384,10 +28385,11 @@ page-cinema-info .customCinema1 {
 
 page-cinema-info p.text {
   margin: auto 0 auto 0;
-  font-size: 1.2rem;
+  font-size: 0.6em;
   white-space: pre-wrap;
   overflow: auto;
   display: inline;
+  color: #8D9BA2;
 }
 
 page-cinema-info .wordBreak {
@@ -28442,7 +28444,7 @@ page-cinema-info .segment .segment-button:last-of-type {
 
 page-cinema-info .card h4 {
   margin: auto;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: normal;
   padding: 3%;
   color: #959799;
@@ -28451,6 +28453,13 @@ page-cinema-info .card h4 {
 page-cinema-info .rowMargin {
   margin: 8%;
   font-size: 1.6em;
+}
+
+page-cinema-info ion-icon {
+  display: inline-block;
+  font-size: 1.6em;
+  margin-right: 5%;
+  color: #36454F;
 }
 
 page-musics .toolbar-background {
@@ -28552,7 +28561,8 @@ page-movie-info .toolbar-title {
   color: #fff;
 }
 
-page-movie-info .header .toolbar-background, page-movie-info .footer .toolbar-background {
+page-movie-info .header .toolbar-background,
+page-movie-info .footer .toolbar-background {
   border-style: none;
   border-color: transparent;
 }
@@ -28571,7 +28581,10 @@ page-movie-info .item {
   padding-left: 0px;
 }
 
-page-movie-info .item ion-avatar[item-left], page-movie-info .item ion-thumbnail[item-left], page-movie-info .item ion-avatar[item-start], page-movie-info .item ion-thumbnail[item-start] {
+page-movie-info .item ion-avatar[item-left],
+page-movie-info .item ion-thumbnail[item-left],
+page-movie-info .item ion-avatar[item-start],
+page-movie-info .item ion-thumbnail[item-start] {
   margin: 3%;
 }
 
@@ -28579,7 +28592,12 @@ page-movie-info .item h2 {
   font-size: 14px;
 }
 
-page-movie-info [padding] h1:first-child, page-movie-info [padding] h2:first-child, page-movie-info [padding] h3:first-child, page-movie-info [padding] h4:first-child, page-movie-info [padding] h5:first-child, page-movie-info [padding] h6:first-child {
+page-movie-info [padding] h1:first-child,
+page-movie-info [padding] h2:first-child,
+page-movie-info [padding] h3:first-child,
+page-movie-info [padding] h4:first-child,
+page-movie-info [padding] h5:first-child,
+page-movie-info [padding] h6:first-child {
   margin-top: 0rem;
 }
 
@@ -28663,7 +28681,8 @@ page-movie-info .upShadow {
   box-shadow: 0 32px 31px -18px rgba(0, 0, 0, 0.2);
 }
 
-page-movie-info h3, page-movie-info h4 {
+page-movie-info h3,
+page-movie-info h4 {
   color: #36454F;
 }
 
@@ -28733,8 +28752,21 @@ page-movie-info .back {
 }
 
 page-movie-info .dropDown {
-  margin: 12% 1% auto 1%;
+  margin: auto 2% auto 0 !important;
   font-size: 1.3em;
+}
+
+page-movie-info .CinemaFont {
+  font-size: 1em !important;
+  margin: auto;
+  color: #717171;
+}
+
+page-movie-info .multipexNames {
+  margin: 2px 0;
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #717171;
 }
 
 page-movies .searchbar-md .searchbar-input {
@@ -28745,7 +28777,7 @@ page-movies .searchbar-md .searchbar-input {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 3rem;
-  color: #141414;
+  color: #5B5B5B;
   background-color: #ffffff14;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -28762,7 +28794,7 @@ page-movies .select-md {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 3rem;
-  color: #999;
+  color: #5B5B5B;
   background-color: #ffffff14;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -28815,12 +28847,16 @@ page-movies ion-navbar.toolbar {
   text-align: center;
 }
 
-page-movies .header .toolbar-background, page-movies .footer .toolbar-background {
+page-movies .header .toolbar-background,
+page-movies .footer .toolbar-background {
   border-style: none;
   border-color: transparent;
 }
 
-page-movies .header-md::after, page-movies .tabs-md[tabsPlacement="top"] > .tabbar::after, page-movies .footer-md::before, page-movies .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+page-movies .header-md::after,
+page-movies .tabs-md[tabsPlacement="top"] > .tabbar::after,
+page-movies .footer-md::before,
+page-movies .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
   background-image: unset;
 }
 
@@ -28837,7 +28873,8 @@ page-movies .item {
   padding-left: 0px;
 }
 
-page-movies .item ion-thumbnail ion-img, page-movies .item ion-thumbnail img {
+page-movies .item ion-thumbnail ion-img,
+page-movies .item ion-thumbnail img {
   width: 90px;
   height: 126px;
 }
@@ -28846,7 +28883,12 @@ page-movies .item h2 {
   font-size: 14px;
 }
 
-page-movies [padding] h1:first-child, page-movies [padding] h2:first-child, page-movies [padding] h3:first-child, page-movies [padding] h4:first-child, page-movies [padding] h5:first-child, page-movies [padding] h6:first-child {
+page-movies [padding] h1:first-child,
+page-movies [padding] h2:first-child,
+page-movies [padding] h3:first-child,
+page-movies [padding] h4:first-child,
+page-movies [padding] h5:first-child,
+page-movies [padding] h6:first-child {
   margin-top: 0rem;
 }
 

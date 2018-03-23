@@ -16,21 +16,21 @@
     <div id="map_canvas"></div>
     <ion-card class="cardCurve">
         <div *ngFor="let d of cinemaInfo">
-                <ion-row class="rowMargin">
-                    <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
-                    <ion-col>
-                        <h3>{{d.cinemaName}}</h3>
-                        <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
-                    </ion-col>
-                </ion-row>
-                <ion-row class="rowMargin">
-                    <ion-icon ios="ios-call" md="md-call"></ion-icon>
-                        <p class="text" (click)="launchDialer(d.phoneNumber)">{{ d.phoneNumber }}</p>
-                </ion-row>
-                <ion-row class="rowMargin">
-                    <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>
-                        <p class="text wordBreak" (click)="launchMail(d.emailId)">{{ d.emailId }} </p>
-                </ion-row>
+            <ion-row class="rowMargin">
+                <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
+                <ion-col>
+                    <h2>{{d.cinemaName}}</h2>
+                    <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row class="rowMargin">
+                <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                <p class="text" (click)="launchDialer(d.phoneNumber)">{{ d.phoneNumber }}</p>
+            </ion-row>
+            <ion-row class="rowMargin">
+                <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>
+                <p class="text wordBreak" (click)="launchMail(d.emailId)">{{ d.emailId }} </p>
+            </ion-row>
         </div>
     </ion-card>
     <!-- -------------------ShowTime------------------------------------------ -->
