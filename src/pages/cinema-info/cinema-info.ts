@@ -92,8 +92,8 @@ export class CinemaInfoPage {
         to: to,
         cc: '',
         bcc: '',
-        subject: 'Cordova Icons',
-        body: 'How are you? Nice greetings from Leipzig',
+        subject: 'Testing',
+        body: 'How are you? Nice greetings from UAE showtimes',
         isHtml: true
       };
       

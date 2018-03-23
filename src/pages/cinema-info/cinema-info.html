@@ -28,7 +28,7 @@
             <ion-item>
                 <ion-row>
                     <ion-icon ios="ios-call" md="md-call">
-                        <p class="text" (click)="launchDialer('d.phoneNumber')">{{ d.phoneNumber }}</p>
+                        <p class="text" (click)="launchDialer(d.phoneNumber)">{{ d.phoneNumber }}</p>
                     </ion-icon>
                 </ion-row>
             </ion-item>
@@ -36,7 +36,7 @@
             <ion-item>
                 <ion-row>
                     <ion-icon ios="ios-mail" md="md-mail" nopadding>
-                        <p class="text wordBreak" (click)="launchMail('d.emailId')">{{ d.emailId }} </p>
+                        <p class="text wordBreak" (click)="launchMail(d.emailId)">{{ d.emailId }} </p>
                     </ion-icon>
 
                 </ion-row>
