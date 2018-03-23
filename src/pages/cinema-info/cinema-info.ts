@@ -6,6 +6,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -51,6 +52,7 @@ export class CinemaInfoPage {
     iab: InAppBrowser,
     loadingCtrl: LoadingController,
     private callNumber: CallNumber,
+    private emailComposer: EmailComposer,
   ) {
     this.http = http;
     this.iab = iab;
@@ -83,6 +85,22 @@ export class CinemaInfoPage {
     .then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
 }
+
+    // Function to Launch EmailComoper
+    launchMail(to){
+      let email = {
+        to: to,
+        cc: '',
+        bcc: '',
+        subject: 'Cordova Icons',
+        body: 'How are you? Nice greetings from Leipzig',
+        isHtml: true
+      };
+      
+      // Send a text message using default options
+      this.emailComposer.open(email);
+    }
+
 
   // Function to open in app browser
   openBookingUrl(url) {

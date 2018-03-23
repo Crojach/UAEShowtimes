@@ -94,4 +94,5 @@
     <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-email-composer" spec="^0.8.15" />
 </widget>

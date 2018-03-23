@@ -16,6 +16,7 @@ import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 import { MyApp } from './app.component';
@@ -74,6 +75,7 @@ import { FilterPipe } from './pipes'
     CallNumber,
     GoogleAnalytics,
     ScreenOrientation,
+    EmailComposer,
     SuperTabsController,
     
     

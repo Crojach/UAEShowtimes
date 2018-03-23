@@ -565,8 +565,9 @@ var CinemasPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_email_composer__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -576,6 +577,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -594,17 +596,18 @@ var marker;
  */
 var loading;
 var CinemaInfoPage = (function () {
-    function CinemaInfoPage(http, navCtrl, navParams, platform, ga, iab, loadingCtrl, callNumber) {
+    function CinemaInfoPage(http, navCtrl, navParams, platform, ga, iab, loadingCtrl, callNumber, emailComposer) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.platform = platform;
         this.ga = ga;
         this.callNumber = callNumber;
+        this.emailComposer = emailComposer;
         // configUrl = 'http://192.168.1.167';
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.days = [];
-        this.daySegment = __WEBPACK_IMPORTED_MODULE_6_moment__()
+        this.daySegment = __WEBPACK_IMPORTED_MODULE_7_moment__()
             .add(0, "days")
             .format("YYYYMMDD");
         this.http = http;
@@ -615,11 +618,11 @@ var CinemaInfoPage = (function () {
         //For getting next 3 day
         for (var i = 0; i < 4; i++) {
             this.days.push({
-                day: __WEBPACK_IMPORTED_MODULE_6_moment__()
+                day: __WEBPACK_IMPORTED_MODULE_7_moment__()
                     .add(i, "days")
                     .format("dddd")
                     .substring(0, 3),
-                value: __WEBPACK_IMPORTED_MODULE_6_moment__()
+                value: __WEBPACK_IMPORTED_MODULE_7_moment__()
                     .add(i, "days")
                     .format("YYYYMMDD")
             });
@@ -637,6 +640,19 @@ var CinemaInfoPage = (function () {
             .then(function () { return console.log('Launched dialer!'); })
             .catch(function () { return console.log('Error launching dialer'); });
     };
+    // Function to Launch EmailComoper
+    CinemaInfoPage.prototype.launchMail = function (to) {
+        var email = {
+            to: to,
+            cc: '',
+            bcc: '',
+            subject: 'Cordova Icons',
+            body: 'How are you? Nice greetings from Leipzig',
+            isHtml: true
+        };
+        // Send a text message using default options
+        this.emailComposer.open(email);
+    };
     // Function to open in app browser
     CinemaInfoPage.prototype.openBookingUrl = function (url) {
         var browser = this.iab.create(url);
@@ -645,7 +661,7 @@ var CinemaInfoPage = (function () {
     CinemaInfoPage.prototype.dayValue = function (value, todaysData) {
         var _this = this;
         if (value ==
-            __WEBPACK_IMPORTED_MODULE_6_moment__()
+            __WEBPACK_IMPORTED_MODULE_7_moment__()
                 .add(0, "days")
                 .format("YYYYMMDD") &&
             todaysData != null) {
@@ -736,12 +752,12 @@ var CinemaInfoPage = (function () {
     };
     CinemaInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>Cinema Info</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div text-center id="map_canvas"></div>\n    <ion-card>\n        <div *ngFor="let d of cinemaInfo">\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-navigate" md="md-navigate">\n                        <h3>{{d.cinemaName}}</h3>\n                        <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-call" md="md-call">\n                        <p class="text" (click)="launchDialer(\'d.phoneNumber\')">{{ d.phoneNumber }}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-mail" md="md-mail" nopadding>\n                        <p class="text wordBreak">{{ d.emailId }} </p>\n                    </ion-icon>\n\n                </ion-row>\n            </ion-item>\n        </div>\n    </ion-card>\n    <!-- -------------------ShowTime------------------------------------------ -->\n    <h4>Showtimes</h4>\n    <div>\n        <ion-row>\n            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n            </ion-segment>\n        </ion-row> <br>\n        <div *ngFor="let session of selectedDay">\n            <ion-card class="cardCurve">\n                <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                <ion-row>\n                    <div style="width:33.33%" *ngFor="let time of session.sessions">\n                        <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                    </div>\n                </ion-row>\n            </ion-card>\n        </div>\n    </div>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
+            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>Cinema Info</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div text-center id="map_canvas"></div>\n    <ion-card>\n        <div *ngFor="let d of cinemaInfo">\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-navigate" md="md-navigate">\n                        <h3>{{d.cinemaName}}</h3>\n                        <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-call" md="md-call">\n                        <p class="text" (click)="launchDialer(\'d.phoneNumber\')">{{ d.phoneNumber }}</p>\n                    </ion-icon>\n                </ion-row>\n            </ion-item>\n\n            <ion-item>\n                <ion-row>\n                    <ion-icon ios="ios-mail" md="md-mail" nopadding>\n                        <p class="text wordBreak" (click)="launchMail(\'d.emailId\')">{{ d.emailId }} </p>\n                    </ion-icon>\n\n                </ion-row>\n            </ion-item>\n        </div>\n    </ion-card>\n    <!-- -------------------ShowTime------------------------------------------ -->\n    <h4>Showtimes</h4>\n    <div>\n        <ion-row>\n            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n            </ion-segment>\n        </ion-row> <br>\n        <div *ngFor="let session of selectedDay">\n            <ion-card class="cardCurve">\n                <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                <ion-row>\n                    <div style="width:33.33%" *ngFor="let time of session.sessions">\n                        <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                    </div>\n                </ion-row>\n            </ion-card>\n        </div>\n    </div>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_email_composer__["a" /* EmailComposer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_email_composer__["a" /* EmailComposer */]) === "function" && _j || Object])
     ], CinemaInfoPage);
     return CinemaInfoPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=cinema-info.js.map
@@ -913,15 +929,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_google_analytics__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_screen_orientation__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_call_number__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_home_home__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_tabs_tabs__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_movies_movies__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_cinemas_cinemas__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_movie_info_movie_info__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_cinema_info_cinema_info__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_offers_offers__ = __webpack_require__(359);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pipes__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_email_composer__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_component__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes__ = __webpack_require__(452);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -953,28 +970,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_offers_offers__["a" /* OffersPage */],
-                __WEBPACK_IMPORTED_MODULE_23__pipes__["a" /* FilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pipes__["a" /* FilterPipe */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_8_ngx_order_pipe__["a" /* OrderModule */],
-                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
                 __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__["c" /* SuperTabsModule */].forRoot(),
@@ -982,16 +1000,16 @@ var AppModule = (function () {
                     apiKey: 'AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8'
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* MyApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__["a" /* OffersPage */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1003,6 +1021,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_14__ionic_native_call_number__["a" /* CallNumber */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
                 __WEBPACK_IMPORTED_MODULE_13__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
+                __WEBPACK_IMPORTED_MODULE_15__ionic_native_email_composer__["a" /* EmailComposer */],
                 __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__["b" /* SuperTabsController */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* IonicErrorHandler */] }
             ]
