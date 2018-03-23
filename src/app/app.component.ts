@@ -29,8 +29,6 @@ export class MyApp {
       // get current
       console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
       // set to landscape
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY);
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT_SECONDARY);
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       
 

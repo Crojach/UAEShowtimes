@@ -28375,7 +28375,7 @@ page-cinema-info .costumButton {
   padding: 9%;
   margin: 4px;
   font-size: 0.8em;
-  width: 7em;
+  width: 95%;
 }
 
 page-cinema-info .customCinema1 {
@@ -28446,6 +28446,10 @@ page-cinema-info .card h4 {
   font-weight: normal;
   padding: 3%;
   color: #959799;
+}
+
+page-cinema-info .rowMargin {
+  margin: 10%;
 }
 
 page-musics .toolbar-background {
