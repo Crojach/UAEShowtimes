@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { NavController, NavParams, Platform } from "ionic-angular";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
-import { LoadingController } from "ionic-angular";
 import { MovieInfoPage } from "../movie-info/movie-info";
 import { OrderPipe } from "ngx-order-pipe";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -19,7 +18,6 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 // @IonicPage()
 
-let loading;
 @Component({
   selector: "page-movies",
   templateUrl: "movies.html"
@@ -28,7 +26,6 @@ export class MoviesPage {
   configUrl = "http://uaeshowtimes.com:3006";
   // configUrl = 'http://192.168.1.167';
   items: any;
-  loadingCtrl: any;
   order: any = "releaseDate";
 
   constructor(
@@ -37,10 +34,8 @@ export class MoviesPage {
     public http: Http,
     private platform: Platform,
     private ga:GoogleAnalytics,
-    loadingCtrl: LoadingController,
-    private splashScreen: SplashScreen
+    private splashScreen: SplashScreen,
   ) {
-    this.loadingCtrl = loadingCtrl;
     this.getItems();
     
     this.platform.ready().then(() => {

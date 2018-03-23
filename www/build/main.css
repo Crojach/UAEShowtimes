@@ -28449,7 +28449,8 @@ page-cinema-info .card h4 {
 }
 
 page-cinema-info .rowMargin {
-  margin: 10%;
+  margin: 8%;
+  font-size: 1.6em;
 }
 
 page-musics .toolbar-background {
@@ -28536,7 +28537,7 @@ page-movie-info .costumButton {
   padding: 9%;
   margin: 4px;
   font-size: 0.8em;
-  width: 7em;
+  width: 95%;
 }
 
 page-movie-info .customCinema {
@@ -28736,6 +28737,54 @@ page-movie-info .dropDown {
   font-size: 1.3em;
 }
 
+page-movies .searchbar-md .searchbar-input {
+  padding: 6px 55px;
+  border-radius: 12px;
+  background-position: left 8px center;
+  height: auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: #141414;
+  background-color: #ffffff14;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+page-movies .select-md {
+  /* height: unset; */
+  width: 25%;
+  padding: 6px 14px;
+  margin: auto;
+  border-radius: 12px;
+  background-position: left 8px center;
+  height: auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: #999;
+  background-color: #ffffff14;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+page-movies .select-ios {
+  /* height: unset; */
+  width: 25%;
+  padding: 1px 14px;
+  margin: auto;
+  border-radius: 3px;
+  background-position: left 8px center;
+  height: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
 page-movies .item ion-thumbnail img {
   width: 105px;
   height: 137px;
@@ -28833,6 +28882,11 @@ page-movies .sort button {
 
 page-movies .search {
   width: 65%;
+}
+
+page-movies .headerShadow {
+  -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
 }
 
 page-offers .item {

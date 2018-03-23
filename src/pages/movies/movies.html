@@ -4,19 +4,17 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
+<ion-header >
     <ion-navbar>
         <ion-title>Movies</ion-title> <br>
         <ion-row class="searchSort">
             <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
-            <ion-select class="sort" [(ngModel)]="order">
-                <ion-option value="releaseDate">Date</ion-option>
-                <ion-option value="title">Title</ion-option>
-            </ion-select>
+              <ion-select class="sort" [(ngModel)]="order">
+                  <ion-option value="releaseDate">Date</ion-option>
+                  <ion-option value="title">Title</ion-option>
+              </ion-select>
         </ion-row>
     </ion-navbar>
-
 </ion-header>
 
 <ion-content>
