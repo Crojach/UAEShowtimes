@@ -26,6 +26,6 @@ export class TabsPage {
   offersRoot: any = OffersPage;
   
   constructor(public navCtrl: NavController) {}
-
+  
 
 }

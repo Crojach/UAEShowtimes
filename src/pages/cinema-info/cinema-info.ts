@@ -28,6 +28,7 @@ export class CinemaInfoPage {
   // configUrl = 'http://192.168.1.167';
   configUrl = "http://uaeshowtimes.com:3006";
   cinemaId: any;
+  cinemaName: any = '';
   http: any;
   cinemaInfo: any;
   movieInfo: any;
@@ -71,6 +72,7 @@ export class CinemaInfoPage {
     this.loadingCtrl = loadingCtrl;
     this.currentTime = Date.now();
     this.cinemaId = this.navParams.get("cinemaId");
+    this.cinemaName = this.navParams.get("cinemaName");
     //For getting next 3 day
     for (var i = 0; i < 4; i++) {
       this.days.push({
@@ -192,9 +194,10 @@ export class CinemaInfoPage {
       .post(`${this.configUrl}/app/cinema`, body, httpOptions)
       .map(res => res.json())
       .subscribe(results => {
-        console.log("POWER", results);
         this.cinemaInfo = results.cinema;
+        this.cinemaName = results.cinema[0].multiplexName;
         this.selectedDay = results.finalMovies;
+        console.log("POWER", results.cinema[0].multiplexName);
 
         this.initializeMap(
           this.cinemaInfo[0].latitude,

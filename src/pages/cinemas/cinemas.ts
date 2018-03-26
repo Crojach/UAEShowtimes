@@ -47,10 +47,11 @@ export class CinemasPage {
     })
   }
 
-  cinemaPage(id){
+  cinemaPage(id, cinemaName){
     // console.log("!!!!!!!!!", id)
     this.navCtrl.push(CinemaInfoPage,{
-      cinemaId : id
+      cinemaId : id,
+      cinemaName: cinemaName
    })
   }
 
