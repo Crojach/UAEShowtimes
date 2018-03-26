@@ -1,4 +1,8 @@
 page-movie-info {
+    ion-navbar.toolbar {
+        border-color: #f28c5d;
+        background: #f28c5d;
+    }
     .costumColor {
         color: #488AFF
     }
@@ -25,11 +29,11 @@ page-movie-info {
         border-style: none;
         border-color: transparent;
     }
-    .content {
-        color: #000;
-        // background: #f0f1f4;
-        background: linear-gradient(180deg, #f28c5d 24%, #f0f1f4 44%);
-    }
+    // .content {
+    //     color: #000;
+    //     // background: #f0f1f4;
+    //     background: linear-gradient(180deg, #f28c5d 24%, #f0f1f4 44%);
+    // }
     .item h2 {
         white-space: pre-wrap;
     }
@@ -193,5 +197,9 @@ page-movie-info {
         font-size: 1.3em;
         font-weight: normal;
         color: #717171;
+    }
+    .headerShadow {
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
     }
 }

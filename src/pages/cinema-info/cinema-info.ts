@@ -7,6 +7,7 @@ import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SuperTabsModule, SuperTabsController, SuperTabs } from 'ionic2-super-tabs';
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -42,6 +43,17 @@ export class CinemaInfoPage {
     .format(`YYYYMMDD`);
   latitude: any;
   longitude: any;
+
+  // Method for hiding SuperTabs (swipe)
+  @ViewChild(SuperTabs) superTabs: SuperTabs;
+  
+  slideToIndex(index: number) {
+    this.superTabs.slideTo(index);
+  }
+  
+  hideToolbar() {
+    this.superTabs.showToolbar(false);
+  }
 
   constructor(
     http: Http,

@@ -5,9 +5,15 @@
   Ionic pages and navigation.
 -->
 <!-- ---------iframe with thumbnail------------ -->
+<ion-header class="headerShadow">
 
+    <ion-navbar>
+        <ion-title>Movie Info</ion-title>
+    </ion-navbar>
+
+</ion-header>
 <ion-content>
-    <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon>
+    <!-- <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon> -->
     <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
         <ion-thumbnail item-start>

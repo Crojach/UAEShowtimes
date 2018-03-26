@@ -28535,6 +28535,11 @@ page-musics .cinemaName {
   font-size: 1.4em;
 }
 
+page-movie-info ion-navbar.toolbar {
+  border-color: #f28c5d;
+  background: #f28c5d;
+}
+
 page-movie-info .costumColor {
   color: #488AFF;
 }
@@ -28565,12 +28570,6 @@ page-movie-info .header .toolbar-background,
 page-movie-info .footer .toolbar-background {
   border-style: none;
   border-color: transparent;
-}
-
-page-movie-info .content {
-  color: #000;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(24%, #f28c5d), color-stop(44%, #f0f1f4));
-  background: linear-gradient(180deg, #f28c5d 24%, #f0f1f4 44%);
 }
 
 page-movie-info .item h2 {
@@ -28767,6 +28766,11 @@ page-movie-info .multipexNames {
   font-size: 1.3em;
   font-weight: normal;
   color: #717171;
+}
+
+page-movie-info .headerShadow {
+  -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
 }
 
 page-movies .searchbar-md .searchbar-input {
