@@ -28462,6 +28462,11 @@ page-cinema-info ion-icon {
   color: #36454F;
 }
 
+page-cinema-info .headerShadow {
+  -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
 page-musics .headerShadow {
   -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);

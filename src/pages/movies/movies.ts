@@ -27,6 +27,7 @@ export class MoviesPage {
   // configUrl = 'http://192.168.1.167';
   items: any;
   order: any = "releaseDate";
+  rootNavCtrl: NavController;
 
   constructor(
     public navCtrl: NavController,
@@ -36,6 +37,7 @@ export class MoviesPage {
     private ga:GoogleAnalytics,
     private splashScreen: SplashScreen,
   ) {
+    this.rootNavCtrl = this.navParams.get("rootNavCtrl");
     this.getItems();
     
     this.platform.ready().then(() => {
@@ -46,7 +48,7 @@ export class MoviesPage {
   }
   bookNow(item) {
     // console.log("movie page", item);
-    this.navCtrl.push(MovieInfoPage, {
+    this.rootNavCtrl.push(MovieInfoPage, {
       movieInfo: item
     });
   }

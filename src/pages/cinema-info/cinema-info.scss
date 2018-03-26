@@ -127,4 +127,8 @@ page-cinema-info {
         margin-right: 5%;
         color: #36454F;
     }
+    .headerShadow {
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+    }
 }

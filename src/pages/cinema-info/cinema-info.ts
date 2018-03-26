@@ -47,14 +47,6 @@ export class CinemaInfoPage {
 
   // Method for hiding SuperTabs (swipe)
   @ViewChild(SuperTabs) superTabs: SuperTabs;
-  
-  slideToIndex(index: number) {
-    this.superTabs.slideTo(index);
-  }
-  
-  hideToolbar() {
-    this.superTabs.showToolbar(false);
-  }
 
   constructor(
     http: Http,
