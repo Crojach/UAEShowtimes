@@ -17,6 +17,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 
 import { MyApp } from './app.component';
@@ -73,6 +74,7 @@ import { FilterPipe } from './pipes'
     LoadingController,
     OneSignal,
     CallNumber,
+    Diagnostic,
     GoogleAnalytics,
     ScreenOrientation,
     EmailComposer,

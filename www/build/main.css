@@ -28783,6 +28783,13 @@ page-movie-info .headerShadow {
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
 }
 
+page-movies .select .select-icon {
+  position: relative;
+  width: 12px;
+  height: 19px;
+  margin: auto;
+}
+
 page-movies .searchbar-md .searchbar-input {
   padding: 6px 55px;
   border-radius: 12px;

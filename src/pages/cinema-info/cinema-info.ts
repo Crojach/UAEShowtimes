@@ -189,7 +189,7 @@ export class CinemaInfoPage {
         this.cinemaInfo = results.cinema;
         this.cinemaName = results.cinema[0].multiplexName;
         this.selectedDay = results.finalMovies;
-        console.log("POWER", results.cinema[0].multiplexName);
+        console.log("POWER", this.cinemaInfo[0].latitude, this.cinemaInfo[0].longitude );
 
         this.initializeMap(
           this.cinemaInfo[0].latitude,

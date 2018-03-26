@@ -179,7 +179,7 @@ var MoviesPage = (function () {
     };
     MoviesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-movies",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/'<!--\n  Generated template for the MoviesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>Movies</ion-title>\n        <br>\n        <ion-row class="searchSort">\n            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>\n            <ion-select class="sort" [(ngModel)]="order">\n                <ion-option value="releaseDate">Sort by Date</ion-option>\n                <ion-option value="title">Sort by Title</ion-option>\n            </ion-select>\n        </ion-row>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n    <div style="padding:2%">\n        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == \'title\' ? false : true ">\n            <ion-item style="padding:2%" (click)=\'bookNow(item)\'>\n                <ion-thumbnail style="margin: 2%;" item-start>\n                    <img class="imageCurve" [src]="item.thumbnailImage">\n                </ion-thumbnail>\n\n                <h2>{{ item.title }}</h2>\n                <p style="margin:0;" item-end>{{ item.ratings }}</p>\n                <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n                <ion-row style="margin-top: 10%;">\n                    <p style="margin:0;padding: 1%;" item-left>\n                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon>\n                        <br>\n                        <span style="margin: 0 0 0 14%;">Release Date</span>\n                    </p>\n                    <p style="margin:0;padding: 1%;" item-end>\n                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon>\n                        <br>\n                        <span style="margin: 0 0 0 14%;">Duration</span>\n                    </p>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </div>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/
+            selector: "page-movies",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/'<!--\n  Generated template for the MoviesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>Movies</ion-title>\n        <br>\n        <ion-row class="searchSort">\n            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>\n            <ion-select class="sort" [(ngModel)]="order">\n                <ion-option value="releaseDate">Sort by Release date</ion-option>\n                <ion-option value="title">Sort by Title</ion-option>\n            </ion-select>\n        </ion-row>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n    <div style="padding:2%">\n        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == \'title\' ? false : true ">\n            <ion-item style="padding:2%" (click)=\'bookNow(item)\'>\n                <ion-thumbnail style="margin: 2%;" item-start>\n                    <img class="imageCurve" [src]="item.thumbnailImage">\n                </ion-thumbnail>\n\n                <h2>{{ item.title }}</h2>\n                <p style="margin:0;" item-end>{{ item.ratings }}</p>\n                <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n                <ion-row style="margin-top: 10%;">\n                    <p style="margin:0;padding: 1%;" item-left>\n                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon>\n                        <br>\n                        <span style="margin: 0 0 0 14%;">Release Date</span>\n                    </p>\n                    <p style="margin:0;padding: 1%;" item-end>\n                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon>\n                        <br>\n                        <span style="margin: 0 0 0 14%;">Duration</span>\n                    </p>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </div>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _f || Object])
     ], MoviesPage);
@@ -453,6 +453,7 @@ var CinemasPage = (function () {
         this.icon = "ios-arrow-down";
         this.cinemasTitles = [
             "assets/img/novo.jpg",
+            "assets/img/novo.jpg",
             "assets/img/reel.jpg",
             "assets/img/roxy.png",
             "assets/img/vox.jpg"
@@ -710,7 +711,7 @@ var CinemaInfoPage = (function () {
             _this.cinemaInfo = results.cinema;
             _this.cinemaName = results.cinema[0].multiplexName;
             _this.selectedDay = results.finalMovies;
-            console.log("POWER", results.cinema[0].multiplexName);
+            console.log("POWER", _this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
             _this.initializeMap(_this.cinemaInfo[0].latitude, _this.cinemaInfo[0].longitude);
             _this.latitude = _this.cinemaInfo[0].latitude;
             _this.longitude = _this.cinemaInfo[0].longitude;
@@ -926,21 +927,23 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_screen_orientation__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_call_number__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_email_composer__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_component__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__ = __webpack_require__(362);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_diagnostic__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_component__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_home_home__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_tabs_tabs__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_movies_movies__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_cinemas_cinemas__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_movie_info_movie_info__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_cinema_info_cinema_info__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_offers_offers__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes__ = __webpack_require__(455);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -973,22 +976,22 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__["a" /* OffersPage */],
-                __WEBPACK_IMPORTED_MODULE_24__pipes__["a" /* FilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_25__pipes__["a" /* FilterPipe */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_8_ngx_order_pipe__["a" /* OrderModule */],
-                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
                 __WEBPACK_IMPORTED_MODULE_11_ionic2_super_tabs__["c" /* SuperTabsModule */].forRoot(),
@@ -996,16 +999,16 @@ var AppModule = (function () {
                     apiKey: 'AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8'
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicApp */], __WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* MyApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_movies_movies__["a" /* MoviesPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_cinemas_cinemas__["a" /* CinemasPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
-                __WEBPACK_IMPORTED_MODULE_23__pages_offers_offers__["a" /* OffersPage */],
+                __WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_movies_movies__["a" /* MoviesPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_cinemas_cinemas__["a" /* CinemasPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_movie_info_movie_info__["a" /* MovieInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_cinema_info_cinema_info__["a" /* CinemaInfoPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_offers_offers__["a" /* OffersPage */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1015,6 +1018,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* LoadingController */],
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_onesignal__["a" /* OneSignal */],
                 __WEBPACK_IMPORTED_MODULE_14__ionic_native_call_number__["a" /* CallNumber */],
+                __WEBPACK_IMPORTED_MODULE_16__ionic_native_diagnostic__["a" /* Diagnostic */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
                 __WEBPACK_IMPORTED_MODULE_13__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
                 __WEBPACK_IMPORTED_MODULE_15__ionic_native_email_composer__["a" /* EmailComposer */],
@@ -1042,7 +1046,8 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(235);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1059,15 +1064,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 // import { HomePage } from '../pages/home/home';
 
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, oneSignal, ga, screenOrientation) {
+    function MyApp(platform, statusBar, splashScreen, oneSignal, ga, screenOrientation, diagnostic) {
         var _this = this;
         this.oneSignal = oneSignal;
         this.ga = ga;
         this.screenOrientation = screenOrientation;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */];
+        this.diagnostic = diagnostic;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__["a" /* TabsPage */];
+        //Function for turning on GPS
+        var successCallback = function (isAvailable) {
+            console.log("Is available? " + isAvailable);
+        };
+        var errorCallback = function (e) { return console.error(e); };
+        this.diagnostic
+            .isLocationAvailable()
+            .then(successCallback)
+            .catch(errorCallback);
         // code for ScreenOrientation
         // get current
         console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
@@ -1103,14 +1119,10 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__["a" /* OneSignal */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
-            __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__["a" /* OneSignal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_onesignal__["a" /* OneSignal */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _g || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=app.component.js.map

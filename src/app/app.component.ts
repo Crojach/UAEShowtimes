@@ -6,6 +6,7 @@ import { OneSignal } from "@ionic-native/onesignal";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 import { CallNumber } from "@ionic-native/call-number";
+import { Diagnostic } from "@ionic-native/diagnostic";
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
@@ -20,8 +21,21 @@ export class MyApp {
     splashScreen: SplashScreen,
     private oneSignal: OneSignal,
     private ga: GoogleAnalytics,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private diagnostic: Diagnostic
   ) {
+
+    //Function for turning on GPS
+    let successCallback = isAvailable => {
+      console.log("Is available? " + isAvailable);
+    };
+    let errorCallback = e => console.error(e);
+
+    this.diagnostic
+      .isLocationAvailable()
+      .then(successCallback)
+      .catch(errorCallback);
+
     // code for ScreenOrientation
     // get current
     console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
