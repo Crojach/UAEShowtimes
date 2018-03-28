@@ -82,6 +82,8 @@ export class CinemasPage {
       this.diagnostic
         .getLocationAuthorizationStatus()
         .then(state => {
+          console.log('state',state)
+          console.log('oo,dddvd',this.diagnostic.isLocationEnabled())
           if (state == this.diagnostic.isLocationEnabled()) {
             // do something
             console.log("gps is ON")

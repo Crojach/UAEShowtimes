@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Platform } from "ionic-angular";
+import { Platform, App } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
@@ -7,9 +7,12 @@ import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 import { CallNumber } from "@ionic-native/call-number";
 import { Diagnostic } from "@ionic-native/diagnostic";
+import { Toast} from '@ionic-native/toast';
+
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
+import { MoviesPage } from "../pages/movies/movies";
 @Component({
   templateUrl: "app.html"
 })
@@ -18,6 +21,8 @@ export class MyApp {
   constructor(
     platform: Platform,
     statusBar: StatusBar,
+    public app: App,
+    public toast: Toast,
     splashScreen: SplashScreen,
     private oneSignal: OneSignal,
     private ga: GoogleAnalytics,
@@ -45,6 +50,30 @@ export class MyApp {
     // Code for google analytics
 
     platform.ready().then(() => {
+
+      let count= 0;
+      platform.registerBackButtonAction(() => {
+       let nav = this.app.getActiveNav();
+        
+        if(nav.getActive().component === MoviesPage){
+            if(count == 0){              
+                this.toast.show('Press again to exit App', '5000', 'bottom').subscribe(
+                  toast => {
+                    console.log(toast);
+                  });
+                    setTimeout(() => {
+                      count = 0;
+                    }, 5000);
+              }
+              else{
+                platform.exitApp();
+              }
+              count++;
+          // this.platform.exitApp(); //Exit from app          
+        }else{
+          nav.pop();          
+          }
+      });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
