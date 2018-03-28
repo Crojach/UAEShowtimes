@@ -1,5 +1,5 @@
 import { Component,ViewChild } from "@angular/core";
-import { Platform, App,Nav } from "ionic-angular";
+import { Platform, App,NavController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
@@ -17,7 +17,7 @@ import { MoviesPage } from "../pages/movies/movies";
   templateUrl: "app.html"
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  // @ViewChild(Nav) nav: Nav;
 
   rootPage: any = TabsPage;
   constructor(
@@ -26,6 +26,7 @@ export class MyApp {
     public app: App,
     public toast: Toast,
     splashScreen: SplashScreen,
+    public navCtrl : NavController,
     private oneSignal: OneSignal,
     private ga: GoogleAnalytics,
     private screenOrientation: ScreenOrientation,
@@ -55,9 +56,10 @@ export class MyApp {
 
       let count= 0;
       this.platform.registerBackButtonAction(() => {
-       let nav = this.app.getActiveNav();
-        console.log('current Nav',nav.getActive().component)
-        if(nav.getActive().component === MoviesPage){
+      //  let nav = this.app.getActiveNav();
+      let nav =  this.navCtrl.getActive().name
+      console.log(nav) 
+      if(this.navCtrl.getActive().name === 'MoviesPage'){
             if(count == 0){              
                 this.toast.show('Press again to exit App', '5000', 'bottom').subscribe(
                   toast => {
@@ -73,7 +75,7 @@ export class MyApp {
               count++;
           // this.platform.exitApp(); //Exit from app          
         }else{
-          nav.pop();          
+          this.navCtrl.pop();          
           }
       });
       // Okay, so the platform is ready and our plugins are available.
