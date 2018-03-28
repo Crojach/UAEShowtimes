@@ -126,7 +126,8 @@ export class MovieInfoPage {
       novaArray:{ multiplexName: '', cinemaArray: [], image:'assets/img/novo.jpg', showDetails: false, icon: "ios-arrow-down" },
       roxyCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/roxy.png', showDetails: false, icon: "ios-arrow-down" },
       voxCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/vox.jpg', showDetails: false, icon: "ios-arrow-down" },
-      reelCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/reel.jpg', showDetails: false, icon: "ios-arrow-down" }
+      reelCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/reel.jpg', showDetails: false, icon: "ios-arrow-down" },
+      cineRoyal:{ multiplexName: '', cinemaArray: [], image:'assets/img/cineroyal.png', showDetails: false, icon: "ios-arrow-down" }
     }
     // console.log("result",results.shows)
      let final = results.shows.reduce((acc,cv,ci,arr)=>{
@@ -145,6 +146,10 @@ export class MovieInfoPage {
         if(cv.multiplexName == 'Reel Cinemas'){
           acc.reelCinemas['multiplexName'] = 'Reel Cinemas';
           acc.reelCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
+        }
+        if(cv.multiplexName == 'CineRoyal Cinemas'){
+          acc.cineRoyal['multiplexName'] = 'CineRoyal';
+          acc.cineRoyal['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
         }
         return acc;
       },Obj)

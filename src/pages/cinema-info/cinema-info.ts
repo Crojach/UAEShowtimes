@@ -4,10 +4,15 @@ import { Http, RequestOptions, Headers } from "@angular/http";
 import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { LoadingController } from "ionic-angular";
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
-import { CallNumber } from '@ionic-native/call-number';
-import { EmailComposer } from '@ionic-native/email-composer';
-import { SuperTabsModule, SuperTabsController, SuperTabs } from 'ionic2-super-tabs';
+import { GoogleAnalytics } from "@ionic-native/google-analytics";
+import { CallNumber } from "@ionic-native/call-number";
+import { EmailComposer } from "@ionic-native/email-composer";
+import {
+  SuperTabsModule,
+  SuperTabsController,
+  SuperTabs
+} from "ionic2-super-tabs";
+import { Diagnostic } from "@ionic-native/diagnostic";
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -28,7 +33,7 @@ export class CinemaInfoPage {
   // configUrl = 'http://192.168.1.167';
   configUrl = "http://uaeshowtimes.com:3006";
   cinemaId: any;
-  cinemaName: any = '';
+  cinemaName: any = "";
   http: any;
   cinemaInfo: any;
   movieInfo: any;
@@ -51,13 +56,14 @@ export class CinemaInfoPage {
   constructor(
     http: Http,
     public navCtrl: NavController,
-    public navParams: NavParams,              
+    public navParams: NavParams,
     private platform: Platform,
-    private ga:GoogleAnalytics,
+    private ga: GoogleAnalytics,
     iab: InAppBrowser,
+    private diagnostic: Diagnostic,
     loadingCtrl: LoadingController,
     private callNumber: CallNumber,
-    private emailComposer: EmailComposer,
+    private emailComposer: EmailComposer
   ) {
     this.http = http;
     this.iab = iab;
@@ -79,34 +85,40 @@ export class CinemaInfoPage {
     }
     this.postItems(i);
     this.platform.ready().then(() => {
-      this.ga.trackEvent("Cinema Info", "Opened", "New Session Started", 1 , true)
-      this.ga.setAllowIDFACollection(true)
-      this.ga.trackView("Cinema Info")
-    })
+      this.ga.trackEvent(
+        "Cinema Info",
+        "Opened",
+        "New Session Started",
+        1,
+        true
+      );
+      this.ga.setAllowIDFACollection(true);
+      this.ga.trackView("Cinema Info");
+    });
   }
 
   // Function to launch Dailer
-  launchDialer(n:string){
-    this.callNumber.callNumber(n, true)
-    .then(() => console.log('Launched dialer!'))
-    .catch(() => console.log('Error launching dialer'));
-}
+  launchDialer(n: string) {
+    this.callNumber
+      .callNumber(n, true)
+      .then(() => console.log("Launched dialer!"))
+      .catch(() => console.log("Error launching dialer"));
+  }
 
-    // Function to Launch EmailComoper
-    launchMail(to){
-      let email = {
-        to: to,
-        cc: '',
-        bcc: '',
-        subject: 'Testing',
-        body: 'How are you? Nice greetings from UAE showtimes',
-        isHtml: true
-      };
-      
-      // Send a text message using default options
-      this.emailComposer.open(email);
-    }
+  // Function to Launch EmailComoper
+  launchMail(to) {
+    let email = {
+      to: to,
+      cc: "",
+      bcc: "",
+      subject: "Testing",
+      body: "How are you? Nice greetings from UAE showtimes",
+      isHtml: true
+    };
 
+    // Send a text message using default options
+    this.emailComposer.open(email);
+  }
 
   // Function to open in app browser
   openBookingUrl(url) {
@@ -189,7 +201,11 @@ export class CinemaInfoPage {
         this.cinemaInfo = results.cinema;
         this.cinemaName = results.cinema[0].multiplexName;
         this.selectedDay = results.finalMovies;
-        console.log("POWER", this.cinemaInfo[0].latitude, this.cinemaInfo[0].longitude );
+        console.log(
+          "POWER",
+          this.cinemaInfo[0].latitude,
+          this.cinemaInfo[0].longitude
+        );
 
         this.initializeMap(
           this.cinemaInfo[0].latitude,
@@ -222,10 +238,10 @@ export class CinemaInfoPage {
         var marker = new google.maps.Marker({
           map: this.map,
           draggable: false,
-          animation: google.maps.Animation.DROP, 
+          animation: google.maps.Animation.DROP,
           position: options.center,
-          title:"Hello World!"
-         });
+          title: "Hello World!"
+        });
         //  marker.addListener('click', this.toggleBounce);
         marker.setMap(this.map);
       },
@@ -237,11 +253,28 @@ export class CinemaInfoPage {
       locationOptions
     );
   }
-  // toggleBounce() {
-  //   if (marker.getAnimation() !== null) {
-  //     marker.setAnimation(null);
-  //   } else {
-  //     marker.setAnimation(google.maps.Animation.BOUNCE);
-  //   }
-  // }
+
+  ionViewDidLoad() {
+    console.log("ionViewDidLoad MusicsPage");
+
+    //to Turn on location
+    let successCallback = isAvailable => {
+      console.log("Is available? " + isAvailable);
+    };
+    let errorCallback = e => console.error(e);
+
+    this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+
+    this.diagnostic
+      .getLocationAuthorizationStatus()
+      .then(state => {
+        if (state == this.diagnostic.isLocationEnabled()) {
+          // do something
+        } else {
+          alert("Please Turn on GPS.")
+          this.diagnostic.switchToLocationSettings()
+        }
+      })
+      .catch(e => console.error(e));
+  }
 }

@@ -35,7 +35,7 @@ export class CinemasPage {
   icon: any = "ios-arrow-down";
   rootNavCtrl: NavController;
   cinemasTitles = [
-    "assets/img/novo.jpg",
+    "assets/img/cineroyal.png",
     "assets/img/novo.jpg",
     "assets/img/reel.jpg",
     "assets/img/roxy.png",
