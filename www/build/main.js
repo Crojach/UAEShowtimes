@@ -480,12 +480,10 @@ var CinemasPage = (function () {
         };
         var errorCallback = function (e) { return console.error(e); };
         // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-        this.diagnostic
-            .getLocationAuthorizationStatus()
+        this.diagnostic.isGpsLocationEnabled()
             .then(function (state) {
             console.log('state', state);
-            console.log('oo,dddvd', _this.diagnostic.isLocationEnabled());
-            if (state == _this.diagnostic.isLocationEnabled()) {
+            if (state) {
                 // do something
                 console.log("gps is ON");
                 //on click to push on next page
@@ -1135,6 +1133,7 @@ var MyApp = (function () {
             var count = 0;
             platform.registerBackButtonAction(function () {
                 var nav = _this.app.getActiveNav();
+                console.log('current Nav', nav.getActive().component);
                 if (nav.getActive().component === __WEBPACK_IMPORTED_MODULE_10__pages_movies_movies__["a" /* MoviesPage */]) {
                     if (count == 0) {
                         _this.toast.show('Press again to exit App', '5000', 'bottom').subscribe(function (toast) {

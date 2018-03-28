@@ -54,7 +54,7 @@ export class MyApp {
       let count= 0;
       platform.registerBackButtonAction(() => {
        let nav = this.app.getActiveNav();
-        
+        console.log('current Nav',nav.getActive().component)
         if(nav.getActive().component === MoviesPage){
             if(count == 0){              
                 this.toast.show('Press again to exit App', '5000', 'bottom').subscribe(

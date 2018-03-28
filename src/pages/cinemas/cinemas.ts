@@ -79,12 +79,10 @@ export class CinemasPage {
   
       // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
   
-      this.diagnostic
-        .getLocationAuthorizationStatus()
-        .then(state => {
-          console.log('state',state)
-          console.log('oo,dddvd',this.diagnostic.isLocationEnabled())
-          if (state == this.diagnostic.isLocationEnabled()) {
+      this.diagnostic.isGpsLocationEnabled()
+      .then((state) => {
+        console.log('state',state)
+          if (state) {
             // do something
             console.log("gps is ON")
             //on click to push on next page
