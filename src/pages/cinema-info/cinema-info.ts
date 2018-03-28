@@ -12,7 +12,6 @@ import {
   SuperTabsController,
   SuperTabs
 } from "ionic2-super-tabs";
-import { Diagnostic } from "@ionic-native/diagnostic";
 
 // import moment from 'moment';
 import * as moment from "moment";
@@ -60,7 +59,6 @@ export class CinemaInfoPage {
     private platform: Platform,
     private ga: GoogleAnalytics,
     iab: InAppBrowser,
-    private diagnostic: Diagnostic,
     loadingCtrl: LoadingController,
     private callNumber: CallNumber,
     private emailComposer: EmailComposer
@@ -257,24 +255,5 @@ export class CinemaInfoPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad MusicsPage");
 
-    //to Turn on location
-    let successCallback = isAvailable => {
-      console.log("Is available? " + isAvailable);
-    };
-    let errorCallback = e => console.error(e);
-
-    this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-
-    this.diagnostic
-      .getLocationAuthorizationStatus()
-      .then(state => {
-        if (state == this.diagnostic.isLocationEnabled()) {
-          // do something
-        } else {
-          alert("Please Turn on GPS.")
-          this.diagnostic.switchToLocationSettings()
-        }
-      })
-      .catch(e => console.error(e));
   }
 }
