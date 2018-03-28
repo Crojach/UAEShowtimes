@@ -1,5 +1,5 @@
 import { Component,ViewChild } from "@angular/core";
-import { Platform, App,NavController } from "ionic-angular";
+import { Platform, App } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
@@ -26,7 +26,6 @@ export class MyApp {
     public app: App,
     public toast: Toast,
     splashScreen: SplashScreen,
-    public navCtrl : NavController,
     private oneSignal: OneSignal,
     private ga: GoogleAnalytics,
     private screenOrientation: ScreenOrientation,

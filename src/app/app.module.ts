@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, ApplicationRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleMaps,GoogleMap } from '@ionic-native/google-maps';
-import { LoadingController } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { OneSignal } from "@ionic-native/onesignal";
