@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { Platform, App } from "ionic-angular";
+import { Component,ViewChild } from "@angular/core";
+import { Platform, App,Nav } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
@@ -17,9 +17,11 @@ import { MoviesPage } from "../pages/movies/movies";
   templateUrl: "app.html"
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
+
   rootPage: any = TabsPage;
   constructor(
-    platform: Platform,
+    public platform: Platform, 
     statusBar: StatusBar,
     public app: App,
     public toast: Toast,
@@ -49,10 +51,10 @@ export class MyApp {
 
     // Code for google analytics
 
-    platform.ready().then(() => {
+    this.platform.ready().then(() => {
 
       let count= 0;
-      platform.registerBackButtonAction(() => {
+      this.platform.registerBackButtonAction(() => {
        let nav = this.app.getActiveNav();
         console.log('current Nav',nav.getActive().component)
         if(nav.getActive().component === MoviesPage){
@@ -66,7 +68,7 @@ export class MyApp {
                     }, 5000);
               }
               else{
-                platform.exitApp();
+                this.platform.exitApp();
               }
               count++;
           // this.platform.exitApp(); //Exit from app          
