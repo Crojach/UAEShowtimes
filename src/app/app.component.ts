@@ -53,31 +53,6 @@ export class MyApp {
     // Code for google analytics
 
     this.platform.ready().then(() => {
-
-      let count= 0;
-      this.platform.registerBackButtonAction(() => {
-      //  let nav = this.app.getActiveNav();
-      let nav =  this.navCtrl.getActive().name
-      console.log(nav) 
-      if(this.navCtrl.getActive().name === 'MoviesPage'){
-            if(count == 0){              
-                this.toast.show('Press again to exit App', '5000', 'bottom').subscribe(
-                  toast => {
-                    console.log(toast);
-                  });
-                    setTimeout(() => {
-                      count = 0;
-                    }, 5000);
-              }
-              else{
-                this.platform.exitApp();
-              }
-              count++;
-          // this.platform.exitApp(); //Exit from app          
-        }else{
-          this.navCtrl.pop();          
-          }
-      });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
