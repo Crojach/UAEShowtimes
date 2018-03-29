@@ -28996,10 +28996,10 @@ page-offers .toolbar-title {
 }
 
 page-offers .toolbar-title-md {
-  padding: 0 30%;
   font-size: 2rem;
   font-weight: 500;
   color: white;
+  text-align: center;
 }
 
 page-offers .cardCurve {
