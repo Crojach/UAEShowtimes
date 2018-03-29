@@ -1,4 +1,4 @@
-import { Component,ViewChild } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Platform, App } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -7,8 +7,8 @@ import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 import { CallNumber } from "@ionic-native/call-number";
 import { Diagnostic } from "@ionic-native/diagnostic";
-import { Toast} from '@ionic-native/toast';
-
+import { Toast } from "@ionic-native/toast";
+import { Network } from "@ionic-native/network";
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
@@ -21,7 +21,7 @@ export class MyApp {
 
   rootPage: any = TabsPage;
   constructor(
-    public platform: Platform, 
+    public platform: Platform,
     statusBar: StatusBar,
     public app: App,
     public toast: Toast,
@@ -29,8 +29,35 @@ export class MyApp {
     private oneSignal: OneSignal,
     private ga: GoogleAnalytics,
     private screenOrientation: ScreenOrientation,
-    private diagnostic: Diagnostic
+    private diagnostic: Diagnostic,
+    private network: Network
   ) {
+
+    // Plugin for checking Network
+    // watch network for a disconnect
+    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+      console.log("network was disconnected :-(");
+    });
+
+    // stop disconnect watch
+    disconnectSubscription.unsubscribe();
+
+    // watch network for a connection
+    let connectSubscription = this.network.onConnect().subscribe(() => {
+      console.log("network connected!");
+      // We just got a connection but we need to wait briefly
+      // before we determine the connection type. Might need to wait.
+      // prior to doing any api requests as well.
+      setTimeout(() => {
+        if (this.network.type === "wifi") {
+          console.log("we got a wifi connection, woohoo!");
+        }
+      }, 3000);
+    });
+
+    // stop connect watch
+    connectSubscription.unsubscribe();
+
 
     //Function for turning on GPS
     let successCallback = isAvailable => {
@@ -43,13 +70,13 @@ export class MyApp {
       .then(successCallback)
       .catch(errorCallback);
 
+      
     // code for ScreenOrientation
     // get current
     console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
     // set to landscape
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
-    // Code for google analytics
 
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

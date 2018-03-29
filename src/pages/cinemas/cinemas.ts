@@ -38,6 +38,7 @@ export class CinemasPage {
   cinemasTitles = [
     "assets/img/cineroyal.png",
     "assets/img/novo.jpg",
+    "assets/img/oscar.png",
     "assets/img/reel.jpg",
     "assets/img/roxy.png",
     "assets/img/vox.jpg"

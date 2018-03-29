@@ -28329,6 +28329,10 @@ page-cinema-info #map_canvas {
   height: 50%;
 }
 
+page-cinema-info .button-inner {
+  color: white;
+}
+
 page-cinema-info .toolbar-background {
   border-color: #f28c5d;
   background: #f28c5d;
@@ -28548,6 +28552,10 @@ page-musics .cinemaName {
 page-movie-info ion-navbar.toolbar {
   border-color: #f28c5d;
   background: #f28c5d;
+}
+
+page-movie-info .button-inner {
+  color: white;
 }
 
 page-movie-info .costumColor {
