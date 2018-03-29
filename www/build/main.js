@@ -137,6 +137,7 @@ var MoviesPage = (function () {
         this.splashScreen = splashScreen;
         this.configUrl = "http://uaeshowtimes.com:3006";
         this.order = "releaseDate";
+        console.log("%%%%%%%%%%%%%%%%%%", this.network.noConnection());
         if (this.network.noConnection()) {
             this.network.showNetworkAlert();
         }
@@ -1574,8 +1575,12 @@ var FilterPipe = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworkServiceProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1587,22 +1592,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 /*
   Generated class for the NetworkServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular DI.
 */
 var NetworkServiceProvider = (function () {
-    function NetworkServiceProvider(http) {
+    function NetworkServiceProvider(http, network, toastCtrl) {
         this.http = http;
-        console.log('Hello NetworkServiceProvider Provider');
+        this.network = network;
+        this.toastCtrl = toastCtrl;
     }
+    NetworkServiceProvider.prototype.noConnection = function () {
+        console.log("$$$$$$$$", this.network);
+        return (this.network.type === 'none');
+    };
+    NetworkServiceProvider.prototype.showNetworkAlert = function () {
+        var toast = this.toastCtrl.create({
+            message: 'Failed to connect to Forehotels, check your internet connection',
+            duration: 15000,
+            position: 'bottom',
+            showCloseButton: true,
+            closeButtonText: 'Got it!',
+        });
+        toast.present();
+    };
     NetworkServiceProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ToastController */]) === "function" && _c || Object])
     ], NetworkServiceProvider);
     return NetworkServiceProvider;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=network-service.js.map

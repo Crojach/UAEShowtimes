@@ -1,17 +1,34 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { ToastController } from 'ionic-angular'
+import { Network } from '@ionic-native/network'
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the NetworkServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular DI.
 */
 @Injectable()
 export class NetworkServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello NetworkServiceProvider Provider');
-  }
+  constructor(public http: Http,public network: Network,public toastCtrl: ToastController) {
 
+}
+
+public noConnection() {
+  console.log("$$$$$$$$",this.network)
+  return(this.network.type === 'none')
+  }
+      showNetworkAlert() {
+          let toast = this.toastCtrl.create({
+          message: 'Failed to connect to Forehotels, check your internet connection',
+          duration: 15000,
+          position: 'bottom',
+          showCloseButton: true,
+          closeButtonText: 'Got it!',
+        });
+        toast.present();
+      }
 }

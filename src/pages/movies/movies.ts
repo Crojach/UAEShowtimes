@@ -39,9 +39,10 @@ export class MoviesPage {
     private ga:GoogleAnalytics,
     private splashScreen: SplashScreen,
   ) {
+    console.log("%%%%%%%%%%%%%%%%%%",this.network.noConnection())
     if(this.network.noConnection()){
       this.network.showNetworkAlert()
-  }
+    }
     this.rootNavCtrl = this.navParams.get("rootNavCtrl");
     this.getItems();
     
