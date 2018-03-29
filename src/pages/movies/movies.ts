@@ -6,6 +6,7 @@ import { MovieInfoPage } from "../movie-info/movie-info";
 import { OrderPipe } from "ngx-order-pipe";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { NetworkServiceProvider } from '../../providers/network-service/network-service';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -31,12 +32,16 @@ export class MoviesPage {
 
   constructor(
     public navCtrl: NavController,
+    public network : NetworkServiceProvider,
     public navParams: NavParams,
     public http: Http,
     private platform: Platform,
     private ga:GoogleAnalytics,
     private splashScreen: SplashScreen,
   ) {
+    if(this.network.noConnection()){
+      this.network.showNetworkAlert()
+  }
     this.rootNavCtrl = this.navParams.get("rootNavCtrl");
     this.getItems();
     

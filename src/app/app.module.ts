@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, ApplicationRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, LoadingController, ToastController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -30,6 +30,7 @@ import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { CinemaInfoPage } from '../pages/cinema-info/cinema-info';
 import { OffersPage } from '../pages/offers/offers';
 import { FilterPipe } from './pipes'
+import { NetworkServiceProvider } from '../providers/network-service/network-service';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { FilterPipe } from './pipes'
     Toast,
     
     
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    NetworkServiceProvider
   ]
 })
 export class AppModule {}
