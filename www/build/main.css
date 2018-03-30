@@ -5527,19 +5527,19 @@ ion-footer {
 }
 
 ion-app.ios {
-  font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+  font-family: "Lato", -apple-system, "Roboto", san-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
 
 ion-app.md {
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: "Lato", "Roboto", "Helvetica Nueu", san-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
 
 ion-app.wp {
-  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  font-family: "Lato", "Noto Sans", san-serif;
   font-size: 1.4rem;
   background-color: #fff;
 }
@@ -28258,6 +28258,23 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 }
 
 /* -------------- loader9 -------------- */
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/Lato-Regular.ttf");
+  src: url("../assets/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  letter-spacing: 1px;
+  color: #A6ADBB;
+}
+
+body h1 h2 h3 h4 h5 h6 {
+  color: #555F70;
+}
+
 .spinner {
   margin: auto;
   width: 40px;
@@ -28268,7 +28285,8 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
   animation: sk-rotate 2.0s infinite linear;
 }
 
-.dot1, .dot2 {
+.dot1,
+.dot2 {
   width: 60%;
   height: 60%;
   display: inline-block;
@@ -28301,7 +28319,8 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 }
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: scale(0);
   }
   50% {
@@ -28310,7 +28329,8 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 }
 
 @keyframes sk-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
     -webkit-transform: scale(0);
   }
@@ -28834,16 +28854,14 @@ page-movies .select-ios {
   width: 25%;
   padding: 1px 14px;
   margin: auto;
-  border-radius: 3px;
+  border-radius: 5px;
   background-position: left 8px center;
   height: auto;
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 3rem;
-  color: rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.55);
+  background: #DF8156;
 }
 
 page-movies .item ion-thumbnail img {
@@ -28852,7 +28870,7 @@ page-movies .item ion-thumbnail img {
 }
 
 page-movies .toolbar-content.toolbar-content-ios .searchSort {
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 page-movies .toolbar-background {

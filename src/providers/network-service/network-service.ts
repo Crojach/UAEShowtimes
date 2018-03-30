@@ -18,7 +18,7 @@ export class NetworkServiceProvider {
 }
 
 public noConnection() {
-  console.log("$$$$$$$$",this.network)
+  // console.log("$$$$$$$$",this.network)
   return(this.network.type === 'none')
   }
       showNetworkAlert() {

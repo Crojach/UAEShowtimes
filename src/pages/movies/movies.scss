@@ -39,23 +39,23 @@ page-movies {
         width: 25%;
         padding: 1px 14px;
         margin: auto;
-        border-radius: 3px;
+        border-radius: 5px;
         background-position: left 8px center;
         height: auto;
         font-size: 1.4rem;
         font-weight: 400;
         line-height: 3rem;
-        color: rgba(0, 0, 0, 0.5);
-        background: rgba(0, 0, 0, 0.08);
-        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.55);
+        background: #DF8156;
+        // -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     }
     .item ion-thumbnail img {
         width: 105px;
         height: 137px;
     }
     .toolbar-content.toolbar-content-ios .searchSort {
-        margin-top: 2%;
+        margin-top: 3%;
     }
     .toolbar-background {
         background: none;
