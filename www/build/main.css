@@ -28268,7 +28268,7 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 
 body {
   letter-spacing: 1px;
-  color: #A6ADBB;
+  color: #263856;
 }
 
 .spinner {
@@ -28805,6 +28805,14 @@ page-movie-info .multipexNames {
 page-movie-info .headerShadow {
   -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+page-movies .movieTitle {
+  font-size: 0.9em !important;
+}
+
+page-movies .input-wrapper {
+  margin: 4%;
 }
 
 page-movies .select .select-icon {
