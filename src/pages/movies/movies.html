@@ -11,6 +11,7 @@
         <ion-row class="searchSort">
             <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
             <ion-select class="sort" [(ngModel)]="order">
+                <!-- <span><ion-icon name="funnel"></ion-icon></span> -->
                 <ion-option value="releaseDate">Sort by Release date</ion-option>
                 <ion-option value="title">Sort by Title</ion-option>
             </ion-select>
@@ -28,7 +29,7 @@
                 </ion-thumbnail>
 
                 <h2 class="movieTitle">{{ item.title }}</h2>
-                <p style="margin:0;" item-end>{{ item.ratings }}</p>
+                <p class="ratings" item-end>{{ item.ratings }}</p>
                 <!-- <p>{{ item.releaseDate.split('-')[0] }}</p> -->
                 <ion-row style="margin-top: 10%;">
                     <p style="margin:0;padding: 1%;" item-left>
