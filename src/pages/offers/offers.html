@@ -8,6 +8,7 @@
 
     <ion-navbar class="headerShadow">
         <ion-title style="color: white;">Ticket Offers</ion-title> <br>
+        <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Offers"></ion-searchbar>
     </ion-navbar>
 
 </ion-header>
@@ -15,7 +16,7 @@
 
 <ion-content padding>
     <ion-list>
-        <div *ngFor="let item of data; let i = index" (click)="toggleDetails(item, i)" nopadding>
+        <div *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
             <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
                 <div nopadding>
                     <ion-row padding>

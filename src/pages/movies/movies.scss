@@ -1,4 +1,23 @@
 page-movies {
+    .ion-ios-funnel {
+        display: inline-block;
+        font-size: 1.2em;
+        margin: auto;
+        position: relative;
+        left: 3em;
+        color: #6F402B !important;
+    }
+    .funnel-icon {
+        display: inline-block;
+        font-size: 1.2em;
+        margin: auto;
+        position: relative;
+        left: 3em;
+        color: #B5B5B5;
+    }
+    .select-text {
+        visibility: hidden;
+    }
     .movieTitle {
         font-size: 0.9em !important;
     }

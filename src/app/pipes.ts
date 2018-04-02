@@ -5,10 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
     transform(value: any, input: string) {
+        console.log(input)
         if (input) {
             input = input.toLowerCase();
             return value.filter(function (el: any) {
-                return el.title.toLowerCase().indexOf(input) > -1;
+                if(el.title){
+                    return el.title.toLowerCase().indexOf(input) > -1;
+                }else{
+                    return el.offer.title.toLowerCase().indexOf(input) > -1;  
+                }
             })
         }
         return value;

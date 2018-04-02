@@ -10,6 +10,7 @@
         <br>
         <ion-row class="searchSort">
             <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
+            <ion-icon class="funnel-icon" name="funnel"></ion-icon>
             <ion-select class="sort" [(ngModel)]="order">
                 <ion-option value="releaseDate">Sort by Release date</ion-option>
                 <ion-option value="title">Sort by Title</ion-option>
@@ -19,7 +20,6 @@
 </ion-header>
 
 <ion-content>
-
     <div style="padding:2%">
         <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
             <ion-item style="padding:2%" (click)='bookNow(item)'>
