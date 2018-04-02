@@ -29050,6 +29050,12 @@ page-movies .ratings {
   padding: 2px;
 }
 
+page-offers b,
+page-offers strong {
+  font-weight: bold;
+  color: #3C3C3C;
+}
+
 page-offers .item {
   padding-left: 0px;
 }
