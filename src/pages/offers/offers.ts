@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
 import { NavController, NavParams, Platform } from "ionic-angular";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
@@ -6,7 +6,6 @@ import { LoadingController } from "ionic-angular";
 import { OrderPipe } from "ngx-order-pipe";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
-import { AnimationService, AnimationBuilder } from "css-animator";
 // import { AnimationService } from 'css-animator';
 // import { AnimationBuilder } from 'css-animator/builder';
 
@@ -24,8 +23,6 @@ let loading;
   templateUrl: "offers.html"
 })
 export class OffersPage {
-  @ViewChild('myElement') myElem;
-  private animator: AnimationBuilder;
   configUrl = "http://uaeshowtimes.com:3006";
   // configUrl = 'http://192.168.1.167';
   iab: any;
@@ -43,9 +40,7 @@ export class OffersPage {
     private ga: GoogleAnalytics,
     iab: InAppBrowser,
     loadingCtrl: LoadingController,
-    animationService: AnimationService,
   ) {
-    this.animator = animationService.builder();
     this.loadingCtrl = loadingCtrl;
     this.iab = iab;
     this.getOffers();
@@ -56,9 +51,7 @@ export class OffersPage {
     });
   }
 
-  animateElem() {
-    this.animator.setType('fadeOutUp').show(this.myElem.nativeElement);
-  }
+  
   
   // Code for Accordin
   toggleDetails(data, index) {

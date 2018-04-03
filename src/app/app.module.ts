@@ -19,7 +19,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { Toast} from '@ionic-native/toast';
 import { Network } from "@ionic-native/network";
-import { AnimationService, AnimatesDirective } from "css-animator";
 
 
 import { MyApp } from './app.component';
@@ -45,7 +44,6 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     CinemaInfoPage,
     OffersPage,
     FilterPipe,
-    AnimatesDirective,
     
   ],
   imports: [
@@ -85,7 +83,6 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     EmailComposer,
     SuperTabsController,
     Toast,
-    AnimationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NetworkServiceProvider
   ]
