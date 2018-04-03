@@ -21,13 +21,13 @@
 
 <ion-content>
     <div style="padding:2%">
-        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
+        <ion-card class="cardCurve animated zoomInUp" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
             <ion-item style="padding:2%" (click)='bookNow(item)'>
                 <ion-thumbnail style="margin: 2%;" item-start>
                     <img class="imageCurve" [src]="item.thumbnailImage">
                 </ion-thumbnail>
 
-                <h2 class="movieTitle">{{ item.title }}</h2>
+                <h2 class="movieTitle">{{ item.title }}</h2> <br>
                 <p class="ratings" item-end>{{ item.ratings }}</p>
                 <!-- <p>{{ item.releaseDate.split('-')[0] }}</p> -->
                 <ion-row style="margin-top: 10%;">

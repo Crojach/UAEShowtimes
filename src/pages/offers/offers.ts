@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { LoadingController } from 'ionic-angular';
-import { OrderPipe } from 'ngx-order-pipe';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { Component, ViewChild } from "@angular/core";
+import { NavController, NavParams, Platform } from "ionic-angular";
+import { Http } from "@angular/http";
+import "rxjs/add/operator/map";
+import { LoadingController } from "ionic-angular";
+import { OrderPipe } from "ngx-order-pipe";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
+import { GoogleAnalytics } from "@ionic-native/google-analytics";
+import { AnimationService, AnimationBuilder } from "css-animator";
+// import { AnimationService } from 'css-animator';
+// import { AnimationBuilder } from 'css-animator/builder';
 
 /**
  * Generated class for the OffersPage page.
@@ -14,102 +17,112 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
  * Ionic pages and navigation.
  */
 
-let loading
+let loading;
+
 @Component({
-  selector: 'page-offers',
-  templateUrl: 'offers.html',
+  selector: "page-offers",
+  templateUrl: "offers.html"
 })
 export class OffersPage {
-  configUrl = 'http://uaeshowtimes.com:3006';
+  @ViewChild('myElement') myElem;
+  private animator: AnimationBuilder;
+  configUrl = "http://uaeshowtimes.com:3006";
   // configUrl = 'http://192.168.1.167';
   iab: any;
-  offers:any;
-  loadingCtrl:any;
-  order: any ;
-  icon:any ='ios-arrow-down';
-  data: Array<{ offer:any, icon: string, showDetails: boolean }> = [];
+  offers: any;
+  loadingCtrl: any;
+  order: any;
+  icon: any = "ios-arrow-down";
+  data: Array<{ offer: any; icon: string; showDetails: boolean }> = [];
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public http: Http,
-              private platform: Platform,
-              private ga:GoogleAnalytics,
-              iab: InAppBrowser,
-              loadingCtrl: LoadingController,
-            ) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    private platform: Platform,
+    private ga: GoogleAnalytics,
+    iab: InAppBrowser,
+    loadingCtrl: LoadingController,
+    animationService: AnimationService,
+  ) {
+    this.animator = animationService.builder();
     this.loadingCtrl = loadingCtrl;
     this.iab = iab;
     this.getOffers();
     this.platform.ready().then(() => {
-      this.ga.trackEvent("Offers", "Opened", "New Session Started", 1 , true)
-      this.ga.setAllowIDFACollection(true)
-      this.ga.trackView("Offers")
-    })
+      this.ga.trackEvent("Offers", "Opened", "New Session Started", 1, true);
+      this.ga.setAllowIDFACollection(true);
+      this.ga.trackView("Offers");
+    });
   }
 
+  animateElem() {
+    this.animator.setType('fadeOutUp').show(this.myElem.nativeElement);
+  }
+  
   // Code for Accordin
-  toggleDetails(data,index) {
+  toggleDetails(data, index) {
+    
     // console.log("toggle",index)
-    if(this.data[index].showDetails){
+    if (this.data[index].showDetails) {
       this.data[index].showDetails = false;
-      this.data[index].icon = 'ios-arrow-down';
-    }
-    else{
-      this.data.map((x, _index) =>{
-        if(_index == index){
+      this.data[index].icon = "ios-arrow-down";
+    } else {
+      this.data.map((x, _index) => {
+        if (_index == index) {
           x.showDetails = true;
-          x.icon = 'ios-arrow-up';
-        }
-        else{
+          x.icon = "ios-arrow-up";
+        } else {
           x.showDetails = false;
-          x.icon = 'ios-arrow-down';
+          x.icon = "ios-arrow-down";
         }
-      })
+      });
     }
   }
 
   //Redirecting  to offer
-  openOfferSite(url){
+  openOfferSite(url) {
     const browser = this.iab.create(url);
   }
   //Function for getting offers
-  getOffers(){
+  getOffers() {
     //Turn loader on till we get the data
     loading = this.loadingCtrl.create({
-      spinner: 'hide',
+      spinner: "hide",
       content: `
           <div class="spinner" >
             <div class="dot1"></div>
             <div class="dot2"></div>
           </div>
-        `,
+        `
     });
     loading.present();
-       
+
     //Getting offers data from API
-    this.http.get(`${this.configUrl}/app/ticketOffers`).map(res => res.json()).subscribe(
-      results => {
-        if(results.status){
+    this.http
+      .get(`${this.configUrl}/app/ticketOffers`)
+      .map(res => res.json())
+      .subscribe(results => {
+        if (results.status) {
           results.offers.map((x, index) => {
             // console.log(this.cinemasTitles)
-            this.data.push({              
+            this.data.push({
               offer: x,
-              icon: 'ios-arrow-down',
+              icon: "ios-arrow-down",
               showDetails: false
-            })
-          }) 
-          console.log("###Power####", this.data)         
-      }else{
-        console.log("Sorry Try Again")
-      }
-      //Done we fetching Data
-      //Dismissing Loader
-      loading.dismiss()
-    })
-
+            });
+          });
+          console.log("###Power####", this.data);
+        } else {
+          console.log("Sorry Try Again");
+        }
+        //Done we fetching Data
+        //Dismissing Loader
+        loading.dismiss();
+      });
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OffersPage');
+    console.log("ionViewDidLoad OffersPage");
+    
   }
-
 }

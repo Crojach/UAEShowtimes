@@ -15,8 +15,13 @@
 
 
 <ion-content padding>
+    <!-- <button ion-button (click)="animateElem()">Animate it!</button>
+    <ion-card #myElement>
+        <ion-card-header>My Animation Card</ion-card-header>
+        <ion-card-content>So much awesome content and animations. AMAZING!</ion-card-content>
+    </ion-card> -->
     <ion-list>
-        <div *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
+        <div class="animated zoomInUp" *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
             <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
                 <div nopadding>
                     <ion-row padding>
@@ -31,7 +36,7 @@
                         </ion-col>
                         <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon>
                     </ion-row>
-                    <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
+                    <div class="lineHeight animated tada" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
                         <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
                   <img *ngIf="item.offer.image" src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
                 </object>

@@ -28852,7 +28852,7 @@ page-movies .ion-ios-funnel {
   font-size: 1.2em;
   margin: auto;
   position: relative;
-  left: 3em;
+  left: 2em;
   color: #6F402B !important;
 }
 
@@ -28861,7 +28861,7 @@ page-movies .funnel-icon {
   font-size: 1.2em;
   margin: auto;
   position: relative;
-  left: 3em;
+  left: 2em;
   color: #B5B5B5;
 }
 
@@ -29027,7 +29027,7 @@ page-movies .cardCurve {
 
 page-movies .sort {
   height: unset;
-  width: 25%;
+  width: 20%;
 }
 
 page-movies .sort button {
@@ -29035,7 +29035,7 @@ page-movies .sort button {
 }
 
 page-movies .search {
-  width: 65%;
+  width: 75%;
 }
 
 page-movies .headerShadow {
