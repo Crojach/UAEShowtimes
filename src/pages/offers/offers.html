@@ -21,7 +21,7 @@
         <ion-card-content>So much awesome content and animations. AMAZING!</ion-card-content>
     </ion-card> -->
     <ion-list>
-        <div class="animated zoomInUp" *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
+        <div class="animated slideInUp" *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
             <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
                 <div nopadding>
                     <ion-row padding>
@@ -32,11 +32,13 @@
                             <h5 *ngIf="item.offer.multiplexId == 9"><strong>REEL Cinemas</strong></h5>
                             <h5 *ngIf="item.offer.multiplexId == 10"><strong>CINEROYAL Cinemas</strong></h5>
                             <h5 *ngIf="item.offer.multiplexId == 11"><strong>Oscar Cinemas</strong></h5>
+                            <h5 *ngIf="item.offer.multiplexId == 12"><strong>Star Cinemas</strong></h5>
+                            <h5 *ngIf="item.offer.multiplexId == 13"><strong>Cinema City Cinemas</strong></h5>
                             <p class="subTitle">{{ item.offer.title }}</p>
                         </ion-col>
                         <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon>
                     </ion-row>
-                    <div class="lineHeight animated tada" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
+                    <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
                         <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
                   <img *ngIf="item.offer.image" src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
                 </object>

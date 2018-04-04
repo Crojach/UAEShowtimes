@@ -13,7 +13,7 @@
 </ion-header>
 <ion-content padding>
     <ion-list>
-        <div class="animated zoomInUp" *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
+        <div class="animated slideInUp" *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
             <ion-card class="cardCurve">
                 <ion-row>
                     <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>

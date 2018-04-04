@@ -37,10 +37,12 @@ export class CinemasPage {
   rootNavCtrl: NavController;
   cinemasTitles = [
     "assets/img/cineroyal.png",
+    "assets/img/cinemacity.png",
     "assets/img/novo.jpg",
     "assets/img/oscar.png",
     "assets/img/reel.jpg",
     "assets/img/roxy.png",
+    "assets/img/star.png",
     "assets/img/vox.jpg"
   ];
 

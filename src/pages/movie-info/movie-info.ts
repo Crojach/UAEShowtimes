@@ -128,7 +128,9 @@ export class MovieInfoPage {
       voxCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/vox.jpg', showDetails: false, icon: "ios-arrow-down" },
       reelCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/reel.jpg', showDetails: false, icon: "ios-arrow-down" },
       cineRoyal:{ multiplexName: '', cinemaArray: [], image:'assets/img/cineroyal.png', showDetails: false, icon: "ios-arrow-down" },
-      oscarCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/oscar.png', showDetails: false, icon: "ios-arrow-down" }
+      oscarCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/oscar.png', showDetails: false, icon: "ios-arrow-down" },
+      cenimaCityCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/cinemacity.png', showDetails: false, icon: "ios-arrow-down" },
+      starCinemas:{ multiplexName: '', cinemaArray: [], image:'assets/img/star.png', showDetails: false, icon: "ios-arrow-down" }
     }
     // console.log("result",results.shows)
      let final = results.shows.reduce((acc,cv,ci,arr)=>{
@@ -155,6 +157,14 @@ export class MovieInfoPage {
         if(cv.multiplexName == 'Oscar Cinemas'){
           acc.oscarCinemas['multiplexName'] = 'Oscar Cinemas';
           acc.oscarCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
+        }
+        if(cv.multiplexName == 'CinemaCity Cinemas'){
+          acc.cenimaCityCinemas['multiplexName'] = 'Cinema City Cinemas';
+          acc.cenimaCityCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
+        }
+        if(cv.multiplexName == 'Star Cinemas'){
+          acc.starCinemas['multiplexName'] = 'Star Cinemas';
+          acc.starCinemas['cinemaArray'].push({ cinemaName: cv.cinemaName, sessions: cv.sessions})
         }
         return acc;
       },Obj)
