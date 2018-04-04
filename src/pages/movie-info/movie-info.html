@@ -12,7 +12,7 @@
     </ion-navbar>
 
 </ion-header>
-<ion-content class="animated slideInRight">
+<ion-content>
     <!-- <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon> -->
     <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe>
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
@@ -82,7 +82,7 @@
                 <div *ngIf="showsLength == 0 ">
                     <p>No Showtimes</p>
                 </div>
-                <div *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
+                <div class="animated slideInUp" *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
                     <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;">
                         <ion-card class="cardCurve">
                             <ion-item style="background-color: transparent">
@@ -93,7 +93,7 @@
                                 </ion-row>
                             </ion-item>
 
-                            <div class="showtimesPadding" *ngIf="d.showDetails">
+                            <div class="showtimesPadding animated fadeInUp" *ngIf="d.showDetails">
                                 <div *ngFor="let show of d.cinemaArray">
                                     <h3 class="multipexNames"> {{ show.cinemaName }} </h3><br>
                                     <ion-row>

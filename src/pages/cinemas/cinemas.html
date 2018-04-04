@@ -13,13 +13,13 @@
 </ion-header>
 <ion-content padding>
     <ion-list>
-        <div class="animated slideInUp" *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
+        <div class="animated fadeInUp" *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">
             <ion-card class="cardCurve">
                 <ion-row>
                     <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>
                     <h4 class="cinemaName">{{ d.multiplex }}</h4>
                 </ion-row>
-                <div class="animated slideInUp" *ngIf="d.showDetails">
+                <div class="animated fadeInUp" *ngIf="d.showDetails">
                     <a class="coralColor" *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id, d.multiplex)'>
                         <ul>
                             <li>{{col.cinemaName}}</li>

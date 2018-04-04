@@ -9,7 +9,7 @@
         <ion-title>Movies</ion-title>
         <br>
         <ion-row class="searchSort">
-            <ion-searchbar class="search animated fadeInLeft" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
+            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>
             <ion-icon class="funnel-icon" name="funnel"></ion-icon>
             <ion-select class="sort" [(ngModel)]="order">
                 <ion-option value="releaseDate">Sort by Release date</ion-option>
@@ -21,7 +21,7 @@
 
 <ion-content>
     <div style="padding:2%">
-        <ion-card class="cardCurve animated slideInUp" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
+        <ion-card class="cardCurve animated fadeInUp" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
             <ion-item style="padding:2%" (click)='bookNow(item)'>
                 <ion-thumbnail style="margin: 2%;" item-start>
                     <img class="imageCurve" [src]="item.thumbnailImage">
