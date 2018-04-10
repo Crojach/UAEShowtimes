@@ -6,16 +6,8 @@ import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { Diagnostic } from '@ionic-native/diagnostic';
 import "rxjs/add/operator/map";
-// import { Title } from '@angular/platform-browser';
 
-/**
- * Generated class for the MusicsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-// @IonicPage()
 let loading;
 @Component({
   selector: "page-musics",
@@ -29,7 +21,8 @@ export class CinemasPage {
     icon: string;
     showDetails: boolean;
   }> = [];
-  configUrl = "http://uaeshowtimes.com:3006";
+  // configUrl = "http://uaeshowtimes.com:3006";
+  configUrl = "http://13.250.201.193:3006";
   // configUrl = 'http://192.168.1.167';
   cinemas: any;
   loadingCtrl: any;
@@ -73,11 +66,7 @@ export class CinemasPage {
   }
 
   cinemaPage(id, cinemaName) {
-    // this.rootNavCtrl.push(CinemaInfoPage, {
-    //   cinemaId: id,
-    //   cinemaName: cinemaName
-    // });
-
+  
       //to Turn on location
       let successCallback = isAvailable => {
         console.log("Is available? " + isAvailable);
@@ -127,11 +116,8 @@ export class CinemasPage {
     loading = this.loadingCtrl.create({
       spinner: "hide",
       content: `
-        <div class="spinner" >
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-        `
+      <span class="spinner-double-dot-in"></span>
+      `
     });
 
     loading.present();

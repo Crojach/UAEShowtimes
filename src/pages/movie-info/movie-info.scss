@@ -1,4 +1,8 @@
 page-movie-info {
+    .button-inner {
+        color: white;
+        margin: auto;
+    }
     ion-navbar.toolbar {
         border-color: #f28c5d;
         background: #f28c5d;
@@ -74,14 +78,15 @@ page-movie-info {
     }
     .customImg {
         display: block;
-        width: 90px;
-        height: 120px;
+        width: 97px;
+        height: 130px;
         position: absolute;
         z-index: 1;
-        padding: 0%;
+        /* padding: 0%; */
         border-radius: 9%;
-        margin: 4%;
-        top: 6.3em;
+        /* margin: 4%; */
+        top: 5.3em;
+        left: 8%;
     }
     ion-app.ios [padding] .scroll-content {
         padding: 0;
@@ -124,8 +129,8 @@ page-movie-info {
         margin: 2px 0 32px;
     }
     .upShadow {
-        -webkit-box-shadow: 0 32px 31px -18px rgba(0, 0, 0, 0.2);
-        box-shadow: 0 32px 31px -18px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: 0px 13px 61px -7px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 13px 61px -7px rgba(0, 0, 0, 0.4);
     }
     h3,
     h4 {
@@ -204,5 +209,16 @@ page-movie-info {
     .headerShadow {
         -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
         box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+    }
+    .bannerImage {
+        min-width: 100%;
+        max-height: 160px;
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .play-button {
+        z-index: 1;
+        position: absolute;
+        left: 45%;
+        top: 6%;
     }
 }

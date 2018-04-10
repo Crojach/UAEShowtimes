@@ -23,72 +23,283 @@
     font-style: normal;
 }
 
-body {
-    letter-spacing: 1px;
-    color: #263856;
+// body {
+//     letter-spacing: 1px;
+//     color: #263856;
+// }
+// .white-background {
+//     background: #f3f3f3;
+//     height: 100%;
+//     width: 100%;
+// }
+$inactive: #aaa;
+$active: tomato;
+$speed: 1.2s;
+$size: 50px;
+$unit: $size / 16;
+%spinner {
+    display: block;
+    // float: right;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    border: $unit solid $inactive;
+    animation: spinner $speed linear infinite;
 }
 
-.spinner {
-    margin: auto;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    text-align: center;
-    -webkit-animation: sk-rotate 2.0s infinite linear;
-    animation: sk-rotate 2.0s infinite linear;
-}
-
-.dot1,
-.dot2 {
-    width: 60%;
-    height: 60%;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    background-color: rgb(236, 117, 50);
-    border-radius: 100%;
-    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-    animation: sk-bounce 2.0s infinite ease-in-out;
-}
-
-.dot2 {
-    top: auto;
-    bottom: 0;
-    -webkit-animation-delay: -1.0s;
-    animation-delay: -1.0s;
-}
-
-@-webkit-keyframes sk-rotate {
-    100% {
-        -webkit-transform: rotate(360deg)
+@keyframes spinner {
+    0% {
+        transform: rotate(0);
     }
-}
-
-@keyframes sk-rotate {
     100% {
         transform: rotate(360deg);
-        -webkit-transform: rotate(360deg)
     }
 }
 
-@-webkit-keyframes sk-bounce {
-    0%,
-    100% {
-        -webkit-transform: scale(0.0)
+.loading-content {
+    position: fixed;
+    // top: 40%;
+    left: 40%;
+}
+
+.loading-wrapper {
+    height: 100% !important;
+    width: 100% !important;
+    max-height: 100% !important;
+    max-width: 100% !important;
+}
+
+// .loading-wrapper1 {
+//     // height: 100% !important;
+//     // width: 100% !important;
+//     max-height: 100% !important;
+//     max-width: 100% !important;
+// }
+
+/* Dots */
+
+%spinner-double-dot-in,
+.spinner-double-dot-in {
+    @extend %spinner;
+    position: relative;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: ($unit*2);
+        left: ($size/2 -$unit);
+        width: ($unit*2);
+        height: ($unit*2);
+        border-radius: 50%;
+        background: $active;
     }
-    50% {
-        -webkit-transform: scale(1.0)
+    &:after {
+        top: auto;
+        bottom: ($unit*2);
     }
 }
 
-@keyframes sk-bounce {
-    0%,
-    100% {
-        transform: scale(0.0);
-        -webkit-transform: scale(0.0);
+%spinner-dot-in,
+.spinner-dot-in {
+    @extend %spinner-double-dot-in;
+    &:after {
+        display: none;
     }
-    50% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
+}
+
+%spinner-double-dot-stick,
+.spinner-double-dot-stick {
+    @extend %spinner-double-dot-in;
+    &:before,
+    &:after {
+        top: (-$unit*2);
+    }
+    &:after {
+        top: auto;
+        bottom: (-$unit*2);
+    }
+}
+
+%spinner-dot-stick,
+.spinner-dot-stick {
+    @extend %spinner-double-dot-stick;
+    &:after {
+        display: none;
+    }
+}
+
+%spinner-double-dot-out,
+.spinner-double-dot-out {
+    @extend %spinner-double-dot-in;
+    &:before,
+    &:after {
+        top: (-$unit*4);
+    }
+    &:after {
+        top: auto;
+        bottom: (-$unit*4);
+    }
+}
+
+%spinner-dot-out,
+.spinner-dot-out {
+    @extend %spinner-double-dot-out;
+    &:after {
+        display: none;
+    }
+}
+
+
+/* Waves */
+
+%spinner-wave-out,
+.spinner-wave-out {
+    @extend %spinner;
+    box-shadow: (-$unit/2) (-$unit/2) 0 ($unit/2) $active;
+}
+
+%spinner-wave-in,
+.spinner-wave-in {
+    @extend %spinner;
+    box-shadow: inset (-$unit/2) (-$unit/2) 0 ($unit/2) $active;
+}
+
+%spinner-double-wave-out,
+.spinner-double-wave-out {
+    @extend %spinner;
+    box-shadow: (-$unit/2) (-$unit/2) 0 ($unit/2) $active, ($unit/2) ($unit/2) 0 ($unit/2) $active;
+}
+
+%spinner-double-wave-in,
+.spinner-double-wave-in {
+    @extend %spinner;
+    box-shadow: inset (-$unit/2) (-$unit/2) 0 ($unit/2) $active, inset ($unit/2) ($unit/2) 0 ($unit/2) $active;
+}
+
+%spinner-huge-wave-out,
+.spinner-huge-wave-out {
+    @extend %spinner;
+    box-shadow: (-$unit/2) (-$unit/2) 0 ($unit*2) $active;
+}
+
+%spinner-huge-wave-in,
+.spinner-huge-wave-in {
+    @extend %spinner;
+    box-shadow: inset (-$unit/2) (-$unit/2) 0 ($unit*2) $active;
+}
+
+
+/* Sections */
+
+%spinner-double-section,
+.spinner-double-section {
+    @extend %spinner;
+    position: relative;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: -$unit;
+        left: -$unit;
+        display: block;
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        border: $unit solid transparent;
+        border-top-color: $active;
+    }
+    &:after {
+        border-top-color: transparent;
+        border-bottom-color: $active;
+    }
+}
+
+%spinner-section,
+.spinner-section {
+    @extend %spinner-double-section;
+    &:after {
+        display: none;
+    }
+}
+
+%spinner-double-section-in,
+.spinner-double-section-in {
+    @extend %spinner-double-section;
+    &:before,
+    &:after {
+        top: 0;
+        left: 0;
+        width: ($size - $unit*2);
+        height: ($size - $unit*2);
+    }
+}
+
+%spinner-section-in,
+.spinner-section-in {
+    @extend %spinner-double-section-in;
+    &:after {
+        display: none;
+    }
+}
+
+%spinner-double-section-out,
+.spinner-double-section-out {
+    @extend %spinner-double-section;
+    &:before,
+    &:after {
+        top: ($unit*-2);
+        left: ($unit*-2);
+        width: ($size + $unit*2);
+        height: ($size + $unit*2);
+    }
+}
+
+%spinner-section-out,
+.spinner-section-out {
+    @extend %spinner-double-section-out;
+    &:after {
+        display: none;
+    }
+}
+
+%spinner-double-section-far,
+.spinner-double-section-far {
+    @extend %spinner-double-section;
+    &:before,
+    &:after {
+        top: ($unit*-3);
+        left: ($unit*-3);
+        width: ($size + $unit*4);
+        height: ($size + $unit*4);
+    }
+}
+
+%spinner-section-far,
+.spinner-section-far {
+    @extend %spinner-double-section-far;
+    &:after {
+        display: none;
+    }
+}
+
+
+/* --- */
+
+$n: 4;
+$m: 10px;
+body {
+    background: #303030;
+    overflow: hidden;
+}
+
+.container {
+    width: ($size + $m * 4) * $n;
+    margin: 30px auto;
+}
+
+span {
+    margin: $m;
+    &:nth-child(#{$n}n+1) {
+        clear: both;
     }
 }

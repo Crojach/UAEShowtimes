@@ -31,16 +31,18 @@
                 <p class="ratings" item-end>{{ item.ratings }}</p>
                 <!-- <p>{{ item.releaseDate.split('-')[0] }}</p> -->
                 <ion-row style="margin-top: 10%;">
-                    <p style="margin:0;padding: 1%;" item-left>
-                        <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon>
-                        <br>
-                        <!-- <span style="margin: 0 0 0 14%;">Release Date</span> -->
-                    </p>
-                    <p style="margin:0;padding: 1%;" item-end>
-                        <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon>
-                        <br>
-                        <!-- <span style="margin: 0 0 0 14%;">Duration</span> -->
-                    </p>
+                    <ion-col>
+                        <p style="margin:0;padding: 1%;" item-left>
+                            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon>
+                            <br>
+                            <!-- <span style="margin: 0 0 0 14%;">Release Date</span> -->
+                        </p>
+                        <p style="margin:0;padding: 1%;" item-end>
+                            <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon>
+                            <br>
+                            <!-- <span style="margin: 0 0 0 14%;">Duration</span> -->
+                        </p>
+                    </ion-col>
                 </ion-row>
             </ion-item>
         </ion-card>

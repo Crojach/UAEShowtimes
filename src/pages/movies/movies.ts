@@ -4,27 +4,17 @@ import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { MovieInfoPage } from "../movie-info/movie-info";
 import { OrderPipe } from "ngx-order-pipe";
-import { SplashScreen } from "@ionic-native/splash-screen";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { NetworkServiceProvider } from '../../providers/network-service/network-service';
 
-// import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MoviesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-// @IonicPage()
 
 @Component({
   selector: "page-movies",
   templateUrl: "movies.html"
 })
 export class MoviesPage {
-  configUrl = "http://uaeshowtimes.com:3006";
+  // configUrl = "https://uaeshowtimes.com";
+  configUrl = "http://13.250.201.193:3006";
   // configUrl = 'http://192.168.1.167';
   items: any;
   order: any = "releaseDate";
@@ -37,9 +27,7 @@ export class MoviesPage {
     public http: Http,
     private platform: Platform,
     private ga:GoogleAnalytics,
-    private splashScreen: SplashScreen,
   ) {
-    // console.log("%%%%%%%%%%%%%%%%%%",this.network.noConnection())
     if(this.network.noConnection()){
       this.network.showNetworkAlert()
     }
@@ -53,7 +41,6 @@ export class MoviesPage {
     })
   }
   bookNow(item) {
-    // console.log("movie page", item);
     this.rootNavCtrl.push(MovieInfoPage, {
       movieInfo: item
     });
@@ -72,7 +59,7 @@ export class MoviesPage {
             x.releaseDate = newDate.split("T")[0];
             let image = x.thumbnailImage.split("/");
             if (image[0] != "http:") {
-              x.thumbnailImage = "http://uaeshowtimes.com" + x.thumbnailImage;
+              x.thumbnailImage = "http://13.250.201.193:3006" + x.thumbnailImage;
             }
             return x;
           });

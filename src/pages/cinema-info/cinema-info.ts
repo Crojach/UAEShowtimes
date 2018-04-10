@@ -13,7 +13,6 @@ import {
   SuperTabs
 } from "ionic2-super-tabs";
 
-// import moment from 'moment';
 import * as moment from "moment";
 declare var google;
 let marker;
@@ -29,8 +28,9 @@ let loading;
   templateUrl: "cinema-info.html"
 })
 export class CinemaInfoPage {
+  configUrl = "http://13.250.201.193:3006";
   // configUrl = 'http://192.168.1.167';
-  configUrl = "http://uaeshowtimes.com:3006";
+  // configUrl = "http://uaeshowtimes.com:3006";
   cinemaId: any;
   cinemaName: any = "";
   http: any;
@@ -120,7 +120,7 @@ export class CinemaInfoPage {
 
   // Function to open in app browser
   openBookingUrl(url) {
-    const browser = this.iab.create(url);
+    this.iab.create(url);
   }
 
   //Getting cinema sessions of day selected
@@ -139,10 +139,7 @@ export class CinemaInfoPage {
       loading = this.loadingCtrl.create({
         spinner: "hide",
         content: `
-          <div class="spinner" >
-            <div class="dot1"></div>
-            <div class="dot2"></div>
-          </div>
+        <span class="spinner-double-dot-in"></span>
         `
       });
       loading.present();
@@ -158,12 +155,8 @@ export class CinemaInfoPage {
         .get(url)
         .map(res => res.json())
         .subscribe(results => {
-          // console.log(">>Check",value == moment().add(0, 'days').format(`YYYYMMDD`) && todaysData != null)
-          // this.postItems(results)
           loading.dismiss();
-          // console.log("**********", results)
           this.selectedDay = results.finalMovies;
-          // this.showsLength = results.shows.length;
         });
     }
   }
@@ -185,8 +178,6 @@ export class CinemaInfoPage {
     const httpOptions = new RequestOptions({
       headers: new Headers({
         "Content-Type": "application/json"
-        // 'Content-Type':  'application/x-www-form-urlencoded',
-        // 'Authorization': 'my-auth-token'
       })
     });
     let body = {
@@ -240,7 +231,6 @@ export class CinemaInfoPage {
           position: options.center,
           title: "Hello World!"
         });
-        //  marker.addListener('click', this.toggleBounce);
         marker.setMap(this.map);
       },
 
