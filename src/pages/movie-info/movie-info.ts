@@ -259,6 +259,7 @@ export class MovieInfoPage {
           sessions: cv.sessions
         });
       }
+      
       return acc;
     }, Obj);
     this.cinema = Object.keys(final).map(x => {
