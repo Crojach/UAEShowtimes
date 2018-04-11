@@ -66,6 +66,11 @@ export class CinemasPage {
   }
 
   cinemaPage(id, cinemaName) {
+
+    //  this.rootNavCtrl.push(CinemaInfoPage, {
+    //           cinemaId: id,
+    //           cinemaName: cinemaName
+    //         });
   
       //to Turn on location
       let successCallback = isAvailable => {

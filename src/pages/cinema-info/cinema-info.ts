@@ -165,11 +165,8 @@ export class CinemaInfoPage {
     loading = this.loadingCtrl.create({
       spinner: "hide",
       content: `
-          <div class="spinner" >
-            <div class="dot1"></div>
-            <div class="dot2"></div>
-          </div>
-        `
+      <span class="spinner-double-dot-in"></span>
+      `
     });
 
     loading.present();

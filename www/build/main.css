@@ -28320,7 +28320,7 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 
 .loading-content {
   position: fixed;
-  left: 40%;
+  left: 42%;
 }
 
 .loading-wrapper {
@@ -28615,6 +28615,7 @@ page-cinema-info #map_canvas {
 
 page-cinema-info .button-inner {
   color: white;
+  margin: auto;
 }
 
 page-cinema-info .toolbar-background {
