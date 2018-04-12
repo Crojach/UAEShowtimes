@@ -83,28 +83,34 @@
                 <div *ngIf="showsLength == 0 ">
                     <p>No Showtimes</p>
                 </div>
-                <div class="animated slideInUp" *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
-                    <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;">
-                        <ion-card class="cardCurve">
-                            <ion-item style="background-color: transparent">
-                                <ion-row>
-                                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
-                                    <p class="CinemaFont">{{ d.multiplexName }}</p>
-                                    <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>
-                                </ion-row>
-                            </ion-item>
-
-                            <div class="showtimesPadding animated fadeInUp" *ngIf="d.showDetails">
-                                <div *ngFor="let show of d.cinemaArray">
-                                    <h3 class="multipexNames"> {{ show.cinemaName }} </h3><br>
+                <div *ngIf="view" class="spinner-data">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                </div>
+                <div *ngIf="!view">
+                    <div class="animated slideInUp" *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">
+                        <div *ngIf="d.multiplexName !== ''" style="background-color: transparent;">
+                            <ion-card class="cardCurve">
+                                <ion-item style="background-color: transparent">
                                     <ion-row>
-                                        <div style="width:33.33%" *ngFor="let time of show.sessions">
-                                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
-                                        </div>
-                                    </ion-row><br>
+                                        <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">
+                                        <p class="CinemaFont">{{ d.multiplexName }}</p>
+                                        <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>
+                                    </ion-row>
+                                </ion-item>
+
+                                <div class="showtimesPadding animated fadeInUp" *ngIf="d.showDetails">
+                                    <div *ngFor="let show of d.cinemaArray">
+                                        <h3 class="multipexNames"> {{ show.cinemaName }} </h3><br>
+                                        <ion-row>
+                                            <div style="width:33.33%" *ngFor="let time of show.sessions">
+                                                <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
+                                            </div>
+                                        </ion-row><br>
+                                    </div>
                                 </div>
-                            </div>
-                        </ion-card>
+                            </ion-card>
+                        </div>
                     </div>
                 </div>
             </ion-list>

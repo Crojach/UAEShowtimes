@@ -28,6 +28,7 @@ let loading;
   templateUrl: "cinema-info.html"
 })
 export class CinemaInfoPage {
+  view: boolean= false;
   configUrl = "http://13.250.201.193:3006";
   // configUrl = 'http://192.168.1.167';
   // configUrl = "http://uaeshowtimes.com:3006";
@@ -136,14 +137,7 @@ export class CinemaInfoPage {
       this.showsLength = todaysData.shows.length;
       this.postItems(todaysData);
     } else {
-      loading = this.loadingCtrl.create({
-        spinner: "hide",
-        content: `
-        <span class="spinner-double-dot-in"></span>
-        `
-      });
-      loading.present();
-
+       this.view = true;
       //Getting offers data from API
       let url =
         `${this.configUrl}/app/cinemaInfoForDate/` +
@@ -157,6 +151,7 @@ export class CinemaInfoPage {
         .subscribe(results => {
           loading.dismiss();
           this.selectedDay = results.finalMovies;
+          this.view = false;  
         });
     }
   }

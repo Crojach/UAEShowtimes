@@ -28584,6 +28584,71 @@ span:nth-child(4n+1) {
   clear: both;
 }
 
+span .spinner-data {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+span .dot1,
+span .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: coral;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+span .dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sk-bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
 ion-app._gmaps_cdv_ .nav-decor {
   background-color: transparent !important;
 }
@@ -28748,12 +28813,77 @@ page-cinema-info ion-icon {
   display: inline-block;
   font-size: 1.6em;
   margin-right: 5%;
-  color: #36454F;
+  color: #ACB7BC;
 }
 
 page-cinema-info .headerShadow {
   -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+page-cinema-info .spinner-data {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+page-cinema-info .dot1,
+page-cinema-info .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: coral;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+page-cinema-info .dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sk-bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
 }
 
 page-musics .back-button-icon-md {
@@ -28841,6 +28971,22 @@ page-musics .cinemaImage {
 page-musics .coralColor {
   color: coral;
   font-size: 1.3em;
+}
+
+page-musics .dropDown {
+  position: inherit !important;
+  margin: auto 2% auto 0 !important;
+  font-size: 1.3em;
+}
+
+page-musics .dropRight {
+  position: inherit !important;
+  margin: auto 2% auto 0 !important;
+  font-size: 1.3em;
+}
+
+page-musics .item-color {
+  color: coral;
 }
 
 page-musics .headerShadow {
@@ -29116,6 +29262,71 @@ page-movie-info .play-button {
   top: 6%;
 }
 
+page-movie-info .spinner-data {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+page-movie-info .dot1,
+page-movie-info .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: coral;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+page-movie-info .dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sk-bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
 page-movies .ion-ios-funnel {
   display: inline-block;
   font-size: 1.2em;
@@ -29290,8 +29501,10 @@ page-movies .cardCurve {
   border-radius: 6px;
   width: 100%;
   margin: 0 0 14px 0;
-  -webkit-box-shadow: 0 7px 29px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: 0 7px 29px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+  border-top-style: solid;
+  border-top-color: coral;
 }
 
 page-movies .sort {

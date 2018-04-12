@@ -15,6 +15,7 @@ let loading;
   templateUrl: "movie-info.html"
 })
 export class MovieInfoPage {
+  view: boolean= false;
   configUrl = "http://13.250.201.193:3006";
   // configUrl = "http://192.168.1.167";
   item: any;
@@ -101,7 +102,7 @@ export class MovieInfoPage {
     if (
       value ==
         moment()
-          .add(0, "days")
+        .add(0, "days")
           .format(`YYYYMMDD`) &&
       todaysData != null
     ) {
@@ -109,16 +110,17 @@ export class MovieInfoPage {
       this.showsLength = todaysData.shows.length;
       this.setValues(todaysData);
     } else {
-      loading = this.loadingCtrl.create({
-        spinner: "hide",
-        content: `
-          <span class="spinner-double-dot-in"></span>
-        `
-      });
-      loading.present();
+      // loading = this.loadingCtrl.create({
+      //   spinner: "hide",
+      //   content: `
+      //     <span class="spinner-double-dot-in"></span>
+      //   `
+      // });
+      // loading.present();
+      this.view = true;
       //Getting offers data from API
       let url =
-        `${this.configUrl}/app/movieInfoForDate/` +
+      `${this.configUrl}/app/movieInfoForDate/` +
         this.item._id +
         `?search=` +
         parseInt(value);
@@ -136,11 +138,13 @@ export class MovieInfoPage {
           // );
           this.setValues(results);
           this.showsLength = results.shows.length;
+          this.view = false;  
         });
-    loading.dismiss();
+        // loading.dismiss();
+        // console.log('view',this.view)
       }
-  }
-
+    }
+    
   setValues(results) {
     let Obj = {
       novaArray: {

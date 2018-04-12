@@ -151,8 +151,10 @@ page-movies {
         border-radius: 6px;
         width: 100%;
         margin: 0 0 14px 0;
-        -webkit-box-shadow: 0 7px 29px 0 rgba(0, 0, 0, 0.4);
-        box-shadow: 0 7px 29px 0 rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
+        border-top-style: solid;
+        border-top-color: coral;
     }
     .sort {
         height: unset;

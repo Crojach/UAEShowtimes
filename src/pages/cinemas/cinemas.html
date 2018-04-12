@@ -18,11 +18,19 @@
                 <ion-row>
                     <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>
                     <h4 class="cinemaName">{{ d.multiplex }}</h4>
+                    <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>
                 </ion-row>
                 <div class="animated fadeInUp" *ngIf="d.showDetails">
                     <a class="coralColor" *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id, d.multiplex)'>
                         <ul>
-                            <li>{{col.cinemaName}}</li>
+                            <li>
+                                <ion-row>
+                                    <ion-item class="item-color">
+                                        {{col.cinemaName}}
+                                        <ion-icon class="dropRight" item-right name="ios-arrow-forward-outline"></ion-icon>
+                                    </ion-item>
+                                </ion-row>
+                            </li>
                         </ul>
                     </a>
                 </div>
