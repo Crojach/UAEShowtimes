@@ -25,7 +25,7 @@
                         <p item-end class="ratings">{{ item.ratings }}</p>
                     </ion-row>
                     <p>{{ item.releaseDate.split('-')[0] }}</p>
-                    <ion-row>
+                    <ion-row style="margin-top:10%">
                         <p style="margin:0;padding: 1%;" item-left *ngIf="item.imdbRating">
                             <ion-icon style="margin-bottom: 5%;" name="star-half">&nbsp;{{ item.imdbRating }}</ion-icon>
                             <span style="margin: 0 0 0 14%;"><b>IMDB</b></span>
