@@ -167,14 +167,10 @@ var MoviesPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: "page-movies",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/'<!--\n\n  Generated template for the MoviesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <ion-navbar>\n\n        <ion-title>Movies</ion-title>\n\n        <br>\n\n        <ion-row class="searchSort">\n\n            <ion-searchbar class="search" type="text" [(ngModel)]="queryString" placeholder="Search Movies"></ion-searchbar>\n\n            <ion-icon class="funnel-icon" name="funnel"></ion-icon>\n\n            <ion-select class="sort" [(ngModel)]="order">\n\n                <ion-option value="releaseDate">Sort by Release date</ion-option>\n\n                <ion-option value="title">Sort by Title</ion-option>\n\n            </ion-select>\n\n        </ion-row>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div style="padding:2%">\n\n        <ion-card class="cardCurve animated fadeInUp" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == \'title\' ? false : true ">\n\n            <ion-item style="padding:2%" (click)=\'bookNow(item)\'>\n\n                <ion-thumbnail style="margin: 2%;" item-start>\n\n                    <img class="imageCurve" [src]="item.thumbnailImage">\n\n                </ion-thumbnail>\n\n\n\n                <h2 class="movieTitle">{{ item.title }}</h2> <br>\n\n                <p class="ratings" item-end>{{ item.ratings }}</p>\n\n                <!-- <p>{{ item.releaseDate.split(\'-\')[0] }}</p> -->\n\n                <ion-row style="margin-top: 10%;">\n\n                    <ion-col>\n\n                        <p style="margin:0;padding: 1%;" item-left>\n\n                            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon>\n\n                            <br>\n\n                            <!-- <span style="margin: 0 0 0 14%;">Release Date</span> -->\n\n                        </p>\n\n                        <p style="margin:0;padding: 1%;" item-end>\n\n                            <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon>\n\n                            <br>\n\n                            <!-- <span style="margin: 0 0 0 14%;">Duration</span> -->\n\n                        </p>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-item>\n\n        </ion-card>\n\n    </div>\n\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movies\movies.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_network_service_network_service__["a" /* NetworkServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__providers_network_service_network_service__["a" /* NetworkServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_network_service_network_service__["a" /* NetworkServiceProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _f || Object])
     ], MoviesPage);
     return MoviesPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=movies.js.map
@@ -496,10 +492,16 @@ var MovieInfoPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: "page-movie-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/'<!--\n  Generated template for the MovieInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- ---------iframe with thumbnail------------ -->\n<ion-header class="headerShadow">\n    <ion-navbar>\n        <ion-title>{{ item.title }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <!-- <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon> -->\n    <!-- <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : \'\'" frameborder="0" allowfullscreen></iframe> -->\n    <img class="play-button" src="assets/img/play.svg" alt="play" width="45px" height="40px" (click)="play(item.trailer)">\n    <img class="bannerImage" src="http://13.250.201.193:3006{{item.bannerImage}}" alt="">\n    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">\n        <div>\n            <img class="customImg upShadow" [src]="item.thumbnailImage" item-left>\n            <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 8px 0;">\n                <ion-item style="padding: 2% 1% 4% 34%;">\n                    <ion-row style="justify-content: space-between;">\n                        <h2 item-left>{{ item.title }}</h2>\n                        <p style="margin:0;" item-end>{{ item.ratings }}</p>\n                    </ion-row>\n                    <p>{{ item.releaseDate.split(\'-\')[0] }}</p>\n                    <ion-row style="margin-top: 10%;">\n                        <p style="margin:0;padding: 1%;" item-left>\n                            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>\n                            <span style="margin: 0 0 0 14%;">Release Date</span>\n                        </p>\n                        <p style="margin:0;padding: 1%;" item-end>\n                            <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>\n                            <span style="margin: 0 0 0 14%;">Duration</span>\n                        </p>\n                    </ion-row>\n                </ion-item>\n            </ion-card>\n        </div>\n    </div>\n\n    <div>\n        <ion-segment [(ngModel)]="selectedSegment">\n            <ion-segment-button value="Info">Info</ion-segment-button>\n            <ion-segment-button value="Cast">Cast</ion-segment-button>\n        </ion-segment>\n    </div>\n    <div style="padding: 0 16px 16px 16px; margin-top: -3px;">\n        <div [ngSwitch]="selectedSegment">\n            <ion-list class="iconColor" *ngSwitchCase="\'Info\'">\n                <ion-card class="infoCard">\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'videocam\' item-start></ion-icon>\n                        Synopsis\n                        <p style="white-space: pre-wrap;">{{ item.synopsis }}</p>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'eye\' item-start></ion-icon>\n                        Language\n                        <ion-note item-end>{{ item.language }}</ion-note>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'flag\' item-start></ion-icon>\n                        Genre\n                        <ion-note item-end>{{ item.genre }}</ion-note>\n                    </ion-item>\n                    <ion-item class="iconColor">\n                        <ion-icon name=\'film\' item-start></ion-icon>\n                        Director\n                        <ion-note item-end>{{ item.director }}</ion-note>\n                    </ion-item>\n                </ion-card>\n\n                <h4>Showtimes</h4>\n                <div>\n                    <ion-row>\n                        <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                            <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n                        </ion-segment>\n                    </ion-row> <br>\n                </div>\n                <div *ngIf="showsLength == 0 ">\n                    <p>No Showtimes</p>\n                </div>\n                <div *ngIf="view" class="spinner-data">\n                    <div class="dot1"></div>\n                    <div class="dot2"></div>\n                </div>\n                <div *ngIf="!view">\n                    <div class="animated slideInUp" *ngFor="let d of cinema; let i = index" (click)="toggleDetails(d,i)">\n                        <div *ngIf="d.multiplexName !== \'\'" style="background-color: transparent;">\n                            <ion-card class="cardCurve">\n                                <ion-item style="background-color: transparent">\n                                    <ion-row>\n                                        <img class="cinemaImage" [src]="d.image" alt="Cinemas Image">\n                                        <p class="CinemaFont">{{ d.multiplexName }}</p>\n                                        <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>\n                                    </ion-row>\n                                </ion-item>\n\n                                <div class="showtimesPadding animated fadeInUp" *ngIf="d.showDetails">\n                                    <div *ngFor="let show of d.cinemaArray">\n                                        <h3 class="multipexNames"> {{ show.cinemaName }} </h3><br>\n                                        <ion-row>\n                                            <div style="width:33.33%" *ngFor="let time of show.sessions">\n                                                <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                                            </div>\n                                        </ion-row><br>\n                                    </div>\n                                </div>\n                            </ion-card>\n                        </div>\n                    </div>\n                </div>\n            </ion-list>\n\n            <ion-list *ngSwitchCase="\'Cast\'">\n                <ion-item style="background-color: transparent;">\n                    <ion-thumbnail item-start>\n                        <img [src]="item.thumbnailImage">\n                    </ion-thumbnail>\n                    <h2>Ruby</h2>\n                </ion-item>\n            </ion-list>\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\movie-info\movie-info.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */]])
     ], MovieInfoPage);
     return MovieInfoPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=movie-info.js.map
@@ -632,34 +634,36 @@ var CinemasPage = (function () {
         });
     }
     CinemasPage.prototype.cinemaPage = function (id, cinemaName) {
-        this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
-            cinemaId: id,
-            cinemaName: cinemaName
-        });
-        // //to Turn on location
-        // let successCallback = isAvailable => {
-        //   console.log("Is available? " + isAvailable);
-        // };
-        // let errorCallback = e => console.error(e);
-        // // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-        // this.diagnostic.isGpsLocationEnabled()
-        // .then((state) => {
-        //   console.log('state',state)
-        //     if (state) {
-        //       // do something
-        //       console.log("gps is ON")
-        //       //on click to push on next page
-        //       this.rootNavCtrl.push(CinemaInfoPage, {
-        //         cinemaId: id,
-        //         cinemaName: cinemaName
-        //       });
-        //     } else {
-        //       console.log("gps is off")
-        //       alert("Please Turn on GPS.")
-        //       this.diagnostic.switchToLocationSettings()
-        //     }
-        //   })
-        //   .catch(e => console.error(e));
+        //  this.rootNavCtrl.push(CinemaInfoPage, {
+        //           cinemaId: id,
+        //           cinemaName: cinemaName
+        //         });
+        var _this = this;
+        //to Turn on location
+        var successCallback = function (isAvailable) {
+            console.log("Is available? " + isAvailable);
+        };
+        var errorCallback = function (e) { return console.error(e); };
+        // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+        this.diagnostic.isGpsLocationEnabled()
+            .then(function (state) {
+            console.log('state', state);
+            if (state) {
+                // do something
+                console.log("gps is ON");
+                //on click to push on next page
+                _this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
+                    cinemaId: id,
+                    cinemaName: cinemaName
+                });
+            }
+            else {
+                console.log("gps is off");
+                alert("Please Turn on GPS.");
+                _this.diagnostic.switchToLocationSettings();
+            }
+        })
+            .catch(function (e) { return console.error(e); });
     };
     CinemasPage.prototype.toggleDetails = function (data, index) {
         if (this.data[index].showDetails) {
@@ -785,6 +789,7 @@ var CinemaInfoPage = (function () {
         this.ga = ga;
         this.callNumber = callNumber;
         this.emailComposer = emailComposer;
+        this.view = false;
         this.configUrl = "http://13.250.201.193:3006";
         this.cinemaName = "";
         this.days = [];
@@ -853,11 +858,7 @@ var CinemaInfoPage = (function () {
             this.postItems(todaysData);
         }
         else {
-            loading = this.loadingCtrl.create({
-                spinner: "hide",
-                content: "\n        <span class=\"spinner-double-dot-in\"></span>\n        "
-            });
-            loading.present();
+            this.view = true;
             //Getting offers data from API
             var url = this.configUrl + "/app/cinemaInfoForDate/" +
                 this.cinemaId +
@@ -870,6 +871,7 @@ var CinemaInfoPage = (function () {
                 .subscribe(function (results) {
                 loading.dismiss();
                 _this.selectedDay = results.finalMovies;
+                _this.view = false;
             });
         }
     };

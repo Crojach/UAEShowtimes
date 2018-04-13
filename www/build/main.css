@@ -29532,6 +29532,31 @@ page-movies .ratings {
   padding: 2px;
 }
 
+.alert-md .alert-button {
+  text-align: right;
+  text-align: center !important;
+  border-radius: 15px;
+  /* position: relative; */
+  overflow: hidden;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #488aff;
+  background-color: transparent;
+  margin: auto !important;
+  padding: 10px;
+  width: auto !important;
+  border-top-style: solid !important;
+  border-top-color: coral !important;
+}
+
+.alert-md .alert-button .button-inner {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-left: -2px;
+}
+
 page-offers b,
 page-offers strong {
   font-weight: bold;
