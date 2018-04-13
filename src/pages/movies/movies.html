@@ -21,7 +21,7 @@
 
 <ion-content>
     <div style="padding:2%">
-        <ion-card class="cardCurve animated fadeInUp" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
+        <ion-card class="cardCurve" *ngFor="let item of items | FilterPipe: queryString | orderBy: order : order == 'title' ? false : true ">
             <ion-item style="padding:2%" (click)='bookNow(item)'>
                 <ion-thumbnail style="margin: 2%;" item-start>
                     <img class="imageCurve" [src]="item.thumbnailImage">
