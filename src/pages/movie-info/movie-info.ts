@@ -91,7 +91,8 @@ export class MovieInfoPage {
   }
 
   play(link){
-    this.youtube.openVideo(`https://www.youtube.com/embed/${link}`);
+    console.log("Youtube video", `https://youtu.be/${link}`)
+    this.youtube.openVideo(`https://youtu.be/${link}`);
     // this.iab.create(`https://www.youtube.com/embed/${link}`);
     // const browser = this.iab.create(`https://www.youtube.com/embed/${link}`);
   }
