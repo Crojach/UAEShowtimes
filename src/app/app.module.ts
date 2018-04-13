@@ -19,6 +19,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { Toast} from '@ionic-native/toast';
 import { Network } from "@ionic-native/network";
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 
 import { MyApp } from './app.component';
@@ -78,6 +79,7 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     CallNumber,
     Diagnostic,
     Network,
+    YoutubeVideoPlayer,
     GoogleAnalytics,
     ScreenOrientation,
     EmailComposer,

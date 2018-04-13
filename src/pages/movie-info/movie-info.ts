@@ -5,6 +5,8 @@ import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
 
 import * as moment from "moment";
 
@@ -42,6 +44,7 @@ export class MovieInfoPage {
     private domSanitizer: DomSanitizer,
     private platform: Platform,
     private ga: GoogleAnalytics,
+    private youtube: YoutubeVideoPlayer,
     http: Http,
     iab: InAppBrowser,
     loadingCtrl: LoadingController
@@ -88,8 +91,9 @@ export class MovieInfoPage {
   }
 
   play(link){
+    this.youtube.openVideo(`https://www.youtube.com/embed/${link}`);
     // this.iab.create(`https://www.youtube.com/embed/${link}`);
-    const browser = this.iab.create(`https://www.youtube.com/embed/${link}`);
+    // const browser = this.iab.create(`https://www.youtube.com/embed/${link}`);
   }
 
   //onClick for back button

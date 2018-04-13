@@ -21,6 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="orientation" value="portrait" />
     <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8AIzaSyDX8lQmy_wPtfYbP4M6KB52dIZGT5mNcY8" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -100,4 +101,5 @@
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.3" />
     <plugin name="cordova-plugin-x-toast" spec="^2.6.2" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-youtube-video-player" spec="^1.0.6" />
 </widget>
