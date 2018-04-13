@@ -29262,6 +29262,13 @@ page-movie-info .play-button {
   top: 6%;
 }
 
+page-movie-info .ratings {
+  margin: auto;
+  border: 1px #7d7d7d solid;
+  border-radius: 4px;
+  padding: 2px;
+}
+
 page-movie-info .spinner-data {
   margin: 100px auto;
   width: 40px;
@@ -29325,6 +29332,10 @@ page-movie-info .dot2 {
     transform: scale(1);
     -webkit-transform: scale(1);
   }
+}
+
+page-movies .scroll-content {
+  margin-top: 96px;
 }
 
 page-movies .ion-ios-funnel {

@@ -22,14 +22,23 @@
                 <ion-item style="padding: 2% 1% 4% 34%;">
                     <ion-row style="justify-content: space-between;">
                         <h2 item-left>{{ item.title }}</h2>
-                        <p style="margin:0;" item-end>{{ item.ratings }}</p>
+                        <p item-end class="ratings">{{ item.ratings }}</p>
                     </ion-row>
                     <p>{{ item.releaseDate.split('-')[0] }}</p>
                     <ion-row style="margin-top: 10%;">
-                        <p style="margin:0;padding: 1%;" item-left>
-                            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon><br>
+                        <p style="margin:0;padding: 1%;" item-left *ngIf="item.imdbRating">
+                            <ion-icon style="margin-bottom: 5%;" name="star-half">&nbsp;{{ item.imdbRating }}</ion-icon>
+                            <span style="margin: 0 0 0 14%;"><b>IMDB</b></span>
+                        </p> <br>
+                    </ion-row>
+                    <ion-row>
+                        <p>
+                            <ion-icon style="margin-bottom: 5%;" name="calendar">&nbsp;{{ item.releaseDate }}</ion-icon> <br>
                             <span style="margin: 0 0 0 14%;">Release Date</span>
                         </p>
+                    </ion-row>
+                    <ion-row>
+
                         <p style="margin:0;padding: 1%;" item-end>
                             <ion-icon style="margin-bottom: 5%;" name="time">&nbsp;{{ item.duration }}</ion-icon><br>
                             <span style="margin: 0 0 0 14%;">Duration</span>
@@ -40,12 +49,7 @@
         </div>
     </div>
 
-    <div>
-        <ion-segment [(ngModel)]="selectedSegment">
-            <ion-segment-button value="Info">Info</ion-segment-button>
-            <ion-segment-button value="Cast">Cast</ion-segment-button>
-        </ion-segment>
-    </div>
+
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
         <div [ngSwitch]="selectedSegment">
             <ion-list class="iconColor" *ngSwitchCase="'Info'">
@@ -113,15 +117,6 @@
                         </div>
                     </div>
                 </div>
-            </ion-list>
-
-            <ion-list *ngSwitchCase="'Cast'">
-                <ion-item style="background-color: transparent;">
-                    <ion-thumbnail item-start>
-                        <img [src]="item.thumbnailImage">
-                    </ion-thumbnail>
-                    <h2>Ruby</h2>
-                </ion-item>
             </ion-list>
         </div>
     </div>
