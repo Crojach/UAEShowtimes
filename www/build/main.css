@@ -29092,12 +29092,12 @@ page-movie-info ion-icon {
 
 page-movie-info .customImg {
   display: block;
-  width: 97px;
-  height: 130px;
+  width: 110px;
+  height: 150px;
   position: absolute;
   z-index: 1;
   border-radius: 9%;
-  top: 6em;
+  top: 7em;
   left: 8%;
 }
 
