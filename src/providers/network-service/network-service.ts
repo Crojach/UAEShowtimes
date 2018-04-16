@@ -23,7 +23,7 @@ public noConnection() {
   }
       showNetworkAlert() {
           let toast = this.toastCtrl.create({
-          message: 'Failed to connect to Forehotels, check your internet connection',
+          message: 'Failed to connect to UAE Showtimes, check your internet connection',
           duration: 15000,
           position: 'bottom',
           showCloseButton: true,

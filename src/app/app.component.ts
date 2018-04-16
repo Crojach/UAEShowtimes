@@ -1,5 +1,5 @@
 import { Component, ViewChild } from "@angular/core";
-import { Platform, App } from "ionic-angular";
+import { Platform, App, AlertController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { OneSignal } from "@ionic-native/onesignal";
@@ -9,28 +9,39 @@ import { CallNumber } from "@ionic-native/call-number";
 import { Diagnostic } from "@ionic-native/diagnostic";
 import { Toast } from "@ionic-native/toast";
 import { Network } from "@ionic-native/network";
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { AppVersion } from '@ionic-native/app-version';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from "../pages/tabs/tabs";
 import { MoviesPage } from "../pages/movies/movies";
+import { version } from "moment";
 @Component({
   templateUrl: "app.html"
 })
 export class MyApp {
   // @ViewChild(Nav) nav: Nav;
-
+  http:any;
+  items:any;
   rootPage: any = TabsPage;
   constructor(
+    http: Http,
     public platform: Platform,
     statusBar: StatusBar,
     public app: App,
     public toast: Toast,
     splashScreen: SplashScreen,
     private oneSignal: OneSignal,
+    private alertCtrl: AlertController,
     private ga: GoogleAnalytics,
+    private appVersion: AppVersion,
     private screenOrientation: ScreenOrientation,
     private diagnostic: Diagnostic,
-    private network: Network
+    private network: Network,
+    private iab: InAppBrowser,
+
   ) {
 
     // Plugin for checking Network
@@ -111,5 +122,58 @@ export class MyApp {
         })
         .catch(e => console.log("Error starting GoogleAnalytics", e));
     });
+
+
+    // App version check
+  //   this.appVersion.getVersionNumber().then(
+  //     data => {
+  //       let app_version = data.split(".")
+  //       console.log(app_version)
+  //       let headers = new Headers({
+  //       'Content-Type': 'application/json',
+  //       // 'Authorization': this.key
+  //     });
+  //     let options = new RequestOptions({ headers: headers });
+  //     this.http
+  //       .get("http://forehotels.com:3000/api/app_versions", options)
+  //       .subscribe(data =>{
+  //         this.items=JSON.parse(data._body).Apps;
+  //         let app_id = this.items["0"].app_id
+  //         var latest_version = this.items["0"].android_latest_version
+  //         latest_version = latest_version.split(".")
+  //         if(app_id == 1){
+  //           if((app_version[0] != latest_version[0]) || (app_version[1] != latest_version[1]) || (app_version[2] != latest_version[2])){
+  //             this.updateApp();
+  //           }
+  //         }
+  //       },
+  //       error=>{
+  //           console.log(error);// Error getting the data
+  //         });
+  //       });
+  // }
+ 
+  // updateApp(){
+  //   let alert = this.alertCtrl.create({
+  //      title: 'Update',
+  //      message: 'Please update your app to enjoy better features',
+  //      buttons: [
+  //        {
+  //          text: 'Cancel',
+  //          role: 'cancel',
+  //          handler: () => {
+  //          }
+  //        },
+  //        {
+  //          text: 'Update',
+  //          handler: () => {
+  //            let browser = this.iab.create('https://play.google.com/store','_system')
+  //            browser.show();
+  //          }
+  //        }
+  //      ]
+  //    });
+  //    alert.present();
+  //   }
   }
 }

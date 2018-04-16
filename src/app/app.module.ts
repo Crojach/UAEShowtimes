@@ -20,6 +20,7 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { Toast} from '@ionic-native/toast';
 import { Network } from "@ionic-native/network";
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { AppVersion } from '@ionic-native/app-version';
 
 
 import { MyApp } from './app.component';
@@ -78,6 +79,7 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     OneSignal,
     CallNumber,
     Diagnostic,
+    AppVersion,
     Network,
     YoutubeVideoPlayer,
     GoogleAnalytics,

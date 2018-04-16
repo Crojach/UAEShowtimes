@@ -28276,7 +28276,7 @@ super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .ind
 .spinner {
   width: 40px;
   height: 40px;
-  left: 42%;
+  left: 43%;
   /* top: 28%; */
   position: absolute;
   -webkit-animation: sk-rotate 2.0s infinite linear;
