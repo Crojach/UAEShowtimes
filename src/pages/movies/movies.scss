@@ -158,6 +158,9 @@ page-movies {
         box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
         border-top-style: solid;
         border-top-color: coral;
+        border-right: #bdbdbd solid 1px;
+        border-left: #bdbdbd solid 1px;
+        border-bottom: #bdbdbd solid 1px;
     }
     .sort {
         height: unset;

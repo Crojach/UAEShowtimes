@@ -28959,6 +28959,9 @@ page-musics .cardCurve {
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   border-top-style: solid;
   border-top-color: coral;
+  border-right: #bdbdbd solid 1px;
+  border-left: #bdbdbd solid 1px;
+  border-bottom: #bdbdbd solid 1px;
   min-height: 70px;
 }
 
@@ -29514,6 +29517,9 @@ page-movies .cardCurve {
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   border-top-style: solid;
   border-top-color: coral;
+  border-right: #bdbdbd solid 1px;
+  border-left: #bdbdbd solid 1px;
+  border-bottom: #bdbdbd solid 1px;
 }
 
 page-movies .sort {
@@ -29623,6 +29629,9 @@ page-offers .cardCurve {
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3);
   border-top-style: solid;
   border-top-color: coral;
+  border-right: #bdbdbd solid 1px;
+  border-left: #bdbdbd solid 1px;
+  border-bottom: #bdbdbd solid 1px;
 }
 
 page-offers .htmlContent {
