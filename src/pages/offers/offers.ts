@@ -83,7 +83,10 @@ export class OffersPage {
     loading = this.loadingCtrl.create({
       spinner: "hide",
       content: `
-      <span class="spinner-double-dot-in"></span>
+      <div class="spinner">
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+</div>
       `
     });
     loading.present();
