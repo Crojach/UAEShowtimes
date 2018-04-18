@@ -644,34 +644,36 @@ var CinemasPage = (function () {
         });
     }
     CinemasPage.prototype.cinemaPage = function (id, cinemaName) {
-        this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
-            cinemaId: id,
-            cinemaName: cinemaName
-        });
+        //  this.rootNavCtrl.push(CinemaInfoPage, {
+        //           cinemaId: id,
+        //           cinemaName: cinemaName
+        //         });
+        var _this = this;
         //to Turn on location
-        // let successCallback = isAvailable => {
-        //   console.log("Is available? " + isAvailable);
-        // };
-        // let errorCallback = e => console.error(e);
-        // // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-        // this.diagnostic.isGpsLocationEnabled()
-        // .then((state) => {
-        //   console.log('state',state)
-        //     if (state) {
-        //       // do something
-        //       console.log("gps is ON")
-        //       //on click to push on next page
-        //       this.rootNavCtrl.push(CinemaInfoPage, {
-        //         cinemaId: id,
-        //         cinemaName: cinemaName
-        //       });
-        //     } else {
-        //       console.log("gps is off")
-        //       alert("Please Turn on GPS.")
-        //       this.diagnostic.switchToLocationSettings()
-        //     }
-        //   })
-        //   .catch(e => console.error(e));
+        var successCallback = function (isAvailable) {
+            console.log("Is available? " + isAvailable);
+        };
+        var errorCallback = function (e) { return console.error(e); };
+        // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+        this.diagnostic.isGpsLocationEnabled()
+            .then(function (state) {
+            console.log('state', state);
+            if (state) {
+                // do something
+                console.log("gps is ON");
+                //on click to push on next page
+                _this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
+                    cinemaId: id,
+                    cinemaName: cinemaName
+                });
+            }
+            else {
+                console.log("gps is off");
+                alert("Please Turn on GPS.");
+                _this.diagnostic.switchToLocationSettings();
+            }
+        })
+            .catch(function (e) { return console.error(e); });
     };
     CinemasPage.prototype.toggleDetails = function (data, index) {
         if (this.data[index].showDetails) {
@@ -731,15 +733,10 @@ var CinemasPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: "page-musics",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/'<!--\n  Generated template for the MusicsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="headerShadow">\n\n    <ion-navbar>\n        <ion-title style="color:azure">Cinemas</ion-title>\n    </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <div class="animated fadeInUp" *ngFor="let d of data; let i = index" (click)="toggleDetails(d,i)">\n            <ion-card class="cardCurve">\n                <ion-row style="margin-right: 3%;">\n                    <img class="cinemaImage" [src]="d.image" alt="Cinemas Image" nopadding>\n                    <h4 class="cinemaName">{{ d.multiplex }}</h4>\n                    <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>\n                </ion-row>\n                <div class="animated fadeInUp" *ngIf="d.showDetails">\n                    <a class="coralColor" *ngFor="let col of d.cinema;" (click)=\'cinemaPage(col._id, d.multiplex)\'>\n                        <hr>\n                        <ion-row style="margin-right: 3%;">\n                            <ion-item class="item-color">\n                                {{col.cinemaName}}\n                                <ion-icon class="dropRight" item-right name="ios-arrow-forward-outline"></ion-icon>\n                            </ion-item>\n                        </ion-row>\n                    </a>\n                </div>\n            </ion-card>\n        </div>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinemas\cinemas.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_diagnostic__["a" /* Diagnostic */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_analytics__["a" /* GoogleAnalytics */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _g || Object])
     ], CinemasPage);
     return CinemasPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=cinemas.js.map
