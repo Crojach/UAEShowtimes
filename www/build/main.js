@@ -644,36 +644,34 @@ var CinemasPage = (function () {
         });
     }
     CinemasPage.prototype.cinemaPage = function (id, cinemaName) {
-        //  this.rootNavCtrl.push(CinemaInfoPage, {
-        //           cinemaId: id,
-        //           cinemaName: cinemaName
-        //         });
-        var _this = this;
+        this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
+            cinemaId: id,
+            cinemaName: cinemaName
+        });
         //to Turn on location
-        var successCallback = function (isAvailable) {
-            console.log("Is available? " + isAvailable);
-        };
-        var errorCallback = function (e) { return console.error(e); };
-        // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-        this.diagnostic.isGpsLocationEnabled()
-            .then(function (state) {
-            console.log('state', state);
-            if (state) {
-                // do something
-                console.log("gps is ON");
-                //on click to push on next page
-                _this.rootNavCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cinema_info_cinema_info__["a" /* CinemaInfoPage */], {
-                    cinemaId: id,
-                    cinemaName: cinemaName
-                });
-            }
-            else {
-                console.log("gps is off");
-                alert("Please Turn on GPS.");
-                _this.diagnostic.switchToLocationSettings();
-            }
-        })
-            .catch(function (e) { return console.error(e); });
+        // let successCallback = isAvailable => {
+        //   console.log("Is available? " + isAvailable);
+        // };
+        // let errorCallback = e => console.error(e);
+        // // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+        // this.diagnostic.isGpsLocationEnabled()
+        // .then((state) => {
+        //   console.log('state',state)
+        //     if (state) {
+        //       // do something
+        //       console.log("gps is ON")
+        //       //on click to push on next page
+        //       this.rootNavCtrl.push(CinemaInfoPage, {
+        //         cinemaId: id,
+        //         cinemaName: cinemaName
+        //       });
+        //     } else {
+        //       console.log("gps is off")
+        //       alert("Please Turn on GPS.")
+        //       this.diagnostic.switchToLocationSettings()
+        //     }
+        //   })
+        //   .catch(e => console.error(e));
     };
     CinemasPage.prototype.toggleDetails = function (data, index) {
         if (this.data[index].showDetails) {
@@ -844,7 +842,7 @@ var CinemaInfoPage = (function () {
             to: to,
             cc: "",
             bcc: "",
-            subject: "Testing",
+            subject: "Greetings",
             body: "How are you? Nice greetings from UAE showtimes",
             isHtml: true
         };
@@ -863,7 +861,6 @@ var CinemaInfoPage = (function () {
                 .add(0, "days")
                 .format("YYYYMMDD") &&
             todaysData != null) {
-            console.log("!!!!!!!!!!!!!!!!!!", todaysData);
             this.showsLength = todaysData.shows.length;
             this.postItems(todaysData);
         }
@@ -874,13 +871,15 @@ var CinemaInfoPage = (function () {
                 this.cinemaId +
                 "?search=" +
                 parseInt(value);
-            console.log(url);
+            // console.log(url);
             this.http
                 .get(url)
                 .map(function (res) { return res.json(); })
                 .subscribe(function (results) {
                 loading.dismiss();
                 _this.selectedDay = results.finalMovies;
+                console.log("!!!!!!!!!!!!!!!!!!", _this.selectedDay);
+                // this.showsLength = todaysData.shows.length;
                 _this.view = false;
             });
         }
@@ -948,7 +947,7 @@ var CinemaInfoPage = (function () {
     ], CinemaInfoPage.prototype, "superTabs", void 0);
     CinemaInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="headerShadow">\n\n    <!-- <ion-navbar>\n        <ion-title>{{ cinemaInfo.multiplexName }}</ion-title>\n    </ion-navbar> -->\n    <ion-navbar>\n        <ion-title>{{ cinemaName }}</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div id="map_canvas"></div>\n    <ion-card class="cardCurve">\n        <div *ngFor="let d of cinemaInfo">\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>\n                <ion-col>\n                    <h2>{{d.cinemaName}}</h2>\n                    <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n                </ion-col>\n            </ion-row>\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-call" md="md-call"></ion-icon>\n                <p class="text" (click)="launchDialer(d.phoneNumber)">{{ d.phoneNumber }}</p>\n            </ion-row>\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>\n                <p class="text wordBreak" (click)="launchMail(d.emailId)">{{ d.emailId }} </p>\n            </ion-row>\n        </div>\n    </ion-card>\n    <!-- -------------------ShowTime------------------------------------------ -->\n    <h3 style="color:#36454F">Showtimes</h3>\n    <div>\n        <ion-row>\n            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n            </ion-segment>\n        </ion-row> <br>\n        <div *ngIf="view" class="spinner-data">\n            <div class="dot1"></div>\n            <div class="dot2"></div>\n        </div>\n        <div *ngIf="!view">\n            <div class="animated slideInUp" *ngFor="let session of selectedDay">\n                <ion-card class="cardCurve">\n                    <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                    <ion-row>\n                        <div class="animated fadeInUp" style="width:33.33%" *ngFor="let time of session.sessions">\n                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                        </div>\n                    </ion-row>\n                </ion-card>\n            </div>\n        </div>\n    </div>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
+            selector: "page-cinema-info",template:/*ion-inline-start:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/'<!--\n  Generated template for the CinemaInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header class="headerShadow">\n\n    <!-- <ion-navbar>\n        <ion-title>{{ cinemaInfo.multiplexName }}</ion-title>\n    </ion-navbar> -->\n    <ion-navbar>\n        <ion-title>{{ cinemaName }}</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div id="map_canvas"></div>\n    <ion-card class="cardCurve">\n        <div *ngFor="let d of cinemaInfo">\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>\n                <ion-col>\n                    <h2>{{d.cinemaName}}</h2>\n                    <p class="customFont wordBreak">{{ d.cityName }}, {{ d.stateName }}, {{ d.countryName}}</p>\n                </ion-col>\n            </ion-row>\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-call" md="md-call"></ion-icon>\n                <p class="text" (click)="launchDialer(d.phoneNumber)">{{ d.phoneNumber }}</p>\n            </ion-row>\n            <ion-row class="rowMargin">\n                <ion-icon ios="ios-mail" md="md-mail" nopadding></ion-icon>\n                <p class="text wordBreak" (click)="launchMail(d.emailId)">{{ d.emailId }} </p>\n            </ion-row>\n        </div>\n    </ion-card>\n    <!-- -------------------ShowTime------------------------------------------ -->\n    <h3 style="color:#36454F">Showtimes</h3>\n    <div>\n        <ion-row>\n            <ion-segment *ngFor="let day of days" [(ngModel)]="daySegment">\n                <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>\n            </ion-segment>\n        </ion-row> <br>\n        <div *ngIf="selectedDay == 0 ">\n            <p>No Showtimes</p>\n        </div>\n        <div *ngIf="view" class="spinner-data">\n            <div class="dot1"></div>\n            <div class="dot2"></div>\n        </div>\n        <div *ngIf="!view">\n            <div class="animated slideInUp" *ngFor="let session of selectedDay">\n                <ion-card class="cardCurve">\n                    <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>\n                    <ion-row>\n                        <div class="animated fadeInUp" style="width:33.33%" *ngFor="let time of session.sessions">\n                            <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:\'h:mm a\'}}</button>\n                        </div>\n                    </ion-row>\n                </ion-card>\n            </div>\n        </div>\n    </div>'/*ion-inline-end:"D:\sybms\StrongDC++\downloads\Raw Codes\binary numbers\ionic\uaeshowtimesapp\src\pages\cinema-info\cinema-info.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],

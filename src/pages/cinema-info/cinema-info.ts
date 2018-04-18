@@ -110,7 +110,7 @@ export class CinemaInfoPage {
       to: to,
       cc: "",
       bcc: "",
-      subject: "Testing",
+      subject: "Greetings",
       body: "How are you? Nice greetings from UAE showtimes",
       isHtml: true
     };
@@ -133,24 +133,25 @@ export class CinemaInfoPage {
           .format(`YYYYMMDD`) &&
       todaysData != null
     ) {
-      console.log("!!!!!!!!!!!!!!!!!!", todaysData);
       this.showsLength = todaysData.shows.length;
       this.postItems(todaysData);
     } else {
-       this.view = true;
+      this.view = true;
       //Getting offers data from API
       let url =
-        `${this.configUrl}/app/cinemaInfoForDate/` +
-        this.cinemaId +
-        `?search=` +
-        parseInt(value);
-      console.log(url);
+      `${this.configUrl}/app/cinemaInfoForDate/` +
+      this.cinemaId +
+      `?search=` +
+      parseInt(value);
+      // console.log(url);
       this.http
-        .get(url)
-        .map(res => res.json())
-        .subscribe(results => {
-          loading.dismiss();
-          this.selectedDay = results.finalMovies;
+      .get(url)
+      .map(res => res.json())
+      .subscribe(results => {
+        loading.dismiss();
+        this.selectedDay = results.finalMovies;
+        console.log("!!!!!!!!!!!!!!!!!!", this.selectedDay);
+          // this.showsLength = todaysData.shows.length;
           this.view = false;  
         });
     }

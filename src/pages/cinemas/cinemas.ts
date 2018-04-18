@@ -67,37 +67,37 @@ export class CinemasPage {
 
   cinemaPage(id, cinemaName) {
 
-    //  this.rootNavCtrl.push(CinemaInfoPage, {
-    //           cinemaId: id,
-    //           cinemaName: cinemaName
-    //         });
-  
-      //to Turn on location
-      let successCallback = isAvailable => {
-        console.log("Is available? " + isAvailable);
-      };
-      let errorCallback = e => console.error(e);
-  
-      // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-  
-      this.diagnostic.isGpsLocationEnabled()
-      .then((state) => {
-        console.log('state',state)
-          if (state) {
-            // do something
-            console.log("gps is ON")
-            //on click to push on next page
-            this.rootNavCtrl.push(CinemaInfoPage, {
+     this.rootNavCtrl.push(CinemaInfoPage, {
               cinemaId: id,
               cinemaName: cinemaName
             });
-          } else {
-            console.log("gps is off")
-            alert("Please Turn on GPS.")
-            this.diagnostic.switchToLocationSettings()
-          }
-        })
-        .catch(e => console.error(e));
+  
+      //to Turn on location
+      // let successCallback = isAvailable => {
+      //   console.log("Is available? " + isAvailable);
+      // };
+      // let errorCallback = e => console.error(e);
+  
+      // // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+  
+      // this.diagnostic.isGpsLocationEnabled()
+      // .then((state) => {
+      //   console.log('state',state)
+      //     if (state) {
+      //       // do something
+      //       console.log("gps is ON")
+      //       //on click to push on next page
+      //       this.rootNavCtrl.push(CinemaInfoPage, {
+      //         cinemaId: id,
+      //         cinemaName: cinemaName
+      //       });
+      //     } else {
+      //       console.log("gps is off")
+      //       alert("Please Turn on GPS.")
+      //       this.diagnostic.switchToLocationSettings()
+      //     }
+      //   })
+      //   .catch(e => console.error(e));
   }
 
   toggleDetails(data, index) {

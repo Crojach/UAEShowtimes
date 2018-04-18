@@ -44,6 +44,9 @@
                 <ion-segment-button (click)="dayValue(day.value,null)" [value]="day.value">{{ day.day }}</ion-segment-button>
             </ion-segment>
         </ion-row> <br>
+        <div *ngIf="selectedDay == 0 ">
+            <p>No Showtimes</p>
+        </div>
         <div *ngIf="view" class="spinner-data">
             <div class="dot1"></div>
             <div class="dot2"></div>
