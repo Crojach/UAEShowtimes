@@ -20,7 +20,7 @@
                     <h4 class="cinemaName">{{ d.multiplex }}</h4>
                     <ion-icon class="dropDown" color="danger" item-right [name]="d.icon"></ion-icon>
                 </ion-row>
-                <div class="animated fadeInUp" *ngIf="d.showDetails">
+                <div *ngIf="d.showDetails">
                     <a class="coralColor" *ngFor="let col of d.cinema;" (click)='cinemaPage(col._id, d.multiplex)'>
                         <hr>
                         <ion-row style="margin-right: 3%;">

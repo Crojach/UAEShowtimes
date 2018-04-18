@@ -21,7 +21,7 @@
         <ion-card-content>So much awesome content and animations. AMAZING!</ion-card-content>
     </ion-card> -->
     <ion-list>
-        <div class="animated fadeInUp" *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
+        <div *ngFor="let item of data | FilterPipe: queryString; let i = index" (click)="toggleDetails(item, i)" nopadding>
             <ion-card class="cardCurve" *ngIf="item.offer.title" nopadding>
                 <div nopadding>
                     <ion-row padding>

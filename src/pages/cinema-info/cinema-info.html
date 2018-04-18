@@ -56,7 +56,7 @@
                 <ion-card class="cardCurve">
                     <h4 class="showTimeHeader">{{ session.movieTitle }}</h4>
                     <ion-row>
-                        <div class="animated fadeInUp" style="width:33.33%" *ngFor="let time of session.sessions">
+                        <div style="width:33.33%" *ngFor="let time of session.sessions">
                             <button [disabled]="currentTime > time.showTime * 1000" class="costumButton" (click)="openBookingUrl(time.bookingUrl)">{{ time.showTime * 1000 - 5400000 | date:'h:mm a'}}</button>
                         </div>
                     </ion-row>
