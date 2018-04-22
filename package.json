@@ -49,7 +49,7 @@
     "cordova-plugin-facebook4": "^1.9.1",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-google-analytics": "^1.8.3",
-    "cordova-plugin-googlemaps": "^2.2.5",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -68,7 +68,6 @@
     "ionicons": "3.0.0",
     "moment": "^2.21.0",
     "ngx-order-pipe": "^2.0.1",
-    "onesignal-cordova-plugin": "^2.3.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
     "web-animations-js": "^2.3.1",
@@ -82,12 +81,7 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ",
-        "API_KEY_FOR_IOS": "AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ"
-      },
       "cordova-plugin-splashscreen": {},
-      "onesignal-cordova-plugin": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-ionic-webview": {},

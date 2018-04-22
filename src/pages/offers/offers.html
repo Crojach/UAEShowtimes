@@ -39,9 +39,9 @@
                         <ion-icon color="danger" item-right [name]="item.icon" width="100%"></ion-icon>
                     </ion-row>
                     <div class="lineHeight" *ngIf="item.showDetails" (click)="openOfferSite(item.offer.url)" nopadding>
-                        <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
-                  <img *ngIf="item.offer.image" src="http://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
-                </object>
+                        <!--<object data="http://stackoverflow.com/does-not-exist.png" type="image/png">-->
+                          <img *ngIf="item.offer.image" src="https://uaeshowtimes.com{{item.offer.image}}" alt="Offer Image">
+                        <!--</object>-->
                         <div class="htmlContent" [innerHtml]="item.offer.htmlData"></div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 import { Platform, App, AlertController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-import { OneSignal } from "@ionic-native/onesignal";
+// import { OneSignal } from "@ionic-native/onesignal";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 import { CallNumber } from "@ionic-native/call-number";
@@ -33,7 +33,7 @@ export class MyApp {
     public app: App,
     public toast: Toast,
     splashScreen: SplashScreen,
-    private oneSignal: OneSignal,
+    // private oneSignal: OneSignal,
     private alertCtrl: AlertController,
     private ga: GoogleAnalytics,
     private appVersion: AppVersion,
@@ -81,7 +81,7 @@ export class MyApp {
       .then(successCallback)
       .catch(errorCallback);
 
-      
+
     // code for ScreenOrientation
     // get current
     console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
@@ -94,22 +94,22 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.oneSignal.startInit(
-        "d840b75f-705d-4dcd-bb76-dc46fa6fc1f7",
-        "269153372159"
-      );
-      this.oneSignal.inFocusDisplaying(
-        this.oneSignal.OSInFocusDisplayOption.InAppAlert
-      );
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-        // do something when notification is received
-      });
-
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
-        // do something when a notification is opened
-      });
-
-      this.oneSignal.endInit();
+      // this.oneSignal.startInit(
+      //   "d840b75f-705d-4dcd-bb76-dc46fa6fc1f7",
+      //   "269153372159"
+      // );
+      // this.oneSignal.inFocusDisplaying(
+      //   this.oneSignal.OSInFocusDisplayOption.InAppAlert
+      // );
+      // this.oneSignal.handleNotificationReceived().subscribe(() => {
+      //   // do something when notification is received
+      // });
+      //
+      // this.oneSignal.handleNotificationOpened().subscribe(() => {
+      //   // do something when a notification is opened
+      // });
+      //
+      // this.oneSignal.endInit();
 
       //For google analytics
       this.ga
@@ -152,7 +152,7 @@ export class MyApp {
   //         });
   //       });
   // }
- 
+
   // updateApp(){
   //   let alert = this.alertCtrl.create({
   //      title: 'Update',

@@ -8,7 +8,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { GoogleMaps,GoogleMap } from '@ionic-native/google-maps';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
-import { OneSignal } from "@ionic-native/onesignal";
+// import { OneSignal } from "@ionic-native/onesignal";
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { SuperTabsModule, SuperTabsController } from 'ionic2-super-tabs';
@@ -46,7 +46,7 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     CinemaInfoPage,
     OffersPage,
     FilterPipe,
-    
+
   ],
   imports: [
     HttpModule,
@@ -76,7 +76,7 @@ import { NetworkServiceProvider } from '../providers/network-service/network-ser
     InAppBrowser,
     GoogleMaps,
     LoadingController,
-    OneSignal,
+    // OneSignal,
     CallNumber,
     Diagnostic,
     AppVersion,

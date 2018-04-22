@@ -87,7 +87,7 @@ export class MovieInfoPage {
 
   openBookingUrl(url) {
     console.log("---------", url)
-    const browser = this.iab.create(url);
+    const browser = this.iab.create(url, "_blank");
   }
 
   play(link){
@@ -143,13 +143,13 @@ export class MovieInfoPage {
           // );
           this.setValues(results);
           this.showsLength = results.shows.length;
-          this.view = false;  
+          this.view = false;
         });
         // loading.dismiss();
         // console.log('view',this.view)
       }
     }
-    
+
   setValues(results) {
     let Obj = {
       novaArray: {
@@ -268,7 +268,7 @@ export class MovieInfoPage {
           sessions: cv.sessions
         });
       }
-      
+
       return acc;
     }, Obj);
     this.cinema = Object.keys(final).map(x => {
@@ -331,7 +331,7 @@ export class MovieInfoPage {
             .format(`YYYYMMDD`),
           results
         );
-        
+
       });
       loading.dismiss();
   }

@@ -84,12 +84,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
-    <plugin name="cordova-plugin-googlemaps" spec="^2.2.5">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyACDkTbwhQBjD6Ml9fJYEx35ZunrKh8KHQ" />
-    </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <plugin name="onesignal-cordova-plugin" spec="^2.3.2" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
