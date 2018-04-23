@@ -27,7 +27,7 @@ public noConnection() {
           duration: 15000,
           position: 'bottom',
           showCloseButton: true,
-          closeButtonText: 'Got it!',
+          closeButtonText: 'Try Again',
         });
         toast.present();
       }

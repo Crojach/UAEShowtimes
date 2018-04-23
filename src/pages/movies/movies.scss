@@ -208,3 +208,7 @@ page-movies {
     justify-content: flex-end;
     margin-left: -2px;
 }
+
+.backdrop-no-tappable, .loading-md, .loading-wrapper{
+  display: none !important;
+}

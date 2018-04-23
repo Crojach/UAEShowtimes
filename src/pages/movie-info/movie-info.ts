@@ -6,7 +6,9 @@ import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-
+import { NetworkServiceProvider } from '../../providers/network-service/network-service';
+import { ToastController } from 'ionic-angular';
+// import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser';
 
 import * as moment from "moment";
 
@@ -42,12 +44,15 @@ export class MovieInfoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private domSanitizer: DomSanitizer,
+    // public themeableBrowser: ThemeableBrowser,
     private platform: Platform,
     private ga: GoogleAnalytics,
     private youtube: YoutubeVideoPlayer,
     http: Http,
     iab: InAppBrowser,
-    loadingCtrl: LoadingController
+    loadingCtrl: LoadingController,
+    public network : NetworkServiceProvider,
+    public toastCtrl: ToastController,
   ) {
     this.http = http;
     this.iab = iab;
@@ -83,11 +88,14 @@ export class MovieInfoPage {
       this.ga.trackView("Movies Info");
     });
     this.postItems();
+
+
   }
 
   openBookingUrl(url) {
-    console.log("---------", url)
-    const browser = this.iab.create(url, "_blank");
+    console.log("---------", typeof url)
+    //Browser intialization
+    const browser = this.iab.create(url,"_blank");
   }
 
   play(link){
@@ -106,9 +114,9 @@ export class MovieInfoPage {
   dayValue(value, todaysData) {
     if (
       value ==
-        moment()
+      moment()
         .add(0, "days")
-          .format(`YYYYMMDD`) &&
+        .format(`YYYYMMDD`) &&
       todaysData != null
     ) {
       console.log("!!!!!!!!!!!!!!!!!!", todaysData);
@@ -125,7 +133,7 @@ export class MovieInfoPage {
       this.view = true;
       //Getting offers data from API
       let url =
-      `${this.configUrl}/app/movieInfoForDate/` +
+        `${this.configUrl}/app/movieInfoForDate/` +
         this.item._id +
         `?search=` +
         parseInt(value);
@@ -145,10 +153,10 @@ export class MovieInfoPage {
           this.showsLength = results.shows.length;
           this.view = false;
         });
-        // loading.dismiss();
-        // console.log('view',this.view)
-      }
+      // loading.dismiss();
+      // console.log('view',this.view)
     }
+  }
 
   setValues(results) {
     let Obj = {
@@ -299,43 +307,58 @@ export class MovieInfoPage {
 
   //Post request for getting showTimes
   postItems() {
-    //Show loader till getting data
-    loading = this.loadingCtrl.create({
-      spinner: "hide",
-      content: `
+    if(this.network.noConnection()){
+      console.log("No connection plzz try again later")
+      let toast = this.toastCtrl.create({
+        message: 'Failed to connect to UAE Showtimes, check your internet connection',
+        duration: 15000,
+        position: 'bottom',
+        showCloseButton: true,
+        closeButtonText: 'Try Again',
+      });
+      toast.onDidDismiss(() => {
+        console.log('Dismissed toast');
+        this.postItems();
+      });
+      toast.present();
+    }else{
+      //Show loader till getting data
+      loading = this.loadingCtrl.create({
+        spinner: "hide",
+        content: `
       <div class="spinner">
         <div class="dot1"></div>
         <div class="dot2"></div>
       </div>
         `
-    });
-    loading.present();
-
-    // console.log(">>>>>>",this.movieId);
-    const httpOptions = new RequestOptions({
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    });
-    let body = {
-      movieId: this.item._id
-    };
-    // console.log(body);
-    this.http
-      .post(`${this.configUrl}/app/movie`, body, httpOptions)
-      .map(res => res.json())
-      .subscribe(results => {
-        this.dayValue(
-          moment()
-            .add(0, "days")
-            .format(`YYYYMMDD`),
-          results
-        );
-
       });
-      loading.dismiss();
-  }
+      loading.present();
 
+      // console.log(">>>>>>",this.movieId);
+      const httpOptions = new RequestOptions({
+        headers: new Headers({
+          "Content-Type": "application/json"
+        })
+      });
+      let body = {
+        movieId: this.item._id
+      };
+      // console.log(body);
+      this.http
+        .post(`${this.configUrl}/app/movie`, body, httpOptions)
+        .map(res => res.json())
+        .subscribe(results => {
+          this.dayValue(
+            moment()
+              .add(0, "days")
+              .format(`YYYYMMDD`),
+            results
+          );
+
+        });
+      loading.dismiss();
+    }
+  }
   ionViewWillEnter() {}
 
   ionViewDidLoad() {

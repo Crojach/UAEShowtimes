@@ -66,8 +66,10 @@ export class MyApp {
       }, 3000);
     });
 
-    // stop connect watch
-    connectSubscription.unsubscribe();
+    // // stop connect watch
+    // connectSubscription.unsubscribe();
+
+
 
 
     //Function for turning on GPS
@@ -125,55 +127,55 @@ export class MyApp {
 
 
     // App version check
-  //   this.appVersion.getVersionNumber().then(
-  //     data => {
-  //       let app_version = data.split(".")
-  //       console.log(app_version)
-  //       let headers = new Headers({
-  //       'Content-Type': 'application/json',
-  //       // 'Authorization': this.key
-  //     });
-  //     let options = new RequestOptions({ headers: headers });
-  //     this.http
-  //       .get("http://forehotels.com:3000/api/app_versions", options)
-  //       .subscribe(data =>{
-  //         this.items=JSON.parse(data._body).Apps;
-  //         let app_id = this.items["0"].app_id
-  //         var latest_version = this.items["0"].android_latest_version
-  //         latest_version = latest_version.split(".")
-  //         if(app_id == 1){
-  //           if((app_version[0] != latest_version[0]) || (app_version[1] != latest_version[1]) || (app_version[2] != latest_version[2])){
-  //             this.updateApp();
-  //           }
-  //         }
-  //       },
-  //       error=>{
-  //           console.log(error);// Error getting the data
-  //         });
-  //       });
-  // }
+    //   this.appVersion.getVersionNumber().then(
+    //     data => {
+    //       let app_version = data.split(".")
+    //       console.log(app_version)
+    //       let headers = new Headers({
+    //       'Content-Type': 'application/json',
+    //       // 'Authorization': this.key
+    //     });
+    //     let options = new RequestOptions({ headers: headers });
+    //     this.http
+    //       .get("http://forehotels.com:3000/api/app_versions", options)
+    //       .subscribe(data =>{
+    //         this.items=JSON.parse(data._body).Apps;
+    //         let app_id = this.items["0"].app_id
+    //         var latest_version = this.items["0"].android_latest_version
+    //         latest_version = latest_version.split(".")
+    //         if(app_id == 1){
+    //           if((app_version[0] != latest_version[0]) || (app_version[1] != latest_version[1]) || (app_version[2] != latest_version[2])){
+    //             this.updateApp();
+    //           }
+    //         }
+    //       },
+    //       error=>{
+    //           console.log(error);// Error getting the data
+    //         });
+    //       });
+    // }
 
-  // updateApp(){
-  //   let alert = this.alertCtrl.create({
-  //      title: 'Update',
-  //      message: 'Please update your app to enjoy better features',
-  //      buttons: [
-  //        {
-  //          text: 'Cancel',
-  //          role: 'cancel',
-  //          handler: () => {
-  //          }
-  //        },
-  //        {
-  //          text: 'Update',
-  //          handler: () => {
-  //            let browser = this.iab.create('https://play.google.com/store','_system')
-  //            browser.show();
-  //          }
-  //        }
-  //      ]
-  //    });
-  //    alert.present();
-  //   }
+    // updateApp(){
+    //   let alert = this.alertCtrl.create({
+    //      title: 'Update',
+    //      message: 'Please update your app to enjoy better features',
+    //      buttons: [
+    //        {
+    //          text: 'Cancel',
+    //          role: 'cancel',
+    //          handler: () => {
+    //          }
+    //        },
+    //        {
+    //          text: 'Update',
+    //          handler: () => {
+    //            let browser = this.iab.create('https://play.google.com/store','_system')
+    //            browser.show();
+    //          }
+    //        }
+    //      ]
+    //    });
+    //    alert.present();
+    //   }
   }
 }

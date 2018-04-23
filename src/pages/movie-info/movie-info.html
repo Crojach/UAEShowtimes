@@ -14,10 +14,10 @@
     <!-- <ion-icon class="back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()" large></ion-icon> -->
     <!-- <iframe style="width: 100%;" [src]="trustedVideoUrl ? trustedVideoUrl : ''" frameborder="0" allowfullscreen></iframe> -->
     <img class="play-button" src="assets/img/play.svg" alt="play" width="45px" height="40px" (click)="play(item.trailer)">
-    <img class="bannerImage" src="http://13.250.201.193:3006{{item.bannerImage}}" alt="">
+    <img class="bannerImage" height="160px" src="http://13.250.201.193:3006{{item.bannerImage}}" alt="">
     <div style="padding: 0 16px 16px 16px; margin-top: -3px;">
         <div>
-            <img class="customImg upShadow" [src]="item.thumbnailImage" item-left>
+            <img class="customImg upShadow" [src]="item.thumbnailImage" width="110px" height="150px" item-left>
             <ion-card class="upShadow curve" style="padding: 0; width: 100%;margin: 0 0 8px 0;">
                 <ion-item style="padding: 2% 1% 4% 34%;">
                     <ion-row style="justify-content: space-between;">

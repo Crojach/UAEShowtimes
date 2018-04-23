@@ -12,6 +12,8 @@ import {
   SuperTabsController,
   SuperTabs
 } from "ionic2-super-tabs";
+import { NetworkServiceProvider } from '../../providers/network-service/network-service';
+import { ToastController } from 'ionic-angular'
 
 import * as moment from "moment";
 declare var google;
@@ -62,7 +64,9 @@ export class CinemaInfoPage {
     iab: InAppBrowser,
     loadingCtrl: LoadingController,
     private callNumber: CallNumber,
-    private emailComposer: EmailComposer
+    private emailComposer: EmailComposer,
+    public network : NetworkServiceProvider,
+    public toastCtrl: ToastController,
   ) {
     this.http = http;
     this.iab = iab;
@@ -121,16 +125,16 @@ export class CinemaInfoPage {
 
   // Function to open in app browser
   openBookingUrl(url) {
-    this.iab.create(url);
+    this.iab.create(url, "_blank");
   }
 
   //Getting cinema sessions of day selected
   dayValue(value, todaysData) {
     if (
       value ==
-        moment()
-          .add(0, "days")
-          .format(`YYYYMMDD`) &&
+      moment()
+        .add(0, "days")
+        .format(`YYYYMMDD`) &&
       todaysData != null
     ) {
       this.showsLength = todaysData.shows.length;
@@ -139,68 +143,84 @@ export class CinemaInfoPage {
       this.view = true;
       //Getting offers data from API
       let url =
-      `${this.configUrl}/app/cinemaInfoForDate/` +
-      this.cinemaId +
-      `?search=` +
-      parseInt(value);
+        `${this.configUrl}/app/cinemaInfoForDate/` +
+        this.cinemaId +
+        `?search=` +
+        parseInt(value);
       // console.log(url);
       this.http
-      .get(url)
-      .map(res => res.json())
-      .subscribe(results => {
-        loading.dismiss();
-        this.selectedDay = results.finalMovies;
-        console.log("!!!!!!!!!!!!!!!!!!", this.selectedDay);
+        .get(url)
+        .map(res => res.json())
+        .subscribe(results => {
+          loading.dismiss();
+          this.selectedDay = results.finalMovies;
+          console.log("!!!!!!!!!!!!!!!!!!", this.selectedDay);
           // this.showsLength = todaysData.shows.length;
-          this.view = false;  
+          this.view = false;
         });
     }
   }
 
   postItems(results) {
-    loading = this.loadingCtrl.create({
-      spinner: "hide",
-      content: `
+    if(this.network.noConnection()){
+      console.log("No connection plzz try again later")
+      let toast = this.toastCtrl.create({
+        message: 'Failed to connect to UAE Showtimes, check your internet connection',
+        duration: 15000,
+        position: 'bottom',
+        showCloseButton: true,
+        closeButtonText: 'Try Again',
+      });
+      toast.onDidDismiss(() => {
+        console.log('Dismissed toast');
+        this.postItems(results);
+      });
+      toast.present();
+    }else{
+      loading = this.loadingCtrl.create({
+        spinner: "hide",
+        content: `
       <div class="spinner">
         <div class="dot1"></div>
         <div class="dot2"></div>
       </div>
       `
-    });
-
-    loading.present();
-
-    console.log(this.cinemaId);
-    const httpOptions = new RequestOptions({
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    });
-    let body = {
-      cinemaId: this.cinemaId
-    };
-    this.http
-      .post(`${this.configUrl}/app/cinema`, body, httpOptions)
-      .map(res => res.json())
-      .subscribe(results => {
-        this.cinemaInfo = results.cinema;
-        this.cinemaName = results.cinema[0].multiplexName;
-        this.selectedDay = results.finalMovies;
-        console.log(
-          "POWER",
-          this.cinemaInfo[0].latitude,
-          this.cinemaInfo[0].longitude
-        );
-
-        this.initializeMap(
-          this.cinemaInfo[0].latitude,
-          this.cinemaInfo[0].longitude
-        );
-
-        this.latitude = this.cinemaInfo[0].latitude;
-        this.longitude = this.cinemaInfo[0].longitude;
-        loading.dismiss();
       });
+
+      loading.present();
+
+      console.log(this.cinemaId);
+      const httpOptions = new RequestOptions({
+        headers: new Headers({
+          "Content-Type": "application/json"
+        })
+      });
+      let body = {
+        cinemaId: this.cinemaId
+      };
+      this.http
+        .post(`${this.configUrl}/app/cinema`, body, httpOptions)
+        .map(res => res.json())
+        .subscribe(results => {
+          this.cinemaInfo = results.cinema;
+          this.cinemaName = results.cinema[0].multiplexName;
+          this.selectedDay = results.finalMovies;
+          console.log(
+            "POWER",
+            this.cinemaInfo[0].latitude,
+            this.cinemaInfo[0].longitude
+          );
+
+          this.initializeMap(
+            this.cinemaInfo[0].latitude,
+            this.cinemaInfo[0].longitude
+          );
+
+          this.latitude = this.cinemaInfo[0].latitude;
+          this.longitude = this.cinemaInfo[0].longitude;
+          loading.dismiss();
+        });
+    }
   }
 
   initializeMap(lat, long) {

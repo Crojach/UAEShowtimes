@@ -5,6 +5,9 @@ import { Http } from "@angular/http";
 import { LoadingController } from "ionic-angular";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { NetworkServiceProvider } from '../../providers/network-service/network-service';
+import { ToastController } from 'ionic-angular'
+
 import "rxjs/add/operator/map";
 
 
@@ -46,7 +49,9 @@ export class CinemasPage {
     public navParams: NavParams,
     private platform: Platform,
     private ga: GoogleAnalytics,
-    private diagnostic: Diagnostic
+    public network : NetworkServiceProvider,
+    private diagnostic: Diagnostic,
+    public toastCtrl: ToastController,
   ) {
     this.rootNavCtrl = this.navParams.get("rootNavCtrl");
     this.loadingCtrl = loadingCtrl;
@@ -71,33 +76,33 @@ export class CinemasPage {
     //           cinemaId: id,
     //           cinemaName: cinemaName
     //         });
-  
-      //to Turn on location
-      let successCallback = isAvailable => {
-        console.log("Is available? " + isAvailable);
-      };
-      let errorCallback = e => console.error(e);
-  
-      // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
-  
-      this.diagnostic.isGpsLocationEnabled()
+
+    //to Turn on location
+    let successCallback = isAvailable => {
+      console.log("Is available? " + isAvailable);
+    };
+    let errorCallback = e => console.error(e);
+
+    // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
+
+    this.diagnostic.isGpsLocationEnabled()
       .then((state) => {
         console.log('state',state)
-          if (state) {
-            // do something
-            console.log("gps is ON")
-            //on click to push on next page
-            this.rootNavCtrl.push(CinemaInfoPage, {
-              cinemaId: id,
-              cinemaName: cinemaName
-            });
-          } else {
-            console.log("gps is off")
-            alert("Please Turn on GPS.")
-            this.diagnostic.switchToLocationSettings()
-          }
-        })
-        .catch(e => console.error(e));
+        if (state) {
+          // do something
+          console.log("gps is ON")
+          //on click to push on next page
+          this.rootNavCtrl.push(CinemaInfoPage, {
+            cinemaId: id,
+            cinemaName: cinemaName
+          });
+        } else {
+          console.log("gps is off")
+          alert("Please Turn on GPS.")
+          this.diagnostic.switchToLocationSettings()
+        }
+      })
+      .catch(e => console.error(e));
   }
 
   toggleDetails(data, index) {
