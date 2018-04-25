@@ -28,7 +28,7 @@ export class CinemasPage {
   configUrl = "http://13.250.201.193:3006";
   // configUrl = 'http://192.168.1.167';
   cinemas: any;
-  loadingCtrl: any;
+  // loadingCtrl: any;
   icon: any = "ios-arrow-down";
   rootNavCtrl: NavController;
   cinemasTitles = [
@@ -45,7 +45,7 @@ export class CinemasPage {
   constructor(
     public http: Http,
     public navCtrl: NavController,
-    loadingCtrl: LoadingController,
+    // loadingCtrl: LoadingController,
     public navParams: NavParams,
     private platform: Platform,
     private ga: GoogleAnalytics,
@@ -54,7 +54,7 @@ export class CinemasPage {
     public toastCtrl: ToastController,
   ) {
     this.rootNavCtrl = this.navParams.get("rootNavCtrl");
-    this.loadingCtrl = loadingCtrl;
+    // this.loadingCtrl = loadingCtrl;
     this.getItems();
 
     this.platform.ready().then(() => {
@@ -123,17 +123,17 @@ export class CinemasPage {
   }
 
   getItems() {
-    loading = this.loadingCtrl.create({
-      spinner: "hide",
-      content: `
-      <div class="spinner">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
-    </div>
-      `
-    });
-
-    loading.present();
+    // loading = this.loadingCtrl.create({
+    //   spinner: "hide",
+    //   content: `
+    //   <div class="spinner">
+    //   <div class="dot1"></div>
+    //   <div class="dot2"></div>
+    // </div>
+    //   `
+    // });
+    //
+    // loading.present();
     this.http
       .get(`${this.configUrl}/app/showAllCinemas`)
       .map(res => res.json())
@@ -151,7 +151,7 @@ export class CinemasPage {
               showDetails: false
             });
           });
-          loading.dismiss();
+          // loading.dismiss();
           console.log("result>>", this.data);
         } else {
           console.log("Sorry Try Again");

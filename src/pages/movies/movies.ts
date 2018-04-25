@@ -29,11 +29,11 @@ export class MoviesPage {
     public http: Http,
     private platform: Platform,
     private ga:GoogleAnalytics,
-    public loadingCtrl: LoadingController,
+    // public loadingCtrl: LoadingController,
     public network : NetworkServiceProvider,
     public toastCtrl: ToastController,
   ) {
-    this.loadingCtrl = loadingCtrl;
+    // this.loadingCtrl = loadingCtrl;
 
     if(this.network.noConnection()){
       this.network.showNetworkAlert()
@@ -69,15 +69,15 @@ export class MoviesPage {
       });
       toast.present();
     }else{
-      loading = this.loadingCtrl.create({
-        spinner: "hide",
-        content: `
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
-        `
-      });
+      // loading = this.loadingCtrl.create({
+      //   spinner: "hide",
+      //   content: `
+      //   <div class="spinner">
+      //     <div class="dot1"></div>
+      //     <div class="dot2"></div>
+      //   </div>
+      //   `
+      // });
 
       // loading.present();
       this.http
@@ -86,7 +86,7 @@ export class MoviesPage {
         .subscribe(results => {
           if (results.status) {
             this.items = results.movies;
-            loading.dismiss();
+            // loading.dismiss();
             this.items = this.items.map(x => {
               let date = x.releaseDate.split("(")[1].split("+")[0];
               let newDate = new Date(parseInt(date)).toISOString();
