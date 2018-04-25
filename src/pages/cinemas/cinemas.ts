@@ -85,7 +85,7 @@ export class CinemasPage {
 
     // this.diagnostic.isLocationEnabled().then(successCallback, errorCallback);
 
-    this.diagnostic.isGpsLocationEnabled()
+    this.diagnostic.isLocationEnabled()
       .then((state) => {
         console.log('state',state)
         if (state) {
