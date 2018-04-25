@@ -95,7 +95,7 @@ export class MovieInfoPage {
   openBookingUrl(url) {
     console.log("---------", typeof url)
     //Browser intialization
-    const browser = this.iab.create(url,"_blank");
+    const browser = this.iab.create(url, "", "location=no,closebuttoncaption=Back");
   }
 
   play(link){
