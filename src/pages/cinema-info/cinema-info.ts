@@ -125,7 +125,7 @@ export class CinemaInfoPage {
 
   // Function to open in app browser
   openBookingUrl(url) {
-    this.iab.create(url, "_blank");
+    this.iab.create(url, "", "location=no,closebuttoncaption=Back");
   }
 
   //Getting cinema sessions of day selected

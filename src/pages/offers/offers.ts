@@ -79,7 +79,7 @@ export class OffersPage {
 
   //Redirecting  to offer
   openOfferSite(url) {
-    this.iab.create(url, "_blank");
+    this.iab.create(url, "", "location=no,closebuttoncaption=Back");
   }
   //Function for getting offers
   getOffers() {
