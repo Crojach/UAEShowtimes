@@ -226,36 +226,54 @@ export class CinemaInfoPage {
   initializeMap(lat, long) {
     var myLatLng = { lat: lat, lng: long };
     let locationOptions = { timeout: 20000, enableHighAccuracy: true };
+    let options = {
+      center: new google.maps.LatLng(lat, long),
+      zoom: 16,
+      tilt: 20,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        let options = {
-          center: new google.maps.LatLng(lat, long),
-          zoom: 16,
-          tilt: 20,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        this.map = new google.maps.Map(
-          document.getElementById("map_canvas"),
-          options
-        );
-        var marker = new google.maps.Marker({
-          map: this.map,
-          draggable: false,
-          animation: google.maps.Animation.DROP,
-          position: options.center,
-          title: "Hello World!"
-        });
-        marker.setMap(this.map);
-      },
-
-      error => {
-        console.log(error);
-      },
-
-      locationOptions
+    this.map = new google.maps.Map(
+      document.getElementById("map_canvas"),
+      options
     );
+    var marker = new google.maps.Marker({
+      map: this.map,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
+      position: options.center,
+      title: "Hello World!"
+    });
+    marker.setMap(this.map);
+    // navigator.geolocation.getCurrentPosition(
+    //   position => {
+    //     let options = {
+    //       center: new google.maps.LatLng(lat, long),
+    //       zoom: 16,
+    //       tilt: 20,
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
+    //
+    //     this.map = new google.maps.Map(
+    //       document.getElementById("map_canvas"),
+    //       options
+    //     );
+    //     var marker = new google.maps.Marker({
+    //       map: this.map,
+    //       draggable: false,
+    //       animation: google.maps.Animation.DROP,
+    //       position: options.center,
+    //       title: "Hello World!"
+    //     });
+    //     marker.setMap(this.map);
+    //   },
+    //
+    //   error => {
+    //     console.log(error);
+    //   },
+    //
+    //   locationOptions
+    // );
   }
 
   ionViewDidLoad() {
